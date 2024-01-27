@@ -491,291 +491,227 @@
   },
   {
     "name": "Euroex",
-    "url": null,
-    "district": null,
-    "categories": ["Unknown"],
-    "subCategory": "Unknown",
+    "url": "euroex.com",
+    "district": "Väster",
+    "categories": "Upplev",
+    "subCategory": "Museums and Culture",
     "openingTime": "09:00",
     "closingTime": "18:00",
     "contact": {
       "phone": "123-456-7890",
-      "email": "example@email.com"
+      "email": "info@euroex.com"
     },
-    "rating": 0,
-    "Contact": {
-      "phone": "Unknown",
-      "email": "unknown@example.com"
-    }
+    "rating": 5
   },
   {
     "name": "Evoke industry",
-    "url": null,
-    "district": null,
-    "categories": ["Unknown"],
-    "subCategory": "Unknown",
+    "url": "evoke.com",
+    "district": "Väster",
+    "categories": "Upplev",
+    "subCategory": "Museums and Culture",
     "openingTime": "09:00",
     "closingTime": "18:00",
     "contact": {
       "phone": "123-456-7890",
-      "email": "example@email.com"
+      "email": "example@evoke.com"
     },
-    "rating": 0,
-    "Contact": {
-      "phone": "Unknown",
-      "email": "unknown@example.com"
-    }
+    "rating": 5
   },
   {
     "name": "Fabriken",
     "url": "butikfabriken.se",
     "district": "Atollen",
-    "categories": ["Unknown"],
-    "subCategory": "Unknown",
+    "categories": "Shoppa",
+    "subCategory": "Apparel",
     "openingTime": "09:00",
     "closingTime": "18:00",
     "contact": {
       "phone": "123-456-7890",
-      "email": "example@email.com"
+      "email": "info@butikfabriken.com"
     },
-    "rating": 0,
-    "Contact": {
-      "phone": "Unknown",
-      "email": "unknown@example.com"
-    }
+    "rating": 4
   },
   {
     "name": "Fiction Prescription",
     "url": "https://www.instagram.com/fiction.prescription.jonkoping/",
-    "district": null,
-    "categories": ["Unknown"],
-    "subCategory": "Unknown",
+    "district": "Väster",
+    "categories": "Upplev",
+    "subCategory": "Entertainment and Activities",
     "openingTime": "09:00",
     "closingTime": "18:00",
     "contact": {
       "phone": "123-456-7890",
-      "email": "example@email.com"
+      "email": "info@fiction.com"
     },
-    "rating": 0,
-    "Contact": {
-      "phone": "Unknown",
-      "email": "unknown@example.com"
-    }
+    "rating": 4
   },
   {
     "name": "Forex Bank Väster",
-    "url": null,
+    "url": "forex.com",
     "district": "Väster",
-    "categories": ["Unknown"],
-    "subCategory": "Unknown",
+    "categories": "Upplev",
+    "subCategory": "Museums and Culture",
     "openingTime": "09:00",
     "closingTime": "18:00",
     "contact": {
       "phone": "123-456-7890",
-      "email": "example@email.com"
+      "email": "info@forex.com"
     },
-    "rating": 0,
-    "Contact": {
-      "phone": "Unknown",
-      "email": "unknown@example.com"
-    }
+    "rating": 5
   },
   {
     "name": "Foten",
     "url": "https://www.foten.se/",
-    "district": null,
-    "categories": ["Unknown"],
-    "subCategory": "Unknown",
+    "district": "Väster",
+    "categories": "Må bra",
+    "subCategory": "Health and Wellness",
     "openingTime": "09:00",
     "closingTime": "18:00",
     "contact": {
-      "phone": "123-456-7890",
-      "email": "example@email.com"
+      "phone": "123-456-7897",
+      "email": "info@foten.com"
     },
-    "rating": 0,
-    "Contact": {
-      "phone": "Unknown",
-      "email": "unknown@example.com"
-    }
+    "rating": 5
   },
   {
     "name": "Friendly Corner",
     "url": "https://friendlycorner.se/butiken",
     "district": "Tändsticksområdet",
-    "categories": ["Unknown"],
-    "subCategory": "Unknown",
+    "categories": "Shoppa",
+    "subCategory": "Home and Decor",
     "openingTime": "09:00",
     "closingTime": "18:00",
     "contact": {
       "phone": "123-456-7890",
       "email": "example@email.com"
     },
-    "rating": 0,
-    "Contact": {
-      "phone": "Unknown",
-      "email": "unknown@example.com"
-    }
+    "rating": 4
   },
   {
     "name": "Galleri 701 ramcenter",
     "url": "galleri701-ram.se",
-    "district": null,
-    "categories": ["Unknown"],
-    "subCategory": "Unknown",
+    "district": "Väster",
+    "categories": "Upplev",
+    "subCategory": "Museums and Culture",
     "openingTime": "09:00",
     "closingTime": "18:00",
     "contact": {
       "phone": "123-456-7890",
-      "email": "example@email.com"
+      "email": "info@galleri701.com"
     },
-    "rating": 0,
-    "Contact": {
-      "phone": "Unknown",
-      "email": "unknown@example.com"
-    }
+    "rating": 5
   },
   {
     "name": "Gant",
     "url": "gant.se/stores?lat=57.78261370000001&long=14.1617876&postalCode=j%C3%B6nk%C3%B6ping&radius=10.0",
     "district": "Atollen",
-    "categories": ["Unknown"],
-    "subCategory": "Unknown",
+    "categories": "Shoppa",
+    "subCategory": "Apparel",
     "openingTime": "09:00",
     "closingTime": "18:00",
     "contact": {
       "phone": "123-456-7890",
-      "email": "example@email.com"
+      "email": "info@gant.com"
     },
-    "rating": 0,
-    "Contact": {
-      "phone": "Unknown",
-      "email": "unknown@example.com"
-    }
+    "rating": 4
   },
   {
     "name": "Gåvan",
     "url": "gavanjonkoping.se",
     "district": "Öster",
-    "categories": ["Unknown"],
-    "subCategory": "Unknown",
+    "categories": "Shoppa",
+    "subCategory": "Apparel",
     "openingTime": "09:00",
     "closingTime": "18:00",
     "contact": {
-      "phone": "123-456-7890",
-      "email": "example@email.com"
+      "phone": "123-476-7890",
+      "email": "example@gåvan.com"
     },
-    "rating": 0,
-    "Contact": {
-      "phone": "Unknown",
-      "email": "unknown@example.com"
-    }
+    "rating": 4
   },
   {
     "name": "Gina Tricot",
     "url": "ginatricot.com/se/find-store",
     "district": "Öster",
-    "categories": ["Unknown"],
-    "subCategory": "Unknown",
+    "categories": "Shoppa",
+    "subCategory": "Apparel",
     "openingTime": "09:00",
     "closingTime": "18:00",
     "contact": {
       "phone": "123-456-7890",
       "email": "example@email.com"
     },
-    "rating": 0,
-    "Contact": {
-      "phone": "Unknown",
-      "email": "unknown@example.com"
-    }
+    "rating": 5
   },
   {
     "name": "Go Banana",
     "url": "gobanana.se",
     "district": "Väster",
-    "categories": ["Unknown"],
-    "subCategory": "Unknown",
+    "categories": "Äta",
+    "subCategory": "Fast Food",
     "openingTime": "09:00",
     "closingTime": "18:00",
     "contact": {
       "phone": "123-456-7890",
-      "email": "example@email.com"
+      "email": "info@gobanana.com"
     },
-    "rating": 0,
-    "Contact": {
-      "phone": "Unknown",
-      "email": "unknown@example.com"
-    }
+    "rating": 4
   },
   {
     "name": "Godis och Tobakshörnan",
-    "url": null,
+    "url": "godis.com",
     "district": "Öster",
-    "categories": ["Unknown"],
-    "subCategory": "Unknown",
+    "categories": "Shoppa",
+    "subCategory": "Grocery",
     "openingTime": "09:00",
     "closingTime": "18:00",
     "contact": {
-      "phone": "123-456-7890",
-      "email": "example@email.com"
+      "phone": "123-456-7897",
+      "email": "info@godis.com"
     },
-    "rating": 0,
-    "Contact": {
-      "phone": "Unknown",
-      "email": "unknown@example.com"
-    }
+    "rating": 4
   },
   {
     "name": "Golden athlete",
     "url": "goldenathlete.se/sv/butiker-2",
     "district": "Öster",
-    "categories": ["Unknown"],
-    "subCategory": "Unknown",
+    "categories": "Må bra",
+    "subCategory": "Health and Wellness",
     "openingTime": "09:00",
     "closingTime": "18:00",
     "contact": {
-      "phone": "123-456-7890",
-      "email": "example@email.com"
+      "phone": "123-476-7890",
+      "email": "info@golden.com"
     },
-    "rating": 0,
-    "Contact": {
-      "phone": "Unknown",
-      "email": "unknown@example.com"
-    }
+    "rating": 4
   },
   {
     "name": "Grmawit Store",
     "url": "grmawit.com/",
     "district": "Väster",
-    "categories": ["Unknown"],
-    "subCategory": "Unknown",
+    "categories": "Shoppa",
+    "subCategory": "Apparel",
     "openingTime": "09:00",
     "closingTime": "18:00",
     "contact": {
       "phone": "123-456-7890",
-      "email": "example@email.com"
+      "email": "info@grmawit.com"
     },
-    "rating": 0,
-    "Contact": {
-      "phone": "Unknown",
-      "email": "unknown@example.com"
-    }
+    "rating": 4
   },
   {
     "name": "Guldsmedjan Snarberg",
     "url": "guldsmedjan-snarberg.se",
     "district": "Väster",
-    "categories": ["Unknown"],
-    "subCategory": "Unknown",
+    "categories": "Sova",
+    "subCategory": "Hotels",
     "openingTime": "09:00",
     "closingTime": "18:00",
     "contact": {
-      "phone": "123-456-7890",
-      "email": "example@email.com"
+      "phone": "123-456-7891",
+      "email": "info@guldsmedjan.com"
     },
-    "rating": 0,
-    "Contact": {
-      "phone": "Unknown",
-      "email": "unknown@example.com"
-    }
+    "rating": 5
   },
   {
     "name": "Hälsokraft",
