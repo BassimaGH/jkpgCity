@@ -27,7 +27,6 @@ class Db {
           subCategory text,
           openingTime text,
           closingTime text,
-          
           rating intger,
           CONSTRAINT stores_pkey PRIMARY KEY (id)
       );
