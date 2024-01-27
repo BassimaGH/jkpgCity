@@ -40,11 +40,11 @@ class Db {
           CONSTRAINT contacts_pkey PRIMARY KEY (id)
       );
     `);
-    /*
+
     await this.client.query(`
       ALTER TABLE IF EXISTS public.stores OWNER to postgres;
     `);
-
+    /*
     for (const store of storeJson) {
       const checkForStore = await this.client.query(
         `
