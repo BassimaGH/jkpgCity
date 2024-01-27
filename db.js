@@ -31,6 +31,15 @@ class Db {
           rating intger,
           CONSTRAINT stores_pkey PRIMARY KEY (id)
       );
+
+      CREATE TABLE IF NOT EXISTS public.contacts
+      (
+          id SERIAL NOT NULL,
+          store_id INTEGER REFERENCES stores(id),
+          phone text,
+          email text,
+          CONSTRAINT contacts_pkey PRIMARY KEY (id)
+      );
     `);
 
     await this.client.query(`
