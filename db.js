@@ -1,12 +1,12 @@
-const { Client } = require('pg')
+const { Client } = require("pg");
 
 class Db {
   constructor() {
     this.client = new Client({
-      user: 'postgres',
-      host: 'localhost',
-      database: 'postgres',
-      password: '12345',
+      user: "postgres",
+      host: "localhost",
+      database: "postgres",
+      password: "12345",
       port: 5432,
     });
   }
@@ -23,6 +23,12 @@ class Db {
           name text,
           url text,
           district text,
+          categories text,
+          subCategory text,
+          openingTime text,
+          closingTime text,
+          
+          rating intger,
           CONSTRAINT stores_pkey PRIMARY KEY (id)
       );
     `);
@@ -32,31 +38,34 @@ class Db {
     `);
 
     for (const store of storeJson) {
-      const checkForStore = await this.client.query(`
+      const checkForStore = await this.client.query(
+        `
         SELECT * FROM public.stores
         WHERE
          name = $1
         LIMIT 1
-      `, [store.name]);
+      `,
+        [store.name]
+      );
 
       console.log(checkForStore.rows);
 
       if (checkForStore.rows.length === 0) {
-        await this.client.query(`
+        await this.client.query(
+          `
           INSERT INTO public.stores (name, url, district)
           VALUES ($1, $2, $3)
-        `, [store.name, store.url, store.district]);
+        `,
+          [store.name, store.url, store.district]
+        );
       }
     }
-
-
   }
 
   async getAllStores() {
-    const res = await this.client.query('SELECT * FROM public.stores');
+    const res = await this.client.query("SELECT * FROM public.stores");
     return res.rows;
   }
-
 }
 
 module.exports = Db;
