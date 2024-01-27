@@ -27,9 +27,12 @@ class Db {
           subCategory text,
           openingTime text,
           closingTime text,
+          phone text,
+          email text,
           rating integer,
           CONSTRAINT stores_pkey PRIMARY KEY (id)
       );
+    
     `);
 
     await this.client.query(`
@@ -52,10 +55,21 @@ class Db {
       if (checkForStore.rows.length === 0) {
         await this.client.query(
           `
-          INSERT INTO public.stores (name, url, district)
-          VALUES ($1, $2, $3)
+          INSERT INTO public.stores (name, url, district, categories, subCategory, openingTime, closingTime, phone, email, rating)
+          VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)
         `,
-          [store.name, store.url, store.district]
+          [
+            store.name,
+            store.url,
+            store.district,
+            store.categories,
+            store.subCategory,
+            store.openingTime,
+            store.closingTime,
+            store.phone,
+            store.email,
+            store.rating,
+          ]
         );
       }
     }
@@ -68,12 +82,3 @@ class Db {
 }
 
 module.exports = Db;
-
-// CREATE TABLE IF NOT EXISTS public.contacts
-//       (
-//           id SERIAL NOT NULL,
-//           store_id INTEGER REFERENCES stores(id),
-//           phone text,
-//           email text,
-//           CONSTRAINT contacts_pkey PRIMARY KEY (id)
-//       );
