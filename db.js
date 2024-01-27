@@ -41,7 +41,7 @@ class Db {
           CONSTRAINT contacts_pkey PRIMARY KEY (id)
       );
     `);
-
+    /*
     await this.client.query(`
       ALTER TABLE IF EXISTS public.stores OWNER to postgres;
     `);
@@ -68,7 +68,9 @@ class Db {
           [store.name, store.url, store.district]
         );
       }
+      
     }
+    */
   }
 
   async getAllStores() {
