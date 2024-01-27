@@ -6,7 +6,7 @@ class Db {
       user: "postgres",
       host: "localhost",
       database: "postgres",
-      password: "12345",
+      password: "DMB123",
       port: 5432,
     });
   }
@@ -27,24 +27,15 @@ class Db {
           subCategory text,
           openingTime text,
           closingTime text,
-          rating intger,
+          rating integer,
           CONSTRAINT stores_pkey PRIMARY KEY (id)
-      );
-
-      CREATE TABLE IF NOT EXISTS public.contacts
-      (
-          id SERIAL NOT NULL,
-          store_id INTEGER REFERENCES stores(id),
-          phone text,
-          email text,
-          CONSTRAINT contacts_pkey PRIMARY KEY (id)
       );
     `);
 
     await this.client.query(`
       ALTER TABLE IF EXISTS public.stores OWNER to postgres;
     `);
-    /*
+
     for (const store of storeJson) {
       const checkForStore = await this.client.query(
         `
@@ -67,9 +58,7 @@ class Db {
           [store.name, store.url, store.district]
         );
       }
-      
     }
-    */
   }
 
   async getAllStores() {
@@ -79,3 +68,12 @@ class Db {
 }
 
 module.exports = Db;
+
+// CREATE TABLE IF NOT EXISTS public.contacts
+//       (
+//           id SERIAL NOT NULL,
+//           store_id INTEGER REFERENCES stores(id),
+//           phone text,
+//           email text,
+//           CONSTRAINT contacts_pkey PRIMARY KEY (id)
+//       );
