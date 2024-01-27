@@ -1375,307 +1375,239 @@
     "name": "Naturkompaniet",
     "url": "murphysbar.se/sv/",
     "district": "Öster",
-    "categories": ["Unknown"],
-    "subCategory": "Unknown",
+    "categories": "Shoppa",
+    "subCategory": "Apparel",
     "openingTime": "09:00",
     "closingTime": "18:00",
     "contact": {
-      "phone": "123-456-7890",
-      "email": "example@email.com"
+      "phone": "072-456-7890",
+      "email": "info@naturkompaniet.com"
     },
-    "rating": 0,
-    "Contact": {
-      "phone": "Unknown",
-      "email": "unknown@example.com"
-    }
+    "rating": 4
   },
   {
     "name": "Newhouse",
     "url": "newhouse.se/newhouse/vara-butiker",
     "district": "Atollen",
-    "categories": ["Unknown"],
-    "subCategory": "Unknown",
+    "categories": "Shoppa",
+    "subCategory": "Apparel",
     "openingTime": "09:00",
-    "closingTime": "18:00",
+    "closingTime": "17:00",
     "contact": {
-      "phone": "123-456-7890",
-      "email": "example@email.com"
+      "phone": "072-456-7890",
+      "email": "info@newhouse.com"
     },
-    "rating": 0,
-    "Contact": {
-      "phone": "Unknown",
-      "email": "unknown@example.com"
-    }
+    "rating": 3
   },
   {
     "name": "New Yorker",
     "url": "newyorker.de/se/stores/",
     "district": "Öster",
-    "categories": ["Unknown"],
-    "subCategory": "Unknown",
+    "categories": "Shoppa",
+    "subCategory": "Apparel",
     "openingTime": "09:00",
     "closingTime": "18:00",
     "contact": {
-      "phone": "123-456-7890",
-      "email": "example@email.com"
+      "phone": "073-456-7890",
+      "email": "info@newyorker.com"
     },
-    "rating": 0,
-    "Contact": {
-      "phone": "Unknown",
-      "email": "unknown@example.com"
-    }
+    "rating": 5
   },
   {
     "name": "Nilson Shoes",
     "url": "dinsko.se/stores",
     "district": "Öster",
-    "categories": ["Unknown"],
-    "subCategory": "Unknown",
+    "categories": "Shoppa",
+    "subCategory": "Apparel",
     "openingTime": "09:00",
     "closingTime": "18:00",
     "contact": {
-      "phone": "123-456-7890",
-      "email": "example@email.com"
+      "phone": "072-456-7890",
+      "email": "info@nilsonshoes.com"
     },
-    "rating": 0,
-    "Contact": {
-      "phone": "Unknown",
-      "email": "unknown@example.com"
-    }
+    "rating": 5
   },
   {
     "name": "Noa Noa",
     "url": "httpsfacebook.com/Noa-Noa-J%C3%B6nk%C3%B6ping-446212958766553/",
     "district": "Öster",
-    "categories": ["Unknown"],
-    "subCategory": "Unknown",
+    "categories": "Shoppa",
+    "subCategory": "Apparel",
     "openingTime": "09:00",
     "closingTime": "18:00",
     "contact": {
-      "phone": "123-456-7890",
-      "email": "example@email.com"
+      "phone": "073-456-7890",
+      "email": "info@noanoa.com"
     },
-    "rating": 0,
-    "Contact": {
-      "phone": "Unknown",
-      "email": "unknown@example.com"
-    }
+    "rating": 2
   },
   {
     "name": "Nordisk Möbelkonst",
     "url": "nordiskmobelkonst.se/",
     "district": "Öster",
-    "categories": ["Unknown"],
-    "subCategory": "Unknown",
+    "categories": "Shoppa",
+    "subCategory": "Home and Decor",
     "openingTime": "09:00",
     "closingTime": "18:00",
     "contact": {
       "phone": "123-456-7890",
-      "email": "example@email.com"
+      "email": "info@nordiskmobelkonst.com"
     },
-    "rating": 0,
-    "Contact": {
-      "phone": "Unknown",
-      "email": "unknown@example.com"
-    }
+    "rating": 5
   },
   {
     "name": "Normal",
     "url": "normal.se/hitta-butik/",
     "district": "Öster",
-    "categories": ["Unknown"],
-    "subCategory": "Unknown",
+    "categories": "Shoppa",
+    "subCategory": "Health and Beauty",
     "openingTime": "09:00",
     "closingTime": "18:00",
     "contact": {
       "phone": "123-456-7890",
-      "email": "example@email.com"
+      "email": "info@normal.com"
     },
-    "rating": 0,
-    "Contact": {
-      "phone": "Unknown",
-      "email": "unknown@example.com"
-    }
+    "rating": 5
   },
   {
     "name": "Nya Musik",
     "url": "nyamusik.se/",
     "district": "Väster",
-    "categories": ["Unknown"],
-    "subCategory": "Unknown",
+    "categories": "Shoppa",
+    "subCategory": "Electronics",
     "openingTime": "09:00",
     "closingTime": "18:00",
     "contact": {
-      "phone": "123-456-7890",
-      "email": "example@email.com"
+      "phone": "072-456-7890",
+      "email": "info@nyamusik.com"
     },
-    "rating": 0,
-    "Contact": {
-      "phone": "Unknown",
-      "email": "unknown@example.com"
-    }
+    "rating": 4
   },
   {
     "name": "Once for girls",
     "url": "oncestore.se/",
     "district": "Öster",
-    "categories": ["Unknown"],
-    "subCategory": "Unknown",
+    "categories": "Shoppa",
+    "subCategory": "Apparel",
     "openingTime": "09:00",
     "closingTime": "18:00",
     "contact": {
-      "phone": "123-456-7890",
-      "email": "example@email.com"
+      "phone": "073-456-7890",
+      "email": "info@onceforgirls.com"
     },
-    "rating": 0,
-    "Contact": {
-      "phone": "Unknown",
-      "email": "unknown@example.com"
-    }
+    "rating": 5
   },
   {
     "name": "Önska",
     "url": "onska.se/vara-butiker/",
     "district": "Öster",
-    "categories": ["Unknown"],
-    "subCategory": "Unknown",
+    "categories": "Shoppa",
+    "subCategory": "Home and Decor",
     "openingTime": "09:00",
     "closingTime": "18:00",
     "contact": {
-      "phone": "123-456-7890",
-      "email": "example@email.com"
+      "phone": "072-456-7890",
+      "email": "info@email.com"
     },
-    "rating": 0,
-    "Contact": {
-      "phone": "Unknown",
-      "email": "unknown@example.com"
-    }
+    "rating": 2
   },
   {
     "name": "Optiker Jahnke",
     "url": "jahnke.se/",
     "district": "Öster",
-    "categories": ["Unknown"],
-    "subCategory": "Unknown",
+    "categories": "Må bra",
+    "subCategory": "Heath and Wellness",
     "openingTime": "09:00",
     "closingTime": "18:00",
     "contact": {
-      "phone": "123-456-7890",
-      "email": "example@email.com"
+      "phone": "072-456-7890",
+      "email": "info@optikerjahnkeail.com"
     },
-    "rating": 0,
-    "Contact": {
-      "phone": "Unknown",
-      "email": "unknown@example.com"
-    }
+    "rating": 4
   },
   {
     "name": "Optiker Ullström",
     "url": "optikerullstrom.se/",
     "district": "Väster",
-    "categories": ["Unknown"],
-    "subCategory": "Unknown",
+    "categories": "Må bra",
+    "subCategory": "Heath and Wellness",
     "openingTime": "09:00",
     "closingTime": "18:00",
     "contact": {
-      "phone": "123-456-7890",
-      "email": "example@email.com"
+      "phone": "072-456-7890",
+      "email": "info@optikerullström.com"
     },
-    "rating": 0,
-    "Contact": {
-      "phone": "Unknown",
-      "email": "unknown@example.com"
-    }
+    "rating": 5
   },
   {
     "name": "Optik & Form",
     "url": "optikochform.se/",
-    "district": null,
-    "categories": ["Unknown"],
-    "subCategory": "Unknown",
+    "district": "Väster",
+    "categories": "Må bra",
+    "subCategory": "Heath and Wellness",
     "openingTime": "09:00",
     "closingTime": "18:00",
     "contact": {
-      "phone": "123-456-7890",
-      "email": "example@email.com"
+      "phone": "072-456-7890",
+      "email": "info@optikandform.com"
     },
-    "rating": 0,
-    "Contact": {
-      "phone": "Unknown",
-      "email": "unknown@example.com"
-    }
+    "rating": 4
   },
   {
     "name": "Partyland",
     "url": "partyland.party/butiker/",
     "district": "Väster",
-    "categories": ["Unknown"],
-    "subCategory": "Unknown",
+    "categories": "Shoppa",
+    "subCategory": "Home and Decor",
     "openingTime": "09:00",
     "closingTime": "18:00",
     "contact": {
-      "phone": "123-456-7890",
-      "email": "example@email.com"
+      "phone": "072-456-7890",
+      "email": "info@partyland.com"
     },
-    "rating": 0,
-    "Contact": {
-      "phone": "Unknown",
-      "email": "unknown@example.com"
-    }
+    "rating": 5
   },
   {
     "name": "Planta Blommor",
     "url": "plantablommor.se/?gclid=Cj0KCQjwteOaBhDuARIsADBqRehsWXSRNHjeGnPn_AyambJZLmNntWxsMnUkANIHdme0NoDtc2Xi8mgaAicoEALw_wcB#.Y2p1tuzMLPZ",
     "district": "Väster",
-    "categories": ["Unknown"],
-    "subCategory": "Unknown",
+    "categories": "Shoppa",
+    "subCategory": "Home and Decor",
     "openingTime": "09:00",
     "closingTime": "18:00",
     "contact": {
-      "phone": "123-456-7890",
-      "email": "example@email.com"
+      "phone": "072-456-7890",
+      "email": "info@plantablommor.com"
     },
-    "rating": 0,
-    "Contact": {
-      "phone": "Unknown",
-      "email": "unknown@example.com"
-    }
+    "rating": 3
   },
   {
     "name": "Pleasure erotic shop",
     "url": "pleasureeroticshop.se/",
     "district": "Väster",
-    "categories": ["Unknown"],
-    "subCategory": "Unknown",
+    "categories": "Shoppa",
+    "subCategory": "Health and Beauty",
     "openingTime": "09:00",
     "closingTime": "18:00",
     "contact": {
-      "phone": "123-456-7890",
-      "email": "example@email.com"
+      "phone": "072-456-7890",
+      "email": "info@pleasureeroticshop.com"
     },
-    "rating": 0,
-    "Contact": {
-      "phone": "Unknown",
-      "email": "unknown@example.com"
-    }
+    "rating": 4
   },
   {
     "name": "PMU Second Hand Jönköping City",
     "url": "pmu.se/stores/jonkopingcity/",
     "district": "Öster",
-    "categories": ["Unknown"],
-    "subCategory": "Unknown",
+    "categories": "Shoppa",
+    "subCategory": "Apparel",
     "openingTime": "09:00",
     "closingTime": "18:00",
     "contact": {
-      "phone": "123-456-7890",
-      "email": "example@email.com"
+      "phone": "072-456-7890",
+      "email": "info@pmusecondhandjönköpingcity.com"
     },
-    "rating": 0,
-    "Contact": {
-      "phone": "Unknown",
-      "email": "unknown@example.com"
-    }
+    "rating": 4
   },
   {
     "name": "Pressbyrån Östra storgatan",
@@ -1686,158 +1618,122 @@
     "openingTime": "09:00",
     "closingTime": "18:00",
     "contact": {
-      "phone": "123-456-7890",
+      "phone": "072-456-7890",
       "email": "example@email.com"
     },
-    "rating": 0,
-    "Contact": {
-      "phone": "Unknown",
-      "email": "unknown@example.com"
-    }
+    "rating": 3
   },
   {
     "name": "Pressbyrån Resecentrum",
     "url": "pressbyran.se/kontakt/hitta-butik/",
     "district": "Resecentrum",
-    "categories": ["Unknown"],
-    "subCategory": "Unknown",
+    "categories": "Shoppa",
+    "subCategory": "Grocery",
     "openingTime": "09:00",
     "closingTime": "18:00",
     "contact": {
-      "phone": "123-456-7890",
-      "email": "example@email.com"
+      "phone": "072-456-7890",
+      "email": "info@pressbyrånresecentrum.com"
     },
-    "rating": 0,
-    "Contact": {
-      "phone": "Unknown",
-      "email": "unknown@example.com"
-    }
+    "rating": 5
   },
   {
     "name": "Pressbyrån Väster",
     "url": "pressbyran.se/kontakt/hitta-butik/",
     "district": "Väster",
-    "categories": ["Unknown"],
-    "subCategory": "Unknown",
+    "categories": "Shoppa",
+    "subCategory": "Grocery",
     "openingTime": "09:00",
     "closingTime": "18:00",
     "contact": {
-      "phone": "123-456-7890",
-      "email": "example@email.com"
+      "phone": "072-456-7890",
+      "email": "info@pressbyrånväster.com"
     },
-    "rating": 0,
-    "Contact": {
-      "phone": "Unknown",
-      "email": "unknown@example.com"
-    }
+    "rating": 4
   },
   {
     "name": "Rabalder",
     "url": "publik.rabalder.se/butiker/joenkoeping.aspx",
     "district": "Öster",
-    "categories": ["Unknown"],
-    "subCategory": "Unknown",
+    "categories": "Shoppa",
+    "subCategory": "Apparel",
     "openingTime": "09:00",
     "closingTime": "18:00",
     "contact": {
-      "phone": "123-456-7890",
-      "email": "example@email.com"
+      "phone": "073-456-7890",
+      "email": "info@rabalder.com"
     },
-    "rating": 0,
-    "Contact": {
-      "phone": "Unknown",
-      "email": "unknown@example.com"
-    }
+    "rating": 1
   },
   {
     "name": "Resehuset",
     "url": "resehuset.se/",
     "district": "Väster",
-    "categories": ["Unknown"],
-    "subCategory": "Unknown",
+    "categories": "Upplev",
+    "subCategory": "Entertainment and Activities",
     "openingTime": "09:00",
     "closingTime": "18:00",
     "contact": {
-      "phone": "123-456-7890",
-      "email": "example@email.com"
+      "phone": "070-456-7890",
+      "email": "info@resehuset.com"
     },
-    "rating": 0,
-    "Contact": {
-      "phone": "Unknown",
-      "email": "unknown@example.com"
-    }
+    "rating": 3
   },
   {
     "name": "Rituals",
     "url": "rituals.com/sv-se/store-detail?store=J%C3%B6nk%C3%B6ping-%C3%96stra-Storgatan",
     "district": "Öster",
-    "categories": ["Unknown"],
-    "subCategory": "Unknown",
+    "categories": "Shoppa",
+    "subCategory": "Health and Beauty",
     "openingTime": "09:00",
     "closingTime": "18:00",
     "contact": {
-      "phone": "123-456-7890",
-      "email": "example@email.com"
+      "phone": "072-456-7890",
+      "email": "info@rituals.com"
     },
-    "rating": 0,
-    "Contact": {
-      "phone": "Unknown",
-      "email": "unknown@example.com"
-    }
+    "rating": 5
   },
   {
     "name": "Rizzo",
     "url": "rizzo.se/stores/",
     "district": "Öster",
-    "categories": ["Unknown"],
-    "subCategory": "Unknown",
+    "categories": "Shoppa",
+    "subCategory": "Apparel",
     "openingTime": "09:00",
     "closingTime": "18:00",
     "contact": {
-      "phone": "123-456-7890",
-      "email": "example@email.com"
+      "phone": "070-456-7890",
+      "email": "info@rizzo.com"
     },
-    "rating": 0,
-    "Contact": {
-      "phone": "Unknown",
-      "email": "unknown@example.com"
-    }
+    "rating": 5
   },
   {
-    "name": "Röda Korset Second Hand ",
+    "name": "Röda Korset Second Hand",
     "url": "rodakorset.se/vad-vi-gor/second-hand/butiker/roda-korset-secondhand-jonkoping/?gclid=CjwKCAjwzY2bBhB6EiwAPpUpZvHzKjPuEJP8mzdhkuZYuEUoinVduEX8lEL6C0cnHq-JkG5o4XalYBoCwX8QAvD_BwE",
     "district": "Väster",
-    "categories": ["Unknown"],
-    "subCategory": "Unknown",
+    "categories": "Shoppa",
+    "subCategory": "Apparel",
     "openingTime": "09:00",
     "closingTime": "18:00",
     "contact": {
-      "phone": "123-456-7890",
-      "email": "example@email.com"
+      "phone": "073-456-7890",
+      "email": "info@email.com"
     },
-    "rating": 0,
-    "Contact": {
-      "phone": "Unknown",
-      "email": "unknown@example.com"
-    }
+    "rating": 2
   },
   {
     "name": "Rundquist & Zälle",
     "url": "rundquist-zalle.com",
     "district": "Väster",
-    "categories": ["Unknown"],
-    "subCategory": "Unknown",
+    "categories": "Shoppa",
+    "subCategory": "Apparel",
     "openingTime": "09:00",
     "closingTime": "18:00",
     "contact": {
-      "phone": "123-456-7890",
-      "email": "example@email.com"
+      "phone": "072-456-7890",
+      "email": "info@rundquistandzälle.com"
     },
-    "rating": 0,
-    "Contact": {
-      "phone": "Unknown",
-      "email": "unknown@example.com"
-    }
+    "rating": 4
   },
   {
     "name": "Säfvers Tobak",
