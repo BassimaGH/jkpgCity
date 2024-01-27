@@ -949,379 +949,295 @@
     "name": "KappAhl",
     "url": "www.kappahl.com/sv-SE/kundservice/kundservice/hitta-butik/",
     "district": "Öster",
-    "categories": ["Unknown"],
-    "subCategory": "Unknown",
+    "categories": "Shoppa",
+    "subCategory": "Apparel",
     "openingTime": "09:00",
     "closingTime": "18:00",
     "contact": {
-      "phone": "123-456-7890",
-      "email": "example@email.com"
+      "phone": "072-456-7890",
+      "email": "info@kappahl.com"
     },
-    "rating": 0,
-    "Contact": {
-      "phone": "Unknown",
-      "email": "unknown@example.com"
-    }
+    "rating": 2
   },
   {
     "name": "Karin Lund Design",
     "url": "facebook.com/karinlunddesign/",
-    "district": null,
-    "categories": ["Unknown"],
-    "subCategory": "Unknown",
+    "district": "Väster",
+    "categories": "Shoppa",
+    "subCategory": "Home and Decor",
     "openingTime": "09:00",
     "closingTime": "18:00",
     "contact": {
-      "phone": "123-456-7890",
-      "email": "example@email.com"
+      "phone": "072-456-7890",
+      "email": "info@email.com"
     },
-    "rating": 0,
-    "Contact": {
-      "phone": "Unknown",
-      "email": "unknown@example.com"
-    }
+    "rating": 4
   },
   {
     "name": "Katrin Bååths Ateljé",
     "url": "https://katrinbaath.se/ateljen/",
     "district": "Tändsticksområdet",
-    "categories": ["Unknown"],
-    "subCategory": "Unknown",
+    "categories": "Upplev",
+    "subCategory": "Home and Decor",
     "openingTime": "09:00",
     "closingTime": "18:00",
     "contact": {
-      "phone": "123-456-7890",
-      "email": "example@email.com"
+      "phone": "072-456-7890",
+      "email": "info@email.com"
     },
-    "rating": 0,
-    "Contact": {
-      "phone": "Unknown",
-      "email": "unknown@example.com"
-    }
+    "rating": 4
   },
   {
     "name": "Kicks",
     "url": "kicks.se/butiker/jonkoping-smedjegatan",
     "district": "Öster",
-    "categories": ["Unknown"],
-    "subCategory": "Unknown",
+    "categories": "Shoppa",
+    "subCategory": "Health and Beauty",
     "openingTime": "09:00",
     "closingTime": "18:00",
     "contact": {
-      "phone": "123-456-7890",
-      "email": "example@email.com"
+      "phone": "072-456-7890",
+      "email": "info@kicks.com"
     },
-    "rating": 0,
-    "Contact": {
-      "phone": "Unknown",
-      "email": "unknown@example.com"
-    }
+    "rating": 5
   },
   {
     "name": "Kjell & Company",
     "url": "kjell.com/se/butiker/sodra-strandgatan-5",
     "district": "Öster",
-    "categories": ["Unknown"],
-    "subCategory": "Unknown",
+    "categories": "Shoppa",
+    "subCategory": "Electronics",
     "openingTime": "09:00",
     "closingTime": "18:00",
     "contact": {
-      "phone": "123-456-7890",
-      "email": "example@email.com"
+      "phone": "072-456-7890",
+      "email": "info@email.com"
     },
-    "rating": 0,
-    "Contact": {
-      "phone": "Unknown",
-      "email": "unknown@example.com"
-    }
+    "rating": 3
   },
   {
     "name": "Klädscoopet",
     "url": "facebook.com/Kladscoopet/",
     "district": "Öster",
-    "categories": ["Unknown"],
-    "subCategory": "Unknown",
+    "categories": "Shoppa",
+    "subCategory": "Apparel",
     "openingTime": "09:00",
     "closingTime": "18:00",
     "contact": {
-      "phone": "123-456-7890",
-      "email": "example@email.com"
+      "phone": "070-456-7890",
+      "email": "info@email.com"
     },
-    "rating": 0,
-    "Contact": {
-      "phone": "Unknown",
-      "email": "unknown@example.com"
-    }
+    "rating": 2
   },
   {
     "name": "KOiJ Konsthantverk",
     "url": "koij.se",
     "district": "Öster",
-    "categories": ["Unknown"],
-    "subCategory": "Unknown",
+    "categories": "Upplev",
+    "subCategory": "Museums and Culture",
     "openingTime": "09:00",
     "closingTime": "18:00",
     "contact": {
-      "phone": "123-456-7890",
+      "phone": "070-456-7890",
       "email": "example@email.com"
     },
-    "rating": 0,
-    "Contact": {
-      "phone": "Unknown",
-      "email": "unknown@example.com"
-    }
+    "rating": 5
   },
   {
     "name": "Kristina Brud & Fest",
     "url": "kristinabrud-fest.se",
     "district": "Väster",
-    "categories": ["Unknown"],
-    "subCategory": "Unknown",
+    "categories": "Shoppa",
+    "subCategory": "Apparel",
     "openingTime": "09:00",
     "closingTime": "18:00",
     "contact": {
-      "phone": "123-456-7890",
-      "email": "example@email.com"
+      "phone": "072-456-7890",
+      "email": "info@email.com"
     },
-    "rating": 0,
-    "Contact": {
-      "phone": "Unknown",
-      "email": "unknown@example.com"
-    }
+    "rating": 1
   },
   {
     "name": "Kronans Apotek Atollen",
     "url": "apoteksinfo.nu/apotek/kronans_apotek_atollen_j%C3%B6nk%C3%B6ping-1415",
     "district": "Atollen",
-    "categories": ["Unknown"],
-    "subCategory": "Unknown",
+    "categories": "Shoppa",
+    "subCategory": "Health and Beauty",
     "openingTime": "09:00",
     "closingTime": "18:00",
     "contact": {
-      "phone": "123-456-7890",
+      "phone": "073-456-7890",
       "email": "example@email.com"
     },
-    "rating": 0,
-    "Contact": {
-      "phone": "Unknown",
-      "email": "unknown@example.com"
-    }
+    "rating": 4
   },
   {
     "name": "Kvänum Kök",
     "url": "kvanum.com/se/showrooms/jonkoping/",
     "district": "Öster",
-    "categories": ["Unknown"],
-    "subCategory": "Unknown",
+    "categories": "Shoppa",
+    "subCategory": "Home and Decor",
     "openingTime": "09:00",
     "closingTime": "18:00",
     "contact": {
-      "phone": "123-456-7890",
-      "email": "example@email.com"
+      "phone": "073-456-7890",
+      "email": "info@email.com"
     },
-    "rating": 0,
-    "Contact": {
-      "phone": "Unknown",
-      "email": "unknown@example.com"
-    }
+    "rating": 5
   },
   {
     "name": "Lagerhaus",
     "url": "lagerhaus.se/stores",
     "district": "Öster",
-    "categories": ["Unknown"],
-    "subCategory": "Unknown",
+    "categories": "Shoppa",
+    "subCategory": "Home and Decor",
     "openingTime": "09:00",
     "closingTime": "18:00",
     "contact": {
-      "phone": "123-456-7890",
-      "email": "example@email.com"
+      "phone": "072-456-7890",
+      "email": "info@email.com"
     },
-    "rating": 0,
-    "Contact": {
-      "phone": "Unknown",
-      "email": "unknown@example.com"
-    }
+    "rating": 5
   },
   {
     "name": "Lavér Studio",
     "url": "laverstudio.com/",
-    "district": null,
-    "categories": ["Unknown"],
-    "subCategory": "Unknown",
+    "district": "Öster",
+    "categories": "Shoppa",
+    "subCategory": "Home and Decor",
     "openingTime": "09:00",
     "closingTime": "18:00",
     "contact": {
-      "phone": "123-456-7890",
-      "email": "example@email.com"
+      "phone": "070-456-7890",
+      "email": "info@email.com"
     },
-    "rating": 0,
-    "Contact": {
-      "phone": "Unknown",
-      "email": "unknown@example.com"
-    }
+    "rating": 5
   },
   {
     "name": "Life Naturlig Hälsa",
     "url": "https://www.lifebutiken.se/stores",
     "district": "Väster",
-    "categories": ["Unknown"],
-    "subCategory": "Unknown",
+    "categories": "Äta",
+    "subCategory": "Cafés",
     "openingTime": "09:00",
     "closingTime": "18:00",
     "contact": {
-      "phone": "123-456-7890",
-      "email": "example@email.com"
+      "phone": "072-456-7890",
+      "email": "info@email.com"
     },
-    "rating": 0,
-    "Contact": {
-      "phone": "Unknown",
-      "email": "unknown@example.com"
-    }
+    "rating": 1
   },
   {
     "name": "Lilla Violen",
     "url": "lillaviolen.com/",
     "district": "Väster",
-    "categories": ["Unknown"],
-    "subCategory": "Unknown",
+    "categories": "Äta",
+    "subCategory": "Fast Food",
     "openingTime": "09:00",
     "closingTime": "18:00",
     "contact": {
-      "phone": "123-456-7890",
-      "email": "example@email.com"
+      "phone": "072-456-7890",
+      "email": "info@email.com"
     },
-    "rating": 0,
-    "Contact": {
-      "phone": "Unknown",
-      "email": "unknown@example.com"
-    }
+    "rating": 5
   },
   {
     "name": "Lindex",
     "url": "lindex.com/se/hitta-din-butik?location=57.756066%2C14.188254&storeId=002&zoom=11",
     "district": "Öster",
-    "categories": ["Unknown"],
-    "subCategory": "Unknown",
+    "categories": "Shoppa",
+    "subCategory": "Apparel",
     "openingTime": "09:00",
     "closingTime": "18:00",
     "contact": {
-      "phone": "123-456-7890",
-      "email": "example@email.com"
+      "phone": "072-456-7890",
+      "email": "info@email.com"
     },
-    "rating": 0,
-    "Contact": {
-      "phone": "Unknown",
-      "email": "unknown@example.com"
-    }
+    "rating": 3
   },
   {
     "name": "Livspotential Kroppsterapi",
     "url": "facebook.com/Livspotential/",
-    "district": null,
-    "categories": ["Unknown"],
-    "subCategory": "Unknown",
+    "district": "Öster",
+    "categories": "Må bra",
+    "subCategory": "Health and Wellness",
     "openingTime": "09:00",
     "closingTime": "18:00",
     "contact": {
-      "phone": "123-456-7890",
-      "email": "example@email.com"
+      "phone": "072-456-7890",
+      "email": "info@email.com"
     },
-    "rating": 0,
-    "Contact": {
-      "phone": "Unknown",
-      "email": "unknown@example.com"
-    }
+    "rating": 5
   },
   {
     "name": "Lloyd Tabing Art Gallery",
     "url": "lloydtabingart.com/",
     "district": "Tändsticksområdet",
-    "categories": ["Unknown"],
-    "subCategory": "Unknown",
+    "categories": "Må bra",
+    "subCategory": "Beauty Salons and Nail Bars",
     "openingTime": "09:00",
     "closingTime": "18:00",
     "contact": {
       "phone": "123-456-7890",
-      "email": "example@email.com"
+      "email": "info@email.com"
     },
-    "rating": 0,
-    "Contact": {
-      "phone": "Unknown",
-      "email": "unknown@example.com"
-    }
+    "rating": 4
   },
   {
     "name": "Macforum",
     "url": "macforum.se/butiker/forum-jonkoping",
     "district": "Öster",
-    "categories": ["Unknown"],
-    "subCategory": "Unknown",
+    "categories": "Upplev",
+    "subCategory": "Entertainment and Activities",
     "openingTime": "09:00",
     "closingTime": "18:00",
     "contact": {
       "phone": "123-456-7890",
       "email": "example@email.com"
     },
-    "rating": 0,
-    "Contact": {
-      "phone": "Unknown",
-      "email": "unknown@example.com"
-    }
+    "rating": 2
   },
   {
     "name": "MarQet",
     "url": "mq.se/butiker/?gclid=Cj0KCQjwteOaBhDuARIsADBqRejM-U3YQY9vh4F6gSXC2LnJWPVGKJ7CGfiCl1tYkREGUR37cTWMNcoaAjFGEALw_wcB",
     "district": "Öster",
-    "categories": ["Unknown"],
-    "subCategory": "Unknown",
+    "categories": "Sova",
+    "subCategory": "Hotels",
     "openingTime": "09:00",
     "closingTime": "18:00",
     "contact": {
-      "phone": "123-456-7890",
-      "email": "example@email.com"
+      "phone": "073-456-7890",
+      "email": "info@email.com"
     },
-    "rating": 0,
-    "Contact": {
-      "phone": "Unknown",
-      "email": "unknown@example.com"
-    }
+    "rating": 1
   },
   {
     "name": "Mimosa City",
     "url": "mimosacity.se",
-    "district": null,
-    "categories": ["Unknown"],
-    "subCategory": "Unknown",
+    "district": "Väster",
+    "categories": "Äta",
+    "subCategory": "Fine Dinig",
     "openingTime": "09:00",
     "closingTime": "18:00",
     "contact": {
-      "phone": "123-456-7890",
-      "email": "example@email.com"
+      "phone": "070-456-7890",
+      "email": "info@email.com"
     },
-    "rating": 0,
-    "Contact": {
-      "phone": "Unknown",
-      "email": "unknown@example.com"
-    }
+    "rating": 5
   },
   {
     "name": "Moderna Smycken",
     "url": "klockorochsmycken.se/",
     "district": "Öster",
-    "categories": ["Unknown"],
-    "subCategory": "Unknown",
+    "categories": "Shoppa",
+    "subCategory": "Apparel",
     "openingTime": "09:00",
     "closingTime": "18:00",
     "contact": {
-      "phone": "123-456-7890",
-      "email": "example@email.com"
+      "phone": "072-456-7890",
+      "email": "info@email.com"
     },
-    "rating": 0,
-    "Contact": {
-      "phone": "Unknown",
-      "email": "unknown@example.com"
-    }
+    "rating": 0
   },
   {
     "name": "Naturkompaniet",
@@ -2018,7 +1934,7 @@
     "url": "vastanhem.se",
     "district": "Väster",
     "categories": "Shoppa",
-    "subCategory": " Home and Decor",
+    "subCategory": "Home and Decor",
     "openingTime": "12:00",
     "closingTime": "18:00",
     "contact": {
@@ -2046,7 +1962,7 @@
     "url": "ankarbergs.se/",
     "district": "Väster",
     "categories": "Upplev",
-    "subCategory": " Entertainment and Activities",
+    "subCategory": "Entertainment and Activities",
     "openingTime": "12:00",
     "closingTime": "00:00",
     "contact": {
