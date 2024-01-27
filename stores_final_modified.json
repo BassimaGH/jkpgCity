@@ -781,217 +781,169 @@
     "name": "Hälsokraft",
     "url": "halsokraft.se/butiker?butik=503",
     "district": "Öster",
-    "categories": ["Unknown"],
-    "subCategory": "Unknown",
+    "categories": "Shoppa",
+    "subCategory": "Health and Beauty",
     "openingTime": "09:00",
     "closingTime": "18:00",
     "contact": {
-      "phone": "123-456-7890",
-      "email": "example@email.com"
+      "phone": "098-456-7890",
+      "email": "halsokraft@email.com"
     },
-    "rating": 0,
-    "Contact": {
-      "phone": "Unknown",
-      "email": "unknown@example.com"
-    }
+    "rating": 5
   },
   {
     "name": "Hemköp",
     "url": "hemkop.se/butik/4674",
     "district": "Väster",
-    "categories": ["Unknown"],
-    "subCategory": "Unknown",
+    "categories": "Shoppa",
+    "subCategory": "Grocery",
     "openingTime": "09:00",
-    "closingTime": "18:00",
+    "closingTime": "23:00",
     "contact": {
-      "phone": "123-456-7890",
-      "email": "example@email.com"
+      "phone": "094-456-7890",
+      "email": "hemkop@email.com"
     },
-    "rating": 0,
-    "Contact": {
-      "phone": "Unknown",
-      "email": "unknown@example.com"
-    }
+    "rating": 3
   },
   {
     "name": "Hemmakväll",
     "url": "hemmakvall.se/hitta-butik/",
     "district": "Öster",
-    "categories": ["Unknown"],
-    "subCategory": "Unknown",
+    "categories": "Shoppa",
+    "subCategory": "Grocery",
     "openingTime": "09:00",
     "closingTime": "18:00",
     "contact": {
-      "phone": "123-456-7890",
-      "email": "example@email.com"
+      "phone": "087-456-7890",
+      "email": "hemmakvall@email.com"
     },
-    "rating": 0,
-    "Contact": {
-      "phone": "Unknown",
-      "email": "unknown@example.com"
-    }
+    "rating": 5
   },
   {
     "name": "Hemtex",
     "url": "hemtex.se/hitta-butik/jonkoping",
     "district": "Öster",
-    "categories": ["Unknown"],
-    "subCategory": "Unknown",
+    "categories": "Shoppa",
+    "subCategory": "Home and Decor",
     "openingTime": "09:00",
     "closingTime": "18:00",
     "contact": {
-      "phone": "123-456-7890",
-      "email": "example@email.com"
+      "phone": "073-456-7890",
+      "email": "hemtex@email.com"
     },
-    "rating": 0,
-    "Contact": {
-      "phone": "Unknown",
-      "email": "unknown@example.com"
-    }
+    "rating": 5
   },
   {
     "name": "Hi-fi Klubben",
     "url": "hifiklubben.se/hitta-butik/jonkoping/?gclid=Cj0KCQjwhsmaBhCvARIsAIbEbH4w2ngSDzygBKQSqHVzCSFAplyrpByCMojT6dfo-Xnjcn7P9j_jBn8aAsD0EALw_wcB",
     "district": "Väster",
-    "categories": ["Unknown"],
-    "subCategory": "Unknown",
+    "categories": "Shoppa",
+    "subCategory": "Electronics",
     "openingTime": "09:00",
     "closingTime": "18:00",
     "contact": {
-      "phone": "123-456-7890",
-      "email": "example@email.com"
+      "phone": "073-456-7890",
+      "email": "hifiklubben@email.com"
     },
-    "rating": 0,
-    "Contact": {
-      "phone": "Unknown",
-      "email": "unknown@example.com"
-    }
+    "rating": 3
   },
   {
     "name": "H&M",
     "url": "hm.com/sv_se/customer-service/shoppa-pa-hm/store-locator",
     "district": "Öster",
-    "categories": ["Unknown"],
-    "subCategory": "Unknown",
+    "categories": "Shoppa",
+    "subCategory": "Apparel",
     "openingTime": "09:00",
     "closingTime": "18:00",
     "contact": {
-      "phone": "123-456-7890",
-      "email": "example@email.com"
+      "phone": "098-456-7890",
+      "email": "hm@email.com"
     },
-    "rating": 0,
-    "Contact": {
-      "phone": "Unknown",
-      "email": "unknown@example.com"
-    }
+    "rating": 3
   },
   {
     "name": "H&M Home",
     "url": "hm.com/sv_se/customer-service/shoppa-pa-hm/store-locator",
     "district": "Öster",
-    "categories": ["Unknown"],
-    "subCategory": "Unknown",
+    "categories": "Shoppa",
+    "subCategory": "Home and Decor",
     "openingTime": "09:00",
     "closingTime": "18:00",
     "contact": {
-      "phone": "123-456-7890",
-      "email": "example@email.com"
+      "phone": "073-456-7890",
+      "email": "hm@email.com"
     },
-    "rating": 0,
-    "Contact": {
-      "phone": "Unknown",
-      "email": "unknown@example.com"
-    }
+    "rating": 2
   },
   {
     "name": "Indiska",
     "url": "indiska.com/se/butiker",
     "district": "Öster",
-    "categories": ["Unknown"],
-    "subCategory": "Unknown",
+    "categories": "Shoppa",
+    "subCategory": "Home and Decor",
     "openingTime": "09:00",
     "closingTime": "18:00",
     "contact": {
-      "phone": "123-456-7890",
-      "email": "example@email.com"
+      "phone": "876-456-7890",
+      "email": "indiska@email.com"
     },
-    "rating": 0,
-    "Contact": {
-      "phone": "Unknown",
-      "email": "unknown@example.com"
-    }
+    "rating": 5
   },
   {
     "name": "Jeansshoppen",
     "url": "jeansshopen.se/sv/kontakt",
     "district": "Öster",
-    "categories": ["Unknown"],
-    "subCategory": "Unknown",
+    "categories": "Shoppa",
+    "subCategory": "Apparel",
     "openingTime": "09:00",
     "closingTime": "18:00",
     "contact": {
       "phone": "123-456-7890",
-      "email": "example@email.com"
+      "email": "jeansshopen@email.com"
     },
-    "rating": 0,
-    "Contact": {
-      "phone": "Unknown",
-      "email": "unknown@example.com"
-    }
+    "rating": 3
   },
   {
     "name": "JL Sycenter",
     "url": "jlsycenter.se/kontakta-oss/",
-    "district": null,
-    "categories": ["Unknown"],
-    "subCategory": "Unknown",
+    "district": "Öster",
+    "categories": "Shoppa",
+    "subCategory": "Electronics",
     "openingTime": "09:00",
     "closingTime": "18:00",
     "contact": {
-      "phone": "123-456-7890",
-      "email": "example@email.com"
+      "phone": "654-456-7890",
+      "email": "jlsycenter@email.com"
     },
-    "rating": 0,
-    "Contact": {
-      "phone": "Unknown",
-      "email": "unknown@example.com"
-    }
+    "rating": 3
   },
   {
     "name": "Jönköpings antik och konsthandel",
-    "url": null,
+    "url": "jönköpingsantik.com",
     "district": "Väster",
-    "categories": ["Unknown"],
-    "subCategory": "Unknown",
+    "categories": "Upplev",
+    "subCategory": "Museums and Culture",
     "openingTime": "09:00",
     "closingTime": "18:00",
     "contact": {
-      "phone": "123-456-7890",
-      "email": "example@email.com"
+      "phone": "098-456-7890",
+      "email": "jönköpingsantik@email.com"
     },
-    "rating": 0,
-    "Contact": {
-      "phone": "Unknown",
-      "email": "unknown@example.com"
-    }
+    "rating": 5
   },
   {
     "name": "Jönköpings Cigrarrimport",
     "url": "atg.se/jonkopingscigarrimport",
-    "district": null,
-    "categories": ["Unknown"],
-    "subCategory": "Unknown",
+    "district": "Väster",
+    "categories": "Shoppa",
+    "subCategory": "Grocery",
     "openingTime": "09:00",
     "closingTime": "18:00",
     "contact": {
-      "phone": "123-456-7890",
-      "email": "example@email.com"
+      "phone": "765-456-7890",
+      "email": "atg@email.com"
     },
-    "rating": 0,
-    "Contact": {
-      "phone": "Unknown",
-      "email": "unknown@example.com"
-    }
+    "rating": 2
   },
   {
     "name": "KappAhl",
