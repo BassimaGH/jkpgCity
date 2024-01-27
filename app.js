@@ -1,12 +1,26 @@
-const express = require("express");
 require("dotenv").config();
-const app = express();
-const port = 3000;
+const express = require('express')
+const DbClass = require('./db.js');
+const storeJson = require('./stores.json');
+const app = express()
+let Db = null;
 
-app.get("/", function (req, res) {
-  res.send("Hello World");
+app.get('/setup', async (req, res) => {
+  await Db.setup(storeJson);
+  res.json({success: true});
 });
 
-app.listen(port, () => {
-  console.log(`Server is listening at http://localhost:${port}`);
-});
+app.get('/', async (req, res) => {
+  const stores = await Db.getAllStores();
+  res.json(stores);
+})
+
+const startServer = async () => {
+  Db = new ModelClass();
+  await Db.init();
+  app.listen(3000, () => {
+    console.log('Example app listening on port 3000!');
+  });
+}
+
+startServer();
