@@ -9,13 +9,13 @@ let Db = null;
 //   res.json({ success: true });
 // });
 
-// app.get("/", async (req, res) => {
-//   const stores = await Db.getAllStores();
-//   res.json(stores);
-// });
+app.get("/", async (req, res) => {
+  const stores = await Db.getAllStores();
+  res.json(stores);
+});
 
 app.get("/shoppa", async (req, res) => {
-  const shoppaStores = await Db.getAllShoppaStores();
+  const shoppaStores = await Db.getAllShoppaStores("shoppa");
   res.json(shoppaStores);
 });
 

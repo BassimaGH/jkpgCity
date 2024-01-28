@@ -80,10 +80,10 @@ class Db {
     return res.rows;
   }
 
-  async getAllShoppaStores() {
+  async getAllShoppaStores(categories) {
     const res = await this.client.query(
       `SELECT * FROM public.stores WHERE categories = $1`,
-      [store.categories]
+      [categories]
     );
     return res.rows;
   }
