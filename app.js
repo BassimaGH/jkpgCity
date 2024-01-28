@@ -8,16 +8,18 @@ let Db = null;
 // app.get("/", async (req, res) => {
 //   res.json({ success: true });
 // });
-
+/*
 app.get("/", async (req, res) => {
   const stores = await Db.getAllStores();
   res.json(stores);
 });
-
-app.get("/shoppa", async (req, res) => {
-  const shoppaStores = await Db.getAllShoppaStores("shoppa");
+*/
+app.get("/shoppa/:category", async (req, res) => {
+  const category = req.params.category;
+  const shoppaStores = await Db.getAllShoppaStores(category);
   res.json(shoppaStores);
 });
+
 
 const startServer = async () => {
   Db = new DbClass();
