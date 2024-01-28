@@ -79,6 +79,14 @@ class Db {
     const res = await this.client.query("SELECT * FROM public.stores");
     return res.rows;
   }
+
+  async getAllShoppaStores() {
+    const res = await this.client.query(
+      `SELECT * FROM public.stores WHERE categories = $1`,
+      [store.categories]
+    );
+    return res.rows;
+  }
 }
 
 module.exports = Db;
