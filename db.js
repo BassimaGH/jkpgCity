@@ -80,10 +80,42 @@ class Db {
     return res.rows;
   }
 
-  async getAllShoppaStores(categories) {
+  async getAllShoppaStores() {
     const res = await this.client.query(
       `SELECT * FROM public.stores WHERE categories = $1`,
-      [categories]
+      ["Shoppa"]
+    );
+    return res.rows;
+  }
+
+  async getAllAtaStores() {
+    const res = await this.client.query(
+      `SELECT * FROM public.stores WHERE categories = $1`,
+      ["\u00c4ta"]
+    );
+    return res.rows;
+  }
+
+  async getAllUpplevStores() {
+    const res = await this.client.query(
+      `SELECT * FROM public.stores WHERE categories = $1`,
+      ["Upplev"]
+    );
+    return res.rows;
+  }
+
+  async getAllMabraStores() {
+    const res = await this.client.query(
+      `SELECT * FROM public.stores WHERE categories = $1`,
+      ["M\u00e5 bra"]
+    );
+    return res.rows;
+  }
+
+  async getAllSovaStores() {
+    const res = await this.client.query(
+      `SELECT * FROM public.stores WHERE categories = $1`,
+      ["Sova"]
     );
     return res.rows;
   }

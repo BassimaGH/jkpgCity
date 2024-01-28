@@ -5,27 +5,47 @@ const storeJson = require("./stores.json");
 const app = express();
 let Db = null;
 
-// app.get("/", async (req, res) => {
-//   res.json({ success: true });
-// });
-/*
-app.get("/", async (req, res) => {
-  const stores = await Db.getAllStores();
+//GET REQUESTS
+//Get all stores
+app.get("/allStores", async (req, res) => {
+  const stores = await Db.getAllStores(storeJson);
   res.json(stores);
 });
-*/
-app.get("/shoppa/:category", async (req, res) => {
-  const category = req.params.category;
-  const shoppaStores = await Db.getAllShoppaStores(category);
-  res.json(shoppaStores);
+
+//Get all Shoppa
+app.get("/shoppa", async (req, res) => {
+  const stores = await Db.getAllShoppaStores();
+  res.json(stores);
 });
 
+//Get all Ata
+app.get("/ata", async (req, res) => {
+  const stores = await Db.getAllAtaStores();
+  res.json(stores);
+});
+
+//Get all Upplev
+app.get("/upplev", async (req, res) => {
+  const stores = await Db.getAllUpplevStores();
+  res.json(stores);
+});
+
+//Get all ma bra
+app.get("/mabra", async (req, res) => {
+  const stores = await Db.getAllMabraStores();
+  res.json(stores);
+});
+
+//Get all sova
+app.get("/sova", async (req, res) => {
+  const stores = await Db.getAllSovaStores();
+  res.json(stores);
+});
 
 const startServer = async () => {
   Db = new DbClass();
   await Db.init();
   await Db.setup(storeJson);
-  // await Db.getAllStores();
 
   app.listen(3000, () => {
     console.log("Example app listening on port 3000!");
