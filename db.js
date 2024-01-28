@@ -27,9 +27,9 @@ class Db {
           subCategory text,
           openingTime text,
           closingTime text,
+          rating integer,
           phone text,
           email text,
-          rating integer,
           CONSTRAINT stores_pkey PRIMARY KEY (id)
       );
     
@@ -55,7 +55,7 @@ class Db {
       if (checkForStore.rows.length === 0) {
         await this.client.query(
           `
-          INSERT INTO public.stores (name, url, district, categories, subCategory, openingTime, closingTime, phone, email, rating)
+          INSERT INTO public.stores (name, url, district, categories, subCategory, openingTime, closingTime, rating, phone, email)
           VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)
         `,
           [
@@ -66,9 +66,9 @@ class Db {
             store.subCategory,
             store.openingTime,
             store.closingTime,
+            store.rating,
             store.phone,
             store.email,
-            store.rating,
           ]
         );
       }
