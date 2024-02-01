@@ -1,7 +1,7 @@
 require("dotenv").config();
 const express = require("express");
-const DbClass = require("./db_old.js");
-const storeJson = require("./stores.json");
+const DbClass = require("../db_old.js");
+const storeJson = require("../stores.json");
 const app = express();
 let Db = null;
 
