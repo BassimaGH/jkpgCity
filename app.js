@@ -1,9 +1,11 @@
-require("dotenv").config();
+require('dotenv').config();
+
 const express = require("express");
 const DbClass = require("./db.js");
 const storeJson = require("./stores.json");
 const app = express();
 let Db = null;
+
 
 //GET REQUESTS
 //Get all stores
