@@ -3,9 +3,11 @@ require('dotenv').config();
 const express = require("express");
 const DbClass = require("./db.js");
 const storeJson = require("./stores.json");
+const cookieParser = require('cookie-parser')
 const app = express();
 let Db = null;
 
+app.use(cookieParser());
 
 //GET REQUESTS
 //Get all stores
@@ -49,6 +51,16 @@ app.get('/login', async(req, res) => {
   if (username === 'bassima' && password === '12345') {
     res.cookie('token', 'super-secret-cookie', { httpOnly: true });
     res.send('login worked');
+  } else {
+    res.status(401).send('unauthorized');
+  }
+})
+
+app.get('/protected', async(req, res) => {
+  const { token } = req.cookies;
+  
+  if (token === 'super-secret-cookie') {
+    res.send('protected route!!')
   } else {
     res.status(401).send('unauthorized');
   }
