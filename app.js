@@ -44,6 +44,15 @@ app.get("/sova", async (req, res) => {
   res.json(stores);
 });
 
+app.get('/login', async(req, res) => {
+  const { username, password } = req.query;
+  if (username === 'bassima' && password === '12345') {
+    res.send('login worked');
+  } else {
+    res.status(401).send('unauthorized');
+  }
+})
+
 const startServer = async () => {
   Db = new DbClass();
   await Db.init();
