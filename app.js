@@ -47,6 +47,7 @@ app.get("/sova", async (req, res) => {
 app.get('/login', async(req, res) => {
   const { username, password } = req.query;
   if (username === 'bassima' && password === '12345') {
+    res.cookie('token', 'super-secret-cookie', { httpOnly: true });
     res.send('login worked');
   } else {
     res.status(401).send('unauthorized');
