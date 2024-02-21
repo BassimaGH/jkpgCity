@@ -120,38 +120,46 @@ class Db {
     return res.rows;
   }
 
-  //Update
-  //   async updateStore(store) {
-  //     const query = `
-  //       UPDATE public.stores
-  //       SET
-  //         url = $2,
-  //         district = $3,
-  //         categories = $4,
-  //         subCategory = $5,
-  //         openingTime = $6,
-  //         closingTime = $7,
-  //         rating = $8,
-  //         phone = $9,
-  //         email = $10
-  //       WHERE
-  //         name = $1;
-  //     `;
-  //     const values = [
-  //       store.name,
-  //       store.url,
-  //       store.district,
-  //       store.categories,
-  //       store.subCategory,
-  //       store.openingTime,
-  //       store.closingTime,
-  //       store.rating,
-  //       store.phone,
-  //       store.email,
-  //     ];
+  async getStoreByName(storeName) {
+    const res = await this.client.query(
+      `SELECT * FROM public.stores WHERE name = $1 LIMIT 1;`,
+      [storeName]
+    );
+    return res.rows;
+  }
 
-  //     await this.client.query(query, values);
-  //   }
+  //update
+  async updateStore(store) {
+    const query = `
+      UPDATE public.stores
+      SET
+        url = $2,
+        district = $3,
+        categories = $4,
+        subCategory = $5,
+        openingTime = $6,
+        closingTime = $7,
+        rating = $8,
+        phone = $9,
+        email = $10
+      WHERE
+        name = $1;
+    `;
+    const values = [
+      store.name, // $1
+      store.url, // $2
+      store.district, // $3
+      store.categories, // $4
+      store.subCategory, // $5
+      store.openingTime, // $6
+      store.closingTime, // $7
+      store.rating, // $8
+      store.phone, // $9
+      store.email, // $10
+    ];
+
+    await this.client.query(query, values);
+  }
 }
 
 module.exports = Db;
