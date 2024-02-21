@@ -1,9 +1,9 @@
-require('dotenv').config();
+require("dotenv").config();
 
 const express = require("express");
 const DbClass = require("./db.js");
 const storeJson = require("./stores.json");
-const cookieParser = require('cookie-parser')
+const cookieParser = require("cookie-parser");
 const app = express();
 let Db = null;
 
@@ -46,25 +46,31 @@ app.get("/sova", async (req, res) => {
   res.json(stores);
 });
 
-app.get('/login', async(req, res) => {
-  const { username, password } = req.query;
-  if (username === 'bassima' && password === '12345') {
-    res.cookie('token', 'super-secret-cookie', { httpOnly: true });
-    res.send('login worked');
-  } else {
-    res.status(401).send('unauthorized');
-  }
-})
+//Update
+app.put("/updateStore", async (req, res) => {
+  const stores = req.body;
+  res.json(stores);
+});
 
-app.get('/protected', async(req, res) => {
-  const { token } = req.cookies;
-  
-  if (token === 'super-secret-cookie') {
-    res.send('protected route!!')
+app.get("/login", async (req, res) => {
+  const { username, password } = req.query;
+  if (username === "bassima" && password === "12345") {
+    res.cookie("token", "super-secret-cookie", { httpOnly: true });
+    res.send("login worked");
   } else {
-    res.status(401).send('unauthorized');
+    res.status(401).send("unauthorized");
   }
-})
+});
+
+app.get("/protected", async (req, res) => {
+  const { token } = req.cookies;
+
+  if (token === "super-secret-cookie") {
+    res.send("protected route!!");
+  } else {
+    res.status(401).send("unauthorized");
+  }
+});
 
 const startServer = async () => {
   Db = new DbClass();

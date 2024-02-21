@@ -6,7 +6,7 @@ class Db {
       user: "postgres",
       host: process.env.DB_HOST || "localhost",
       database: "postgres",
-      password: "DMB123",
+      password: "123DMB",
       port: 5432,
     });
   }
@@ -119,6 +119,39 @@ class Db {
     );
     return res.rows;
   }
+
+  //Update
+  //   async updateStore(store) {
+  //     const query = `
+  //       UPDATE public.stores
+  //       SET
+  //         url = $2,
+  //         district = $3,
+  //         categories = $4,
+  //         subCategory = $5,
+  //         openingTime = $6,
+  //         closingTime = $7,
+  //         rating = $8,
+  //         phone = $9,
+  //         email = $10
+  //       WHERE
+  //         name = $1;
+  //     `;
+  //     const values = [
+  //       store.name,
+  //       store.url,
+  //       store.district,
+  //       store.categories,
+  //       store.subCategory,
+  //       store.openingTime,
+  //       store.closingTime,
+  //       store.rating,
+  //       store.phone,
+  //       store.email,
+  //     ];
+
+  //     await this.client.query(query, values);
+  //   }
 }
 
 module.exports = Db;
