@@ -74,8 +74,7 @@ app.get("/sova", async (req, res) => {
   res.json(stores);
 });
 
-<<<<<<< Updated upstream
-//Update
+//update
 app.put("/allStores/:name", async (req, res) => {
   console.log("Request body:", req.body); // Log the request body
   const storeName = req.params.name;
@@ -143,7 +142,6 @@ app.put("/allStores/:name", async (req, res) => {
 //   }
 // });
 
-/////
 app.get("/login", async (req, res) => {
   const { username, password } = req.query;
   if (username === "bassima" && password === "12345") {
@@ -163,27 +161,6 @@ app.get("/protected", async (req, res) => {
     res.status(401).send("unauthorized");
   }
 });
-=======
-app.get("/login", async (req, res) => {
-  const { username, password } = req.query;
-  if (username === "bassima" && password === "12345") {
-    res.cookie("token", "super-secret-cookie", { httpOnly: true });
-    res.send("login worked");
-  } else {
-    res.status(401).send("unauthorized");
-  }
-});
-
-app.get("/protected", async (req, res) => {
-  const { token } = req.cookies;
-
-  if (token === "super-secret-cookie") {
-    res.send("protected route!!");
-  } else {
-    res.status(401).send("unauthorized");
-  }
-});
->>>>>>> Stashed changes
 
 const startServer = async () => {
   Db = new DbClass();
