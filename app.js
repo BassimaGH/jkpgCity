@@ -75,40 +75,61 @@ app.get("/sova", async (req, res) => {
 });
 
 // update
+app.put("/allStores/:name", async (req, res) => {
+  console.log("Request body:", req.body);
+  const storeName = req.params.name;
+  const {
+    url,
+    district,
+    categories,
+    subCategory,
+    openingTime,
+    closingTime,
+    rating,
+    phone,
+    email,
+  } = req.body;
 
+  try {
+    const updateResult = await Db.updateStore(
+      url,
+      district,
+      categories,
+      subCategory,
+      openingTime,
+      closingTime,
+      rating,
+      phone,
+      email,
+      storeName
+    );
+
+    // Check if any rows were updated
+    if (updateResult.length > 0) {
+      console.log(`Store '${storeName}' updated successfully.`, updateResult);
+      res.json(updateResult[0]); // Assuming you want to return the first (and should be only) updated record
+    } else {
+      res.status(404).json({ message: "Store not found or update failed" });
+    }
+  } catch (error) {
+    console.error("Error updating store:", error);
+    res.status(500).json({
+      error: "Error updating store. Please check server logs for more details.",
+    });
+  }
+});
+
+///t2
 // app.put("/allStores/:name", async (req, res) => {
-//   console.log("Request body:", req.body);
 //   const storeName = req.params.name;
-//   const {
-//     url,
-//     district,
-//     categories,
-//     subCategory,
-//     openingTime,
-//     closingTime,
-//     rating,
-//     phone,
-//     email,
-//   } = req.body;
+//   const storeUpdates = req.body;
 
 //   try {
-//     const updateResult = await Db.updateStore(
-//       url,
-//       district,
-//       categories,
-//       subCategory,
-//       openingTime,
-//       closingTime,
-//       rating,
-//       phone,
-//       email,
-//       storeName
-//     );
+//     const updateResult = await Db.updateStore(storeName, storeUpdates);
 
-//     // Check if any rows were updated
-//     if (updateResult.length > 0) {
+//     if (updateResult) {
 //       console.log(`Store '${storeName}' updated successfully.`, updateResult);
-//       res.json(updateResult[0]); // Assuming you want to return the first (and should be only) updated record
+//       res.json(updateResult);
 //     } else {
 //       res.status(404).json({ message: "Store not found or update failed" });
 //     }
@@ -120,26 +141,6 @@ app.get("/sova", async (req, res) => {
 //   }
 // });
 
-app.put("/allStores/:name", async (req, res) => {
-  const storeName = req.params.name;
-  const storeUpdates = req.body;
-
-  try {
-    const updateResult = await Db.updateStore(storeName, storeUpdates);
-
-    if (updateResult) {
-      console.log(`Store '${storeName}' updated successfully.`, updateResult);
-      res.json(updateResult);
-    } else {
-      res.status(404).json({ message: "Store not found or update failed" });
-    }
-  } catch (error) {
-    console.error("Error updating store:", error);
-    res.status(500).json({
-      error: "Error updating store. Please check server logs for more details.",
-    });
-  }
-});
 /////
 app.get("/login", async (req, res) => {
   const { username, password } = req.query;
