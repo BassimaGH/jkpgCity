@@ -47,18 +47,37 @@ app.get("/sova", async (req, res) => {
 });
 //////
 //filter
+// app.get("/allStores/:district", async (req, res) => {
+//   const storDistrict = req.params.district;
+
+//   try {
+//     const stores = await Db.getStoresByDistrict(storDistrict);
+//     if (storDistrict.length > 0) {
+//       res.json(storDistrict);
+//     } else {
+//       res.status(404).json({ message: "Store not found" });
+//     }
+//   } catch (error) {
+//     console.error("Error fetching store:", error);
+//     res.status(500).json({ error: "Error fetching store." });
+//   }
+// });
+
+///
 app.get("/allStores/:district", async (req, res) => {
   const storDistrict = req.params.district;
+
   try {
     const stores = await Db.getStoresByDistrict(storDistrict);
-    if (storDistrict.length > 0) {
-      res.json(storDistrict);
+    if (stores.length > 0) {
+      // Check if any stores were found
+      res.json(stores); // Return the stores
     } else {
-      res.status(404).json({ message: "Store not found" });
+      res.status(404).json({ message: "Stores not found in this district" }); // No stores found for the district
     }
   } catch (error) {
-    console.error("Error fetching store:", error);
-    res.status(500).json({ error: "Error fetching store." });
+    console.error("Error fetching stores:", error);
+    res.status(500).json({ error: "Error fetching stores." });
   }
 });
 
