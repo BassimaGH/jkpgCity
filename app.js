@@ -91,7 +91,7 @@ app.get("/allStores/:district", async (req, res) => {
     if (stores.length > 0) {
       res.json(stores);
     } else {
-      res.status(404).json({ message: "Stores not found in this district" }); // No stores found for the district
+      res.status(404).json({ message: "Stores not found in this district" });
     }
   } catch (error) {
     console.error("Error fetching stores:", error);
