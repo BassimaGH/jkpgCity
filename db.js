@@ -128,45 +128,11 @@ class Db {
     return res.rows;
   }
 
-  //update///////
-  async updateStore(
-    url,
-    district,
-    categories,
-    subCategory,
-    openingTime,
-    closingTime,
-    rating,
-    phone,
-    email,
-    name
-  ) {
+  // filter
+  async getStoresByDistrict(district) {
     const res = await this.client.query(
-      `UPDATE public.stores
-     SET url = $1,
-        district = $2,
-        categories = $3,
-        subCategory = $4,
-        openingTime = $5,
-        closingTime = $6,
-        rating = $7,
-        phone = $8,
-        email = $9
-    WHERE name = $10
-    RETURNING *;
-  `,
-      [
-        url,
-        district,
-        categories,
-        subCategory,
-        openingTime,
-        closingTime,
-        rating,
-        phone,
-        email,
-        name,
-      ]
+      `SELECT * FROM public.stores WHERE district = $1`,
+      [district]
     );
     return res.rows;
   }
