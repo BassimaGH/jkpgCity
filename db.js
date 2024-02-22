@@ -6,7 +6,7 @@ class Db {
       user: "postgres",
       host: process.env.DB_HOST || "localhost",
       database: "postgres",
-      password: "123DMB",
+      password: "DMB123",
       port: 5432,
     });
   }
