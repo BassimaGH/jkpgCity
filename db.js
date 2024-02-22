@@ -128,57 +128,6 @@ class Db {
     return res.rows;
   }
 
-  // update;
-  //   async updateStore(
-  //     url,
-  //     district,
-  //     categories,
-  //     subCategory,
-  //     openingTime,
-  //     closingTime,
-  //     rating,
-  //     phone,
-  //     email,
-  //     name
-  //   ) {
-  //     const res = await this.client.query(
-  //       `UPDATE public.stores
-  //        SET url = $1,
-  //           district = $2,
-  //           categories = $3,
-  //           subCategory = $4,
-  //           openingTime = $5,
-  //           closingTime = $6,
-  //           rating = $7,
-  //           phone = $8,
-  //           email = $9
-  //       WHERE name = $10
-
-  //     `,
-  //       [
-  //         url,
-  //         district,
-  //         categories,
-  //         subCategory,
-  //         openingTime,
-  //         closingTime,
-  //         rating,
-  //         phone,
-  //         email,
-  //         name,
-  //       ]
-  //     );
-  //     return res.rows;
-  //   }
-
-  async getStoreByName(storeName) {
-    const res = await this.client.query(
-      `SELECT * FROM public.stores WHERE name = $1 LIMIT 1;`,
-      [storeName]
-    );
-    return res.rows;
-  }
-
   //update
   async updateStore(
     url,
