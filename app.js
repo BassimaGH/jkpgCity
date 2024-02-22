@@ -74,7 +74,7 @@ app.get("/sova", async (req, res) => {
   res.json(stores);
 });
 
-// update
+// update final
 app.put("/allStores/:name", async (req, res) => {
   console.log("Request body:", req.body);
   const storeName = req.params.name;
@@ -104,7 +104,6 @@ app.put("/allStores/:name", async (req, res) => {
       storeName
     );
 
-    // Check if any rows were updated
     if (updateResult.length > 0) {
       console.log(`Store '${storeName}' updated successfully.`, updateResult);
       res.json(updateResult[0]); // Assuming you want to return the first (and should be only) updated record
