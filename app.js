@@ -76,6 +76,7 @@ app.get("/sova", async (req, res) => {
 
 //Update
 app.put("/allStores/:name", async (req, res) => {
+  console.log("Request body:", req.body); // Log the request body
   const storeName = req.params.name;
   const {
     url,
