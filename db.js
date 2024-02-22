@@ -128,38 +128,98 @@ class Db {
     return res.rows;
   }
 
-  //update
-  async updateStore(store) {
-    const query = `
-      UPDATE public.stores
-      SET
-        url = $2,
-        district = $3,
-        categories = $4,
-        subCategory = $5,
-        openingTime = $6,
-        closingTime = $7,
-        rating = $8,
-        phone = $9,
-        email = $10
-      WHERE
-        name = $1;
-    `;
-    const values = [
-      store.name, // $1
-      store.url, // $2
-      store.district, // $3
-      store.categories, // $4
-      store.subCategory, // $5
-      store.openingTime, // $6
-      store.closingTime, // $7
-      store.rating, // $8
-      store.phone, // $9
-      store.email, // $10
-    ];
+  // update;
+  //   async updateStore(
+  //     url,
+  //     district,
+  //     categories,
+  //     subCategory,
+  //     openingTime,
+  //     closingTime,
+  //     rating,
+  //     phone,
+  //     email,
+  //     name
+  //   ) {
+  //     const res = await this.client.query(
+  //       `UPDATE public.stores
+  //        SET url = $1,
+  //           district = $2,
+  //           categories = $3,
+  //           subCategory = $4,
+  //           openingTime = $5,
+  //           closingTime = $6,
+  //           rating = $7,
+  //           phone = $8,
+  //           email = $9
+  //       WHERE name = $10
 
-    await this.client.query(query, values);
+  //     `,
+  //       [
+  //         url,
+  //         district,
+  //         categories,
+  //         subCategory,
+  //         openingTime,
+  //         closingTime,
+  //         rating,
+  //         phone,
+  //         email,
+  //         name,
+  //       ]
+  //     );
+  //     return res.rows;
+  //   }
+
+  async getStoreByName(storeName) {
+    const res = await this.client.query(
+      `SELECT * FROM public.stores WHERE name = $1 LIMIT 1;`,
+      [storeName]
+    );
+    return res.rows;
+  }
+
+  //update
+  async updateStore(
+    url,
+    district,
+    categories,
+    subCategory,
+    openingTime,
+    closingTime,
+    rating,
+    phone,
+    email,
+    name
+  ) {
+    const res = await this.client.query(
+      `UPDATE public.stores
+     SET url = $1,
+        district = $2,
+        categories = $3,
+        subCategory = $4,
+        openingTime = $5,
+        closingTime = $6,
+        rating = $7,
+        phone = $8,
+        email = $9
+    WHERE name = $10
+    RETURNING *;
+  `,
+      [
+        url,
+        district,
+        categories,
+        subCategory,
+        openingTime,
+        closingTime,
+        rating,
+        phone,
+        email,
+        name,
+      ]
+    );
+    return res.rows;
   }
 }
-
 module.exports = Db;

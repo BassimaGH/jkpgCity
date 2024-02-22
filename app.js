@@ -8,6 +8,7 @@ const app = express();
 let Db = null;
 
 app.use(cookieParser());
+app.use(express.json());
 
 // GET REQUESTS
 // Get all stores
@@ -26,6 +27,7 @@ app.get("/allStores", async (req, res) => {
 //   }
 // });
 
+///newww
 app.get("/allStores/:name", async (req, res) => {
   const storeName = req.params.name;
   try {
@@ -40,6 +42,7 @@ app.get("/allStores/:name", async (req, res) => {
     res.status(500).json({ error: "Error fetching store." });
   }
 });
+///newww
 
 //Get all Shoppa
 app.get("/shoppa", async (req, res) => {
@@ -72,29 +75,40 @@ app.get("/sova", async (req, res) => {
 });
 
 //Update
-// app.put("/allStores/:name", async (req, res) => {
-//   //look up the store if not exsisting send 404
-//   // const store = stores.find((c) => c.id === req.body);
-//   // if (!store) res.status(404).send("store with this name does not exists");
-//   const storeName = req.params.name; // Retrieve the store's name from the URL parameter
-//   const storeUpdates = req.body;
-//   const stores = await Db.updateStore(storeName, storeUpdates);
-//   res.json(stores);
-// });
-
 app.put("/allStores/:name", async (req, res) => {
-  const storeName = req.params.name; // Retrieve the store's name from the URL parameter
-  const storeUpdates = req.body; // Assume store updates are provided in the request body
+  const storeName = req.params.name;
+  const {
+    url,
+    district,
+    categories,
+    subCategory,
+    openingTime,
+    closingTime,
+    rating,
+    phone,
+    email,
+  } = req.body;
 
   try {
-    // Assuming updateStore either returns a success message or the updated store object
-    const updateResult = await Db.updateStore(storeName, storeUpdates);
-    if (updateResult) {
+    // Pass the parameters in the correct order
+    const updateResult = await Db.updateStore(
+      url,
+      district,
+      categories,
+      subCategory,
+      openingTime,
+      closingTime,
+      rating,
+      phone,
+      email,
+      storeName
+    );
+
+    // Check if any rows were updated
+    if (updateResult.length > 0) {
       console.log(`Store '${storeName}' updated successfully.`, updateResult);
-      // res.json(updateResult); // Send back the success message or updated store
-      res.json(stores);
+      res.json(updateResult[0]); // Assuming you want to return the first (and should be only) updated record
     } else {
-      // Handle case where store does not exist or update did not occur
       res.status(404).json({ message: "Store not found or update failed" });
     }
   } catch (error) {
@@ -104,6 +118,72 @@ app.put("/allStores/:name", async (req, res) => {
     });
   }
 });
+
+// app.put("/allStores/:name", async (req, res) => {
+//   const storeName = req.params.name;
+//   const {
+//     url,
+//     district,
+//     categories,
+//     subCategory,
+//     openingTime,
+//     closingTime,
+//     rating,
+//     phone,
+//     email,
+//   } = req.body;
+
+//   try {
+//     // Pass the parameters in the correct order
+//     const updateResult = await Db.updateStore(
+//       url,
+//       district,
+//       categories,
+//       subCategory,
+//       openingTime,
+//       closingTime,
+//       rating,
+//       phone,
+//       email,
+//       storeName
+//     );
+
+//     // Check if any rows were updated
+//     if (updateResult.length > 0) {
+//       console.log(`Store '${storeName}' updated successfully.`, updateResult);
+//       res.json(updateResult[0]); // Assuming you want to return the first (and should be only) updated record
+//     } else {
+//       res.status(404).json({ message: "Store not found or update failed" });
+//     }
+//   } catch (error) {
+//     console.error("Error updating store:", error);
+//     res.status(500).json({
+//       error: "Error updating store. Please check server logs for more details.",
+//     });
+//   }
+// });
+
+// app.put("/allStores/:name", async (req, res) => {
+//   const storeName = req.params.name;
+//   const storeUpdates = req.body;
+
+//   try {
+//     // Assuming updateStore either returns a success message or the updated store object
+//     const updateResult = await Db.updateStore(storeName, storeUpdates);
+
+//     if (updateResult) {
+//       console.log(`Store '${storeName}' updated successfully.`, updateResult);
+//       res.json(updateResult);
+//     } else {
+//       res.status(404).json({ message: "Store not found or update failed" });
+//     }
+//   } catch (error) {
+//     console.error("Error updating store:", error);
+//     res.status(500).json({
+//       error: "Error updating store. Please check server logs for more details.",
+//     });
+//   }
+// });
 
 /////
 app.get("/login", async (req, res) => {
