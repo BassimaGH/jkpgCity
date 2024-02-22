@@ -1,9 +1,9 @@
-require('dotenv').config();
+require("dotenv").config();
 
 const express = require("express");
 const DbClass = require("./db.js");
 const storeJson = require("./stores.json");
-const cookieParser = require('cookie-parser')
+const cookieParser = require("cookie-parser");
 const app = express();
 let Db = null;
 
@@ -45,26 +45,43 @@ app.get("/sova", async (req, res) => {
   const stores = await Db.getAllSovaStores();
   res.json(stores);
 });
+//////
+//filter
+app.get("/allStores/:district", async (req, res) => {
+  const storDistrict = req.params.district;
+  try {
+    const stores = await Db.getStoresByDistrict(storDistrict);
+    if (storDistrict.length > 0) {
+      res.json(storDistrict);
+    } else {
+      res.status(404).json({ message: "Store not found" });
+    }
+  } catch (error) {
+    console.error("Error fetching store:", error);
+    res.status(500).json({ error: "Error fetching store." });
+  }
+});
 
-app.get('/login', async(req, res) => {
+///////
+app.get("/login", async (req, res) => {
   const { username, password } = req.query;
-  if (username === 'bassima' && password === '12345') {
-    res.cookie('token', 'super-secret-cookie', { httpOnly: true });
-    res.send('login worked');
+  if (username === "bassima" && password === "12345") {
+    res.cookie("token", "super-secret-cookie", { httpOnly: true });
+    res.send("login worked");
   } else {
-    res.status(401).send('unauthorized');
+    res.status(401).send("unauthorized");
   }
-})
+});
 
-app.get('/protected', async(req, res) => {
+app.get("/protected", async (req, res) => {
   const { token } = req.cookies;
-  
-  if (token === 'super-secret-cookie') {
-    res.send('protected route!!')
+
+  if (token === "super-secret-cookie") {
+    res.send("protected route!!");
   } else {
-    res.status(401).send('unauthorized');
+    res.status(401).send("unauthorized");
   }
-})
+});
 
 const startServer = async () => {
   Db = new DbClass();

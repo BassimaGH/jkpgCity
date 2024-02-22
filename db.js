@@ -120,6 +120,7 @@ class Db {
     return res.rows;
   }
   /////
+  //filter
   async getStoresByDistrict(district) {
     const res = await this.client.query(
       `SELECT * FROM public.stores WHERE district = $1`,
