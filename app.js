@@ -66,6 +66,16 @@ app.get('/protected', async(req, res) => {
   }
 })
 
+//POST REQUESTS
+
+//post new store
+app.post('/api/addStore', express.json(), async(req, res) => {
+  const store = req.body;
+  console.log(store);
+  const newStore = await Db.createNewStore(store);
+  res.json(newStore);
+})
+
 const startServer = async () => {
   Db = new DbClass();
   await Db.init();
