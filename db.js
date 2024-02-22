@@ -119,6 +119,15 @@ class Db {
     );
     return res.rows;
   }
+  /////
+  async getStoresByDistrict(district) {
+    const res = await this.client.query(
+      `SELECT * FROM public.stores WHERE district = $1`,
+      [district]
+    );
+    return res.rows;
+  }
+  /////
 }
 
 module.exports = Db;
