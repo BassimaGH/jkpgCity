@@ -89,8 +89,7 @@ app.get("/allStores/:district", async (req, res) => {
   try {
     const stores = await Db.getStoresByDistrict(storDistrict);
     if (stores.length > 0) {
-      // Check if any stores were found
-      res.json(stores); // Return the stores
+      res.json(stores);
     } else {
       res.status(404).json({ message: "Stores not found in this district" }); // No stores found for the district
     }
