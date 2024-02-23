@@ -50,6 +50,20 @@ app.get("/sova", async (req, res) => {
 // app.get("/allStores/:district", async (req, res) => {
 //   const storDistrict = req.params.district;
 
+
+app.delete("/stores/:name", async (req, res) => {
+  const { name } = req.params;
+  try {
+    await Db.deleteStoreById(name);
+    res.status(204).send(); 
+  } catch (error) {
+    console.error("Error deleting store:", error);
+    res.status(500).json({ error: "Internal server error" });
+  }
+});
+
+app.get('/login', async(req, res) => {
+=======
 //   try {
 //     const stores = await Db.getStoresByDistrict(storDistrict);
 //     if (storDistrict.length > 0) {
@@ -107,6 +121,7 @@ app.get("/:category/:subCategories", async (req, res) => {
 });
 
 app.get("/login", async (req, res) => {
+
   const { username, password } = req.query;
   if (username === "bassima" && password === "12345") {
     res.cookie("token", "super-secret-cookie", { httpOnly: true });
@@ -141,8 +156,8 @@ const startServer = async () => {
   await Db.init();
   await Db.setup(storeJson);
 
-  app.listen(3000, () => {
-    console.log("Example app listening on port 3000!");
+  app.listen(3001, () => {
+    console.log("Example app listening on port 3001!");
   });
 };
 

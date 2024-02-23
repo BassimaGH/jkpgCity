@@ -120,6 +120,15 @@ class Db {
     return res.rows;
   }
 
+
+  async deleteStoreById(name) {
+    try {
+      await this.client.query('DELETE FROM public.stores WHERE name = $1', [name]);
+    } catch (error) {
+      throw new Error("Error deleting store: " + error.message);
+    }
+  }
+
   // CREATE STORE QUERY
   async createNewStore(store) {
     try {
@@ -171,6 +180,7 @@ class Db {
     );
     return res.rows;
   }
+
 }
 
 module.exports = Db;
