@@ -62,22 +62,6 @@ app.delete("/stores/:name", async (req, res) => {
   }
 });
 
-app.get('/login', async(req, res) => {
-=======
-//   try {
-//     const stores = await Db.getStoresByDistrict(storDistrict);
-//     if (storDistrict.length > 0) {
-//       res.json(storDistrict);
-//     } else {
-//       res.status(404).json({ message: "Store not found" });
-//     }
-//   } catch (error) {
-//     console.error("Error fetching store:", error);
-//     res.status(500).json({ error: "Error fetching store." });
-//   }
-// });
-
-///
 app.get("/allStores/:district", async (req, res) => {
   const storDistrict = req.params.district;
 
