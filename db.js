@@ -121,6 +121,16 @@ class Db {
   }
 
 
+  async filterStoresByRating(minRating) {
+    try {
+      const res = await this.client.query('SELECT * FROM public.stores WHERE rating >= $1', [minRating]);
+      return res.rows;
+    } catch (error) {
+      console.error("Error filtering stores by rating:", error);
+      return [];
+    }
+  }
+
   async deleteStoreById(name) {
     try {
       await this.client.query('DELETE FROM public.stores WHERE name = $1', [name]);

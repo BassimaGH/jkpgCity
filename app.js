@@ -135,6 +135,22 @@ app.post("/store/addStore", express.json(), async (req, res) => {
   res.json(newStore);
 });
 
+app.get("/stores/filter", async (req, res) => {
+  const { minRating } = req.query;
+
+  if (!minRating || isNaN(minRating)) {
+    return res.status(400).json({ error: "Minimum rating is required and must be a number." });
+  }
+
+  try {
+    const filteredStores = await Db.filterStoresByRating(parseFloat(minRating));
+    res.json(filteredStores);
+  } catch (error) {
+    console.error("Error filtering stores by rating:", error);
+    res.status(500).json({ error: "Internal server error" });
+  }
+});
+
 const startServer = async () => {
   Db = new DbClass();
   await Db.init();
