@@ -120,6 +120,8 @@ class Db {
     return res.rows;
   }
 
+=======
+
 
   // CREATE STORE QUERY
   async createNewStore(store) {
@@ -148,7 +150,11 @@ class Db {
     }
 }
 
-  /* 
+  
+
+}
+
+/* 
   
     SUB-CATEGORIES FILTER QUERIES
   
@@ -161,6 +167,22 @@ async getAllSubCategories(categories, subCategory) {
   return res.rows;
 }
 
-}
 
+  async getStoreByName(storeName) {
+    const res = await this.client.query(
+      `SELECT * FROM public.stores WHERE name = $1 LIMIT 1;`,
+      [storeName]
+    );
+    return res.rows;
+  }
+
+  // filter
+  async getStoresByDistrict(district) {
+    const res = await this.client.query(
+      `SELECT * FROM public.stores WHERE district = $1`,
+      [district]
+    );
+    return res.rows;
+  }
+}
 module.exports = Db;
