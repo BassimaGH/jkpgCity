@@ -46,10 +46,10 @@ app.get("/sova", async (req, res) => {
   res.json(stores);
 });
 
-app.delete("/stores/:storeId", async (req, res) => {
-  const { storeId } = req.params;
+app.delete("/stores/:name", async (req, res) => {
+  const { name } = req.params;
   try {
-    await Db.deleteStoreById(storeId);
+    await Db.deleteStoreById(name);
     res.status(204).send(); 
   } catch (error) {
     console.error("Error deleting store:", error);

@@ -120,9 +120,9 @@ class Db {
     return res.rows;
   }
 
-  async deleteStoreById(storeId) {
+  async deleteStoreById(name) {
     try {
-      await this.client.query('DELETE FROM public.stores WHERE id = $1', [storeId]);
+      await this.client.query('DELETE FROM public.stores WHERE name = $1', [name]);
     } catch (error) {
       throw new Error("Error deleting store: " + error.message);
     }
@@ -137,7 +137,6 @@ class Db {
       return [];
     }
   }
-  
 
 }
 
