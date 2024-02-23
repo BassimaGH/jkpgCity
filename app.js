@@ -50,7 +50,6 @@ app.get("/sova", async (req, res) => {
 // app.get("/allStores/:district", async (req, res) => {
 //   const storDistrict = req.params.district;
 
-
 //   try {
 //     const stores = await Db.getStoresByDistrict(storDistrict);
 //     if (storDistrict.length > 0) {
@@ -83,7 +82,7 @@ app.get("/allStores/:district", async (req, res) => {
 });
 
 ///////
-// filter
+// filter district
 app.get("/allStores/:district", async (req, res) => {
   const storDistrict = req.params.district;
 
@@ -100,8 +99,6 @@ app.get("/allStores/:district", async (req, res) => {
   }
 });
 
-
-
 //Get all shoppa sub-categories stores
 app.get("/:category/:subCategories", async (req, res) => {
   const { category, subCategories } = req.params;
@@ -109,8 +106,7 @@ app.get("/:category/:subCategories", async (req, res) => {
   res.json(stores);
 });
 
-app.get('/login', async(req, res) => {
-
+app.get("/login", async (req, res) => {
   const { username, password } = req.query;
   if (username === "bassima" && password === "12345") {
     res.cookie("token", "super-secret-cookie", { httpOnly: true });
@@ -133,12 +129,12 @@ app.get("/protected", async (req, res) => {
 //POST REQUESTS
 
 //post new store
-app.post('/store/addStore', express.json(), async(req, res) => {
+app.post("/store/addStore", express.json(), async (req, res) => {
   const store = req.body;
   console.log(store);
   const newStore = await Db.createNewStore(store);
   res.json(newStore);
-})
+});
 
 const startServer = async () => {
   Db = new DbClass();
