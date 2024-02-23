@@ -103,7 +103,6 @@ app.put("/allStores/:name", async (req, res) => {
       email,
       storeName
     );
-
     if (updateResult.length > 0) {
       console.log(`Store '${storeName}' updated successfully.`, updateResult);
       res.json(updateResult[0]); // Assuming you want to return the first (and should be only) updated record
