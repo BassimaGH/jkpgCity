@@ -127,6 +127,18 @@ class Db {
       throw new Error("Error deleting store: " + error.message);
     }
   }
+
+  async filterStoresByRating(minRating) {
+    try {
+      const res = await this.client.query('SELECT * FROM public.stores WHERE rating >= $1', [minRating]);
+      return res.rows;
+    } catch (error) {
+      console.error("Error filtering stores by rating:", error);
+      return [];
+    }
+  }
+  
+
 }
 
 module.exports = Db;
