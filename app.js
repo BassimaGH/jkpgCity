@@ -47,80 +47,11 @@ app.get("/sova", async (req, res) => {
 });
 
 //Get all shoppa sub-categories stores
-app.get("/shoppa/apparel", async (req, res) => {
-  const stores = await Db.getAllApparelStores();
+app.get("/:category/:subCategories", async (req, res) => {
+  const { category, subCategories } = req.params;
+  const stores = await Db.getAllSubCategories(category, subCategories);
   res.json(stores);
 });
-
-app.get("/shoppa/electronics", async (req, res) => {
-  const stores = await Db.getAllElectronicsStores();
-  res.json(stores);
-});
-
-app.get("/shoppa/health_and_beauty", async (req, res) => {
-  const stores = await Db.getAllHealthandBeautyStores();
-  res.json(stores);
-});
-
-app.get("/shoppa/grocery", async (req, res) => {
-  const stores = await Db.getAllGroceryStores();
-  res.json(stores);
-});
-
-app.get("/shoppa/home_and_decor", async (req, res) => {
-  const stores = await Db.getAllHomeandDecorStores();
-  res.json(stores);
-});
-
-//Get all Äta sub-categories stores
-app.get("/ata/cafes", async (req, res) => {
-  const stores = await Db.getAllCafesStores();
-  res.json(stores);
-});
-
-app.get("/ata/fast_food", async (req, res) => {
-  const stores = await Db.getAllFastFoodtores();
-  res.json(stores);
-});
-
-app.get("/ata/restaurants", async (req, res) => {
-  const stores = await Db.getAllRestaurantsstores();
-  res.json(stores);
-});
-
-app.get("/ata/fine_dining", async (req, res) => {
-  const stores = await Db.getAllFineDiningstores();
-  res.json(stores);
-});
-
-//Get all Upplev sub-categories stores
-app.get("/upplev/entertainment_and_activities", async (req, res) => {
-  const stores = await Db.getAllEntertainmentandActivitiesstores();
-  res.json(stores);
-});
-
-app.get("/upplev/museums_and_culture", async (req, res) => {
-  const stores = await Db.getAllMuseumsandCulturestores();
-  res.json(stores);
-});
-
-//Get all Må bra sub-categories stores
-app.get("/mabra/health_and_wellness", async (req, res) => {
-  const stores = await Db.getAllHealthandWellnessstores();
-  res.json(stores);
-});
-
-app.get("/mabra/beauty_salons_and_nail_bars", async (req, res) => {
-  const stores = await Db.getAllBeautySalonsandNailBarsstores();
-  res.json(stores);
-});
-
-//Get all Sova sub-categories stores
-app.get("/sova/hotels", async (req, res) => {
-  const stores = await Db.getAllHotelsstores();
-  res.json(stores);
-});
-
 
 app.get('/login', async(req, res) => {
   const { username, password } = req.query;
