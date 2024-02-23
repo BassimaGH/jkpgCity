@@ -120,6 +120,54 @@ class Db {
     return res.rows;
   }
 
+=======
+
+
+  // CREATE STORE QUERY
+  async createNewStore(store) {
+    try {
+      const res = await this.client.query(
+        `INSERT INTO public.stores (name, url, district, categories, subCategory, openingTime, closingTime, rating, phone, email)
+         VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)
+         RETURNING *`,
+        [
+          store.name,
+          store.url,
+          store.district,
+          store.categories,
+          store.subCategory,
+          store.openingTime,
+          store.closingTime,
+          store.rating,
+          store.phone,
+          store.email,
+        ]
+      );
+      return res.rows[0];
+    } catch (error) {
+      console.error("Error inserting store into database:", error);
+      throw error;
+    }
+}
+
+  
+
+}
+
+/* 
+  
+    SUB-CATEGORIES FILTER QUERIES
+  
+  */
+async getAllSubCategories(categories, subCategory) {
+  const res = await this.client.query(
+    `SELECT * FROM public.stores WHERE categories = $1 AND subCategory = $2`,
+    [categories, subCategory]
+  );
+  return res.rows;
+}
+
+
   async getStoreByName(storeName) {
     const res = await this.client.query(
       `SELECT * FROM public.stores WHERE name = $1 LIMIT 1;`,
