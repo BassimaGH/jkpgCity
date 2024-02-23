@@ -119,6 +119,14 @@ class Db {
     );
     return res.rows;
   }
+
+  async deleteStoreById(storeId) {
+    try {
+      await this.client.query('DELETE FROM public.stores WHERE id = $1', [storeId]);
+    } catch (error) {
+      throw new Error("Error deleting store: " + error.message);
+    }
+  }
 }
 
 module.exports = Db;

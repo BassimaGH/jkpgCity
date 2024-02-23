@@ -46,6 +46,17 @@ app.get("/sova", async (req, res) => {
   res.json(stores);
 });
 
+app.delete("/stores/:storeId", async (req, res) => {
+  const { storeId } = req.params;
+  try {
+    await Db.deleteStoreById(storeId);
+    res.status(204).send(); 
+  } catch (error) {
+    console.error("Error deleting store:", error);
+    res.status(500).json({ error: "Internal server error" });
+  }
+});
+
 app.get('/login', async(req, res) => {
   const { username, password } = req.query;
   if (username === 'bassima' && password === '12345') {
@@ -71,8 +82,8 @@ const startServer = async () => {
   await Db.init();
   await Db.setup(storeJson);
 
-  app.listen(3000, () => {
-    console.log("Example app listening on port 3000!");
+  app.listen(3001, () => {
+    console.log("Example app listening on port 3001!");
   });
 };
 
