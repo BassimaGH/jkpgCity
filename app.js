@@ -69,7 +69,7 @@ app.get('/protected', async(req, res) => {
 //POST REQUESTS
 
 //post new store
-app.post('/api/addStore', express.json(), async(req, res) => {
+app.post('/store/addStore', express.json(), async(req, res) => {
   const store = req.body;
   console.log(store);
   const newStore = await Db.createNewStore(store);
