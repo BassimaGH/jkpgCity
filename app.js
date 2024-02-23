@@ -46,6 +46,13 @@ app.get("/sova", async (req, res) => {
   res.json(stores);
 });
 
+//Get all shoppa sub-categories stores
+app.get("/:category/:subCategories", async (req, res) => {
+  const { category, subCategories } = req.params;
+  const stores = await Db.getAllSubCategories(category, subCategories);
+  res.json(stores);
+});
+
 app.get('/login', async(req, res) => {
   const { username, password } = req.query;
   if (username === 'bassima' && password === '12345') {

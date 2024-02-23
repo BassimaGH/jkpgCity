@@ -119,6 +119,20 @@ class Db {
     );
     return res.rows;
   }
+
+  /* 
+  
+    SUB-CATEGORIES FILTER QUERIES
+  
+  */
+
+  async getAllSubCategories(categories, subCategory) {
+    const res = await this.client.query(
+      `SELECT * FROM public.stores WHERE categories = $1 AND subCategory = $2`,
+      [categories, subCategory]
+    );
+    return res.rows;
+  }
 }
 
 module.exports = Db;
