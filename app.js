@@ -8,6 +8,7 @@ const app = express();
 let Db = null;
 
 app.use(cookieParser());
+app.use(express.json());
 
 // Middleware for authentication
 const authenticate = (req, res, next) => {
@@ -156,18 +157,13 @@ app.get("/protected", async (req, res) => {
 //POST REQUESTS
 
 //post new store
-app.put(
-  "/allStores/:name",
-  authenticate,
-  authorize(["admin", "store-manager"]),
-  async (req, res) => {
-    // app.post("/store/addStore", express.json(), async (req, res) => {
-    const store = req.body;
-    console.log(store);
-    const newStore = await Db.createNewStore(store);
-    res.json(newStore);
-  }
-);
+//
+app.post("/store/addStore", express.json(), async (req, res) => {
+  const store = req.body;
+  console.log(store);
+  const newStore = await Db.createNewStore(store);
+  res.json(newStore);
+});
 
 app.get("/stores/filter", async (req, res) => {
   const { minRating } = req.query;
