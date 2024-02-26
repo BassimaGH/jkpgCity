@@ -10,34 +10,14 @@ let Db = null;
 app.use(cookieParser());
 app.use(express.json());
 
-// Middleware for authentication
-const authenticate = (req, res, next) => {
+// Middleware to verify if the user is logged in as an admin
+const verifyAdmin = (req, res, next) => {
   const { token } = req.cookies;
-  if (!token) {
-    return res.status(401).json({ error: "Unauthorized: No token provided" });
+  if (token === "super-secret-cookie") {
+    next();
+  } else {
+    res.status(403).json({ error: "Unauthorized: Admin access required" });
   }
-
-  verifyToken(token, (err, user) => {
-    if (err) {
-      return res
-        .status(403)
-        .json({ error: "Forbidden: Token is invalid or expired" });
-    }
-    req.user = user; // Add the user payload to the request
-    next();
-  });
-};
-
-// Middleware for authorization
-const authorize = (roles = []) => {
-  return (req, res, next) => {
-    if (!req.user || !userHasRole(req.user, roles)) {
-      return res.status(403).json({
-        error: "Forbidden: User does not have the required permissions",
-      });
-    }
-    next();
-  };
 };
 
 //GET REQUESTS
@@ -157,7 +137,6 @@ app.get("/protected", async (req, res) => {
 //POST REQUESTS
 
 //post new store
-//
 app.post("/store/addStore", express.json(), async (req, res) => {
   const store = req.body;
   console.log(store);
@@ -183,7 +162,7 @@ app.get("/stores/filter", async (req, res) => {
   }
 });
 
-app.put("/allStores/:name", async (req, res) => {
+app.put("/allStores/:name", verifyAdmin, async (req, res) => {
   console.log("Request body:", req.body);
   const storeName = req.params.name;
   const {
