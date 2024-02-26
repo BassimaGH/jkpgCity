@@ -9,6 +9,36 @@ let Db = null;
 
 app.use(cookieParser());
 
+// Middleware for authentication
+const authenticate = (req, res, next) => {
+  const { token } = req.cookies;
+  if (!token) {
+    return res.status(401).json({ error: "Unauthorized: No token provided" });
+  }
+
+  verifyToken(token, (err, user) => {
+    if (err) {
+      return res
+        .status(403)
+        .json({ error: "Forbidden: Token is invalid or expired" });
+    }
+    req.user = user; // Add the user payload to the request
+    next();
+  });
+};
+
+// Middleware for authorization
+const authorize = (roles = []) => {
+  return (req, res, next) => {
+    if (!req.user || !userHasRole(req.user, roles)) {
+      return res.status(403).json({
+        error: "Forbidden: User does not have the required permissions",
+      });
+    }
+    next();
+  };
+};
+
 //GET REQUESTS
 //Get all stores
 app.get("/allStores", async (req, res) => {
@@ -50,12 +80,11 @@ app.get("/sova", async (req, res) => {
 // app.get("/allStores/:district", async (req, res) => {
 //   const storDistrict = req.params.district;
 
-
 app.delete("/stores/:name", async (req, res) => {
   const { name } = req.params;
   try {
     await Db.deleteStoreById(name);
-    res.status(204).send(); 
+    res.status(204).send();
   } catch (error) {
     console.error("Error deleting store:", error);
     res.status(500).json({ error: "Internal server error" });
@@ -105,7 +134,6 @@ app.get("/:category/:subCategories", async (req, res) => {
 });
 
 app.get("/login", async (req, res) => {
-
   const { username, password } = req.query;
   if (username === "bassima" && password === "12345") {
     res.cookie("token", "super-secret-cookie", { httpOnly: true });
@@ -128,18 +156,26 @@ app.get("/protected", async (req, res) => {
 //POST REQUESTS
 
 //post new store
-app.post("/store/addStore", express.json(), async (req, res) => {
-  const store = req.body;
-  console.log(store);
-  const newStore = await Db.createNewStore(store);
-  res.json(newStore);
-});
+app.put(
+  "/allStores/:name",
+  authenticate,
+  authorize(["admin", "store-manager"]),
+  async (req, res) => {
+    // app.post("/store/addStore", express.json(), async (req, res) => {
+    const store = req.body;
+    console.log(store);
+    const newStore = await Db.createNewStore(store);
+    res.json(newStore);
+  }
+);
 
 app.get("/stores/filter", async (req, res) => {
   const { minRating } = req.query;
 
   if (!minRating || isNaN(minRating)) {
-    return res.status(400).json({ error: "Minimum rating is required and must be a number." });
+    return res
+      .status(400)
+      .json({ error: "Minimum rating is required and must be a number." });
   }
 
   try {
@@ -148,6 +184,48 @@ app.get("/stores/filter", async (req, res) => {
   } catch (error) {
     console.error("Error filtering stores by rating:", error);
     res.status(500).json({ error: "Internal server error" });
+  }
+});
+
+app.put("/allStores/:name", async (req, res) => {
+  console.log("Request body:", req.body);
+  const storeName = req.params.name;
+  const {
+    url,
+    district,
+    categories,
+    subCategory,
+    openingTime,
+    closingTime,
+    rating,
+    phone,
+    email,
+  } = req.body;
+
+  try {
+    const updateResult = await Db.updateStore(
+      url,
+      district,
+      categories,
+      subCategory,
+      openingTime,
+      closingTime,
+      rating,
+      phone,
+      email,
+      storeName
+    );
+    if (updateResult.length > 0) {
+      console.log(`Store '${storeName}' updated successfully.`, updateResult);
+      res.json(updateResult[0]); // Assuming you want to return the first (and should be only) updated record
+    } else {
+      res.status(404).json({ message: "Store not found or update failed" });
+    }
+  } catch (error) {
+    console.error("Error updating store:", error);
+    res.status(500).json({
+      error: "Error updating store. Please check server logs for more details.",
+    });
   }
 });
 
