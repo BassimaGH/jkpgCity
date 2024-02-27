@@ -72,23 +72,6 @@ app.delete("/stores/:name", async (req, res) => {
   }
 });
 
-app.get("/allStores/:district", async (req, res) => {
-  const storDistrict = req.params.district;
-
-  try {
-    const stores = await Db.getStoresByDistrict(storDistrict);
-    if (stores.length > 0) {
-      // Check if any stores were found
-      res.json(stores); // Return the stores
-    } else {
-      res.status(404).json({ message: "Stores not found in this district" }); // No stores found for the district
-    }
-  } catch (error) {
-    console.error("Error fetching stores:", error);
-    res.status(500).json({ error: "Error fetching stores." });
-  }
-});
-
 ///////
 // filter district
 app.get("/allStores/:district", async (req, res) => {
