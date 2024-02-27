@@ -7,6 +7,12 @@ const cookieParser = require("cookie-parser");
 const app = express();
 let Db = null;
 
+let p = __dirname + '/public';
+
+console.log(p);
+
+app.use(express.static(p));
+
 app.use(cookieParser());
 
 //GET REQUESTS
