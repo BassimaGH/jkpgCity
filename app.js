@@ -50,12 +50,11 @@ app.get("/sova", async (req, res) => {
 // app.get("/allStores/:district", async (req, res) => {
 //   const storDistrict = req.params.district;
 
-
 app.delete("/stores/:name", async (req, res) => {
   const { name } = req.params;
   try {
     await Db.deleteStoreById(name);
-    res.status(204).send(); 
+    res.status(204).send();
   } catch (error) {
     console.error("Error deleting store:", error);
     res.status(500).json({ error: "Internal server error" });
@@ -105,7 +104,6 @@ app.get("/:category/:subCategories", async (req, res) => {
 });
 
 app.get("/login", async (req, res) => {
-
   const { username, password } = req.query;
   if (username === "bassima" && password === "12345") {
     res.cookie("token", "super-secret-cookie", { httpOnly: true });
@@ -128,7 +126,7 @@ app.get("/protected", async (req, res) => {
 //POST REQUESTS
 
 //post new store
-app.post("/store/addStore", express.json(), async (req, res) => {
+app.post("/store/addStore", verifyAdmin, async (req, res) => {
   const store = req.body;
   console.log(store);
   const newStore = await Db.createNewStore(store);
@@ -139,7 +137,9 @@ app.get("/stores/filter", async (req, res) => {
   const { minRating } = req.query;
 
   if (!minRating || isNaN(minRating)) {
-    return res.status(400).json({ error: "Minimum rating is required and must be a number." });
+    return res
+      .status(400)
+      .json({ error: "Minimum rating is required and must be a number." });
   }
 
   try {
