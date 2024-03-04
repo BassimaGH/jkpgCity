@@ -124,7 +124,6 @@ app.get("/:category/:subCategories", async (req, res) => {
   res.json(stores);
 });
 
-
 // update final
 app.put("/allStores/:name", async (req, res) => {
   console.log("Request body:", req.body);
@@ -210,7 +209,6 @@ app.get("/protected", async (req, res) => {
     res.send("protected route!!");
   } else {
     res.status(401).send("unauthorized");
-  }
   }
 });
 
