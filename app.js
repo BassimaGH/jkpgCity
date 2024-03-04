@@ -10,6 +10,16 @@ let Db = null;
 app.use(cookieParser());
 app.use(express.json());
 
+// Middleware to verify if the user is logged in as an admin
+const verifyAdmin = (req, res, next) => {
+  const { token } = req.cookies;
+  if (token === "super-secret-cookie") {
+    next();
+  } else {
+    res.status(403).json({ error: "Unauthorized: Admin access required" });
+  }
+};
+
 // GET REQUESTS
 // Get all stores
 app.get("/allStores", async (req, res) => {
@@ -73,6 +83,47 @@ app.get("/sova", async (req, res) => {
   const stores = await Db.getAllSovaStores();
   res.json(stores);
 });
+//////
+//filter
+// app.get("/allStores/:district", async (req, res) => {
+//   const storDistrict = req.params.district;
+
+app.delete("/stores/:name", async (req, res) => {
+  const { name } = req.params;
+  try {
+    await Db.deleteStoreById(name);
+    res.status(204).send();
+  } catch (error) {
+    console.error("Error deleting store:", error);
+    res.status(500).json({ error: "Internal server error" });
+  }
+});
+
+///////
+// filter district
+app.get("/allStores/:district", async (req, res) => {
+  const storDistrict = req.params.district;
+
+  try {
+    const stores = await Db.getStoresByDistrict(storDistrict);
+    if (stores.length > 0) {
+      res.json(stores);
+    } else {
+      res.status(404).json({ message: "Stores not found in this district" });
+    }
+  } catch (error) {
+    console.error("Error fetching stores:", error);
+    res.status(500).json({ error: "Error fetching stores." });
+  }
+});
+
+//Get all shoppa sub-categories stores
+app.get("/:category/:subCategories", async (req, res) => {
+  const { category, subCategories } = req.params;
+  const stores = await Db.getAllSubCategories(category, subCategories);
+  res.json(stores);
+});
+
 
 // update final
 app.put("/allStores/:name", async (req, res) => {
@@ -141,6 +192,7 @@ app.put("/allStores/:name", async (req, res) => {
 // });
 
 /////
+
 app.get("/login", async (req, res) => {
   const { username, password } = req.query;
   if (username === "bassima" && password === "12345") {
@@ -159,6 +211,77 @@ app.get("/protected", async (req, res) => {
   } else {
     res.status(401).send("unauthorized");
   }
+  }
+});
+
+//POST REQUESTS
+
+//post new store
+app.post("/store/addStore", verifyAdmin, async (req, res) => {
+  const store = req.body;
+  console.log(store);
+  const newStore = await Db.createNewStore(store);
+  res.json(newStore);
+});
+
+app.get("/stores/filter", async (req, res) => {
+  const { minRating } = req.query;
+
+  if (!minRating || isNaN(minRating)) {
+    return res
+      .status(400)
+      .json({ error: "Minimum rating is required and must be a number." });
+  }
+
+  try {
+    const filteredStores = await Db.filterStoresByRating(parseFloat(minRating));
+    res.json(filteredStores);
+  } catch (error) {
+    console.error("Error filtering stores by rating:", error);
+    res.status(500).json({ error: "Internal server error" });
+  }
+});
+
+app.put("/allStores/:name", verifyAdmin, async (req, res) => {
+  console.log("Request body:", req.body);
+  const storeName = req.params.name;
+  const {
+    url,
+    district,
+    categories,
+    subCategory,
+    openingTime,
+    closingTime,
+    rating,
+    phone,
+    email,
+  } = req.body;
+
+  try {
+    const updateResult = await Db.updateStore(
+      url,
+      district,
+      categories,
+      subCategory,
+      openingTime,
+      closingTime,
+      rating,
+      phone,
+      email,
+      storeName
+    );
+    if (updateResult.length > 0) {
+      console.log(`Store '${storeName}' updated successfully.`, updateResult);
+      res.json(updateResult[0]); // Assuming you want to return the first (and should be only) updated record
+    } else {
+      res.status(404).json({ message: "Store not found or update failed" });
+    }
+  } catch (error) {
+    console.error("Error updating store:", error);
+    res.status(500).json({
+      error: "Error updating store. Please check server logs for more details.",
+    });
+  }
 });
 
 const startServer = async () => {
@@ -166,8 +289,8 @@ const startServer = async () => {
   await Db.init();
   await Db.setup(storeJson);
 
-  app.listen(3000, () => {
-    console.log("Example app listening on port 3000!");
+  app.listen(3001, () => {
+    console.log("Example app listening on port 3001!");
   });
 };
 
