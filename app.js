@@ -51,7 +51,7 @@ app.get("/sova", async (req, res) => {
 //   const storDistrict = req.params.district;
 
 
-app.delete("/stores/:name", async (req, res) => {
+app.delete("/stores/:name", verifyAdmin, async (req, res) => {
   const { name } = req.params;
   try {
     await Db.deleteStoreById(name);
