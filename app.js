@@ -88,6 +88,8 @@ app.get("/sova", async (req, res) => {
 // app.get("/allStores/:district", async (req, res) => {
 //   const storDistrict = req.params.district;
 
+
+app.delete("/stores/:name", verifyAdmin, async (req, res) => {
 app.delete("/stores/:name", async (req, res) => {
   const { name } = req.params;
   try {
