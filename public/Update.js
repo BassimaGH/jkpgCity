@@ -56,9 +56,9 @@ document
       url: document.getElementById("storeURL").value,
       district: document.getElementById("storeDistrict").value,
       categories: document.getElementById("storeCategories").value,
-      subCategory: document.getElementById("storeSubCategory").value,
-      openingTime: document.getElementById("openingTime").value,
-      closingTime: document.getElementById("closingTime").value,
+      subcategory: document.getElementById("storeSubCategory").value,
+      openingtime: document.getElementById("openingTime").value,
+      closingtime: document.getElementById("closingTime").value,
       rating: parseFloat(document.getElementById("storeRating").value), // Ensuring it's a float
       phone: document.getElementById("storePhone").value,
       email: document.getElementById("storeEmail").value,
