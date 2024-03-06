@@ -207,6 +207,14 @@ class Db {
     return res.rows;
   }
 
+  async getStoreByName(storeName) {
+    const res = await this.client.query(
+      `SELECT * FROM public.stores WHERE name = $1 LIMIT 1;`,
+      [storeName]
+    );
+    return res.rows;
+  }
+
   async updateStore(
     url,
     district,
