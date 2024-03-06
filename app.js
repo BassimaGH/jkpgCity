@@ -14,6 +14,7 @@ console.log(p);
 app.use(express.static(p));
 
 app.use(cookieParser());
+app.use(express.json());
 
 //GET REQUESTS
 //Get all stores

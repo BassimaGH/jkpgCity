@@ -28,9 +28,6 @@ fetch(source)
         window.location.href = `update.html?storeName=${encodeURIComponent(
           store.name
         )}`;
-
-        // updateButton.addEventListener("click", function () {
-        //   window.location.href = "update.html";
       });
 
       storeContainer.appendChild(storeName);
