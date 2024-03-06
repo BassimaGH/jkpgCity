@@ -32,9 +32,9 @@ function fetchAndPopulateStoreDetails() {
       document.getElementById("storeCategories").value =
         data[0].categories || "";
       document.getElementById("storeSubCategory").value =
-        data[0].subCategory || "";
-      document.getElementById("openingTime").value = data[0].openingTime || "";
-      document.getElementById("closingTime").value = data[0].closingTime || "";
+        data[0].subcategory || "";
+      document.getElementById("openingTime").value = data[0].openingtime || "";
+      document.getElementById("closingTime").value = data[0].closingtime || "";
       document.getElementById("storeRating").value = data[0].rating || "";
       document.getElementById("storePhone").value = data[0].phone || "";
       document.getElementById("storeEmail").value = data[0].email || "";
