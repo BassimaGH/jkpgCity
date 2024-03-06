@@ -76,7 +76,9 @@ class Db {
   }
 
   async getAllStores() {
-    const res = await this.client.query("SELECT * FROM public.stores");
+    const res = await this.client.query(
+      "SELECT * FROM public.stores ORDER BY name ASC"
+    );
     return res.rows;
   }
 
