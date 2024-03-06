@@ -1,4 +1,5 @@
 import { deleteStore } from "./delete.js";
+
 const source = "http://localhost:3001/allStores";
 
 fetch(source)
@@ -24,12 +25,18 @@ fetch(source)
       const updateButton = document.createElement("button");
       updateButton.innerText = "Update";
       updateButton.addEventListener("click", function () {
-        // deleteStore(store.name);
+        window.location.href = `update.html?storeName=${encodeURIComponent(
+          store.name
+        )}`;
+
+        // updateButton.addEventListener("click", function () {
+        //   window.location.href = "update.html";
       });
 
       storeContainer.appendChild(storeName);
       storeContainer.appendChild(storeUrl);
       storeContainer.appendChild(deleteBtn);
+      storeContainer.appendChild(updateButton);
       storesList.appendChild(storeContainer);
     });
   });
