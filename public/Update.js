@@ -44,3 +44,55 @@ function fetchAndPopulateStoreDetails() {
 
 // Call the function to populate the form when the page is loaded
 document.addEventListener("DOMContentLoaded", fetchAndPopulateStoreDetails);
+
+document
+  .getElementById("updateStoreForm")
+  .addEventListener("submit", function (event) {
+    event.preventDefault(); // Prevent the default form submission
+
+    // Gather form data with keys matching the backend expectations
+    const storeDetails = {
+      name: document.getElementById("storeName").value,
+      url: document.getElementById("storeURL").value,
+      district: document.getElementById("storeDistrict").value,
+      categories: document.getElementById("storeCategories").value,
+      subCategory: document.getElementById("storeSubCategory").value,
+      openingTime: document.getElementById("openingTime").value,
+      closingTime: document.getElementById("closingTime").value,
+      rating: parseFloat(document.getElementById("storeRating").value), // Ensuring it's a float
+      phone: document.getElementById("storePhone").value,
+      email: document.getElementById("storeEmail").value,
+    };
+
+    // Use the storeName from the form (or from the URL) for the PUT request URL
+    const storeName = storeDetails.name;
+    const updateUrl = `http://localhost:3001/allStores/${encodeURIComponent(
+      storeName
+    )}`;
+
+    fetch(updateUrl, {
+      method: "PUT", // Use PUT as the method for updating
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(storeDetails),
+    })
+      .then((response) => {
+        if (response.ok) {
+          alert("Store updated successfully!");
+          // Optionally redirect or refresh the page, e.g., back to the stores list
+          window.location.href = "index.html";
+        } else {
+          // Handle potential errors, like 404 or 500 from the backend
+          response.json().then((data) => {
+            alert(
+              "Failed to update store: " + (data.message || "Unknown error")
+            );
+          });
+        }
+      })
+      .catch((error) => {
+        console.error("Error updating store:", error);
+        alert("Error updating store. Please check console for details.");
+      });
+  });

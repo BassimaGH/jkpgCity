@@ -181,9 +181,9 @@ app.put("/allStores/:name", async (req, res) => {
     url,
     district,
     categories,
-    subcategory,
-    openingtime,
-    closingtime,
+    subCategory,
+    openingTime,
+    closingTime,
     rating,
     phone,
     email,
@@ -194,15 +194,14 @@ app.put("/allStores/:name", async (req, res) => {
       url,
       district,
       categories,
-      subcategory,
-      openingtime,
-      closingtime,
+      subCategory,
+      openingTime,
+      closingTime,
       rating,
       phone,
       email,
       storeName
     );
-
     if (updateResult.length > 0) {
       console.log(`Store '${storeName}' updated successfully.`, updateResult);
       res.json(updateResult[0]); // Assuming you want to return the first (and should be only) updated record
