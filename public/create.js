@@ -41,3 +41,53 @@ document
         alert("There was an error creating the store");
       });
   });
+
+document
+  .getElementById("updateStoreForm")
+  .addEventListener("submit", function (event) {
+    event.preventDefault(); // Prevent the default form submission
+
+    const storeName = document.getElementById("storeName").value;
+    const storeDetails = {
+      // Adjust the property names to match your backend expectations
+      url: document.getElementById("storeURL").value,
+      district: document.getElementById("storeDistrict").value,
+      categories: document.getElementById("storeCategories").value,
+      subcategory: document.getElementById("storeSubCategory").value, // Note the lowercase 'c'
+      openingtime: document.getElementById("openingTime").value, // Note the lowercase 't'
+      closingtime: document.getElementById("closingTime").value, // Note the lowercase 't'
+      rating: parseFloat(document.getElementById("storeRating").value), // Ensure it's a number
+      phone: document.getElementById("storePhone").value,
+      email: document.getElementById("storeEmail").value,
+    };
+
+    // Adjust the URL to match your backend's update endpoint
+    const updateUrl = `http://localhost:3001/allStores/${encodeURIComponent(
+      storeName
+    )}`;
+    fetch(updateUrl, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(storeDetails),
+    })
+      .then((response) => {
+        if (response.ok) {
+          alert("Store updated successfully!");
+          // Optionally, redirect or refresh the page. For instance, you might want to go back to a list view.
+          window.location.href = "index.html";
+        } else {
+          // It's a good practice to handle HTTP error statuses
+          response.json().then((data) => {
+            alert(
+              "Failed to update store: " + (data.message || "Unknown error")
+            );
+          });
+        }
+      })
+      .catch((error) => {
+        console.error("Error updating store:", error);
+        alert("Error updating store. Please check console for details.");
+      });
+  });

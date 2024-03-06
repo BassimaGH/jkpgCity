@@ -174,6 +174,49 @@ app.get("/stores/filter", async (req, res) => {
   }
 });
 
+app.put("/allStores/:name", async (req, res) => {
+  console.log("Request body:", req.body);
+  const storeName = req.params.name;
+  const {
+    url,
+    district,
+    categories,
+    subcategory,
+    openingtime,
+    closingtime,
+    rating,
+    phone,
+    email,
+  } = req.body;
+
+  try {
+    const updateResult = await Db.updateStore(
+      url,
+      district,
+      categories,
+      subcategory,
+      openingtime,
+      closingtime,
+      rating,
+      phone,
+      email,
+      storeName
+    );
+
+    if (updateResult.length > 0) {
+      console.log(`Store '${storeName}' updated successfully.`, updateResult);
+      res.json(updateResult[0]); // Assuming you want to return the first (and should be only) updated record
+    } else {
+      res.status(404).json({ message: "Store not found or update failed" });
+    }
+  } catch (error) {
+    console.error("Error updating store:", error);
+    res.status(500).json({
+      error: "Error updating store. Please check server logs for more details.",
+    });
+  }
+});
+
 const startServer = async () => {
   Db = new DbClass();
   await Db.init();
