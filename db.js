@@ -120,10 +120,12 @@ class Db {
     return res.rows;
   }
 
-
   async filterStoresByRating(minRating) {
     try {
-      const res = await this.client.query('SELECT * FROM public.stores WHERE rating >= $1', [minRating]);
+      const res = await this.client.query(
+        "SELECT * FROM public.stores WHERE rating >= $1",
+        [minRating]
+      );
       return res.rows;
     } catch (error) {
       console.error("Error filtering stores by rating:", error);
@@ -133,7 +135,9 @@ class Db {
 
   async deleteStoreById(name) {
     try {
-      await this.client.query('DELETE FROM public.stores WHERE name = $1', [name]);
+      await this.client.query("DELETE FROM public.stores WHERE name = $1", [
+        name,
+      ]);
     } catch (error) {
       throw new Error("Error deleting store: " + error.message);
     }
@@ -191,6 +195,47 @@ class Db {
     return res.rows;
   }
 
+  async updateStore(
+    url,
+    district,
+    categories,
+    subCategory,
+    openingTime,
+    closingTime,
+    rating,
+    phone,
+    email,
+    name
+  ) {
+    const res = await this.client.query(
+      `UPDATE public.stores
+     SET url = $1,
+        district = $2,
+        categories = $3,
+        subCategory = $4,
+        openingTime = $5,
+        closingTime = $6,
+        rating = $7,
+        phone = $8,
+        email = $9
+    WHERE name = $10
+    RETURNING *;
+  `,
+      [
+        url,
+        district,
+        categories,
+        subCategory,
+        openingTime,
+        closingTime,
+        rating,
+        phone,
+        email,
+        name,
+      ]
+    );
+    return res.rows;
+  }
 }
 
 module.exports = Db;
