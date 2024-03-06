@@ -194,7 +194,6 @@ class Db {
     );
     return res.rows;
   }
-}
 
   async getStoreByName(storeName) {
     const res = await this.client.query(
