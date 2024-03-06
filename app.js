@@ -66,54 +66,9 @@ app.get("/store/:category", async (req, res) => {
   res.json(stores);
 });
 
-// OLD CATEGORY CODE
-///newww
-
-//Get all Shoppa
-// app.get("/shoppa", async (req, res) => {
-//   const stores = await Db.getAllShoppaStores();
-//   res.json(stores);
-// });
-
-// //Get all Ata
-// app.get("/ata", async (req, res) => {
-//   const stores = await Db.getAllAtaStores();
-//   res.json(stores);
-// });
-
-// //Get all Upplev
-// app.get("/upplev", async (req, res) => {
-//   const stores = await Db.getAllUpplevStores();
-//   res.json(stores);
-// });
-
-// //Get all ma bra
-// app.get("/mabra", async (req, res) => {
-//   const stores = await Db.getAllMabraStores();
-//   res.json(stores);
-// });
-
-// //Get all sova
-// app.get("/sova", async (req, res) => {
-//   const stores = await Db.getAllSovaStores();
-//   res.json(stores);
-// });
-
-//Get all ma bra
-app.get("/mabra", async (req, res) => {
-  const stores = await Db.getAllMabraStores();
-  res.json(stores);
-});
-
-//Get all sova
-app.get("/sova", async (req, res) => {
-  const stores = await Db.getAllSovaStores();
-  res.json(stores);
-});
-//////
 //filter
 
-app.delete("/stores/:name", verifyAdmin, async (req, res) => {
+app.delete("/stores/:name", async (req, res) => {
   const { name } = req.params;
   try {
     await Db.deleteStoreById(name);
@@ -193,30 +148,6 @@ app.put("/allStores/:name", async (req, res) => {
   }
 });
 
-///t2
-// app.put("/allStores/:name", async (req, res) => {
-//   const storeName = req.params.name;
-//   const storeUpdates = req.body;
-
-//   try {
-//     const updateResult = await Db.updateStore(storeName, storeUpdates);
-
-//     if (updateResult) {
-//       console.log(`Store '${storeName}' updated successfully.`, updateResult);
-//       res.json(updateResult);
-//     } else {
-//       res.status(404).json({ message: "Store not found or update failed" });
-//     }
-//   } catch (error) {
-//     console.error("Error updating store:", error);
-//     res.status(500).json({
-//       error: "Error updating store. Please check server logs for more details.",
-//     });
-//   }
-// });
-
-/////
-
 app.get("/login", async (req, res) => {
   const { username, password } = req.query;
   if (username === "bassima" && password === "12345") {
@@ -240,7 +171,7 @@ app.get("/protected", async (req, res) => {
 //POST REQUESTS
 
 //post new store
-app.post("/store/addStore", verifyAdmin, async (req, res) => {
+app.post("/store/addStore", async (req, res) => {
   const store = req.body;
   console.log(store);
   const newStore = await Db.createNewStore(store);
@@ -263,48 +194,6 @@ app.get("/stores/filter", async (req, res) => {
   } catch (error) {
     console.error("Error filtering stores by rating:", error);
     res.status(500).json({ error: "Internal server error" });
-  }
-});
-
-app.put("/allStores/:name", verifyAdmin, async (req, res) => {
-  console.log("Request body:", req.body);
-  const storeName = req.params.name;
-  const {
-    url,
-    district,
-    categories,
-    subcategory,
-    openingtime,
-    closingtime,
-    rating,
-    phone,
-    email,
-  } = req.body;
-
-  try {
-    const updateResult = await Db.updateStore(
-      url,
-      district,
-      categories,
-      subcategory,
-      openingtime,
-      closingtime,
-      rating,
-      phone,
-      email,
-      storeName
-    );
-    if (updateResult.length > 0) {
-      console.log(`Store '${storeName}' updated successfully.`, updateResult);
-      res.json(updateResult[0]); // Assuming you want to return the first (and should be only) updated record
-    } else {
-      res.status(404).json({ message: "Store not found or update failed" });
-    }
-  } catch (error) {
-    console.error("Error updating store:", error);
-    res.status(500).json({
-      error: "Error updating store. Please check server logs for more details.",
-    });
   }
 });
 
