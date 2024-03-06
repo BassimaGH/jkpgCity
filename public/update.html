@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Update Store</title>
+  </head>
+  <body>
+    <main>
+      <h1>Update Store</h1>
+      <form id="updateStoreForm">
+        <label for="storeName">Store Name:</label><br />
+        <input type="text" id="storeName" name="storeName" /><br />
+        <label for="storeURL">Store URL:</label><br />
+        <input type="text" id="storeURL" name="storeURL" /><br />
+        <label for="storeDistrict">Store District:</label><br />
+        <input type="text" id="storeDistrict" name="storeDistrict" /><br />
+        <label for="storeCategories">Categories:</label><br />
+        <input type="text" id="storeCategories" name="storeCategories" /><br />
+        <label for="storeSubCategory">Sub Category:</label><br />
+        <input
+          type="text"
+          id="storeSubCategory"
+          name="storeSubCategory"
+        /><br />
+        <label for="openingTime">Opening Time:</label><br />
+        <input type="text" id="openingTime" name="openingTime" /><br />
+        <label for="closingTime">Closing Time:</label><br />
+        <input type="text" id="closingTime" name="closingTime" /><br />
+        <label for="storeRating">Rating:</label><br />
+        <input
+          type="number"
+          id="storeRating"
+          name="storeRating"
+          min="0"
+          max="5"
+          step="0.1"
+        /><br />
+        <label for="storePhone">Phone:</label><br />
+        <input type="tel" id="storePhone" name="storePhone" /><br />
+        <label for="storeEmail">Email:</label><br />
+        <input type="email" id="storeEmail" name="storeEmail" /><br /><br />
+        <button type="submit">Update Store</button>
+      </form>
+    </main>
+  </body>
+  <script type="module" src="update.js"></script>
+</html>

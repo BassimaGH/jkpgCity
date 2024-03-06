@@ -76,49 +76,61 @@ class Db {
   }
 
   async getAllStores() {
-    const res = await this.client.query("SELECT * FROM public.stores");
-    return res.rows;
-  }
-
-  async getAllShoppaStores() {
     const res = await this.client.query(
-      `SELECT * FROM public.stores WHERE categories = $1`,
-      ["Shoppa"]
+      "SELECT * FROM public.stores ORDER BY name ASC"
     );
     return res.rows;
   }
 
-  async getAllAtaStores() {
+  async getAllCategories(categories) {
     const res = await this.client.query(
       `SELECT * FROM public.stores WHERE categories = $1`,
-      ["\u00c4ta"]
+      [categories]
     );
     return res.rows;
   }
 
-  async getAllUpplevStores() {
-    const res = await this.client.query(
-      `SELECT * FROM public.stores WHERE categories = $1`,
-      ["Upplev"]
-    );
-    return res.rows;
-  }
+  // OLD CATEGORY CODE
 
-  async getAllMabraStores() {
-    const res = await this.client.query(
-      `SELECT * FROM public.stores WHERE categories = $1`,
-      ["M\u00e5 bra"]
-    );
-    return res.rows;
-  }
+  // async getAllShoppaStores() {
+  //   const res = await this.client.query(
+  //     `SELECT * FROM public.stores WHERE categories = $1`,
+  //     ["Shoppa"]
+  //   );
+  //   return res.rows;
+  // }
 
-  async getAllSovaStores() {
-    const res = await this.client.query(
-      `SELECT * FROM public.stores WHERE categories = $1`,
-      ["Sova"]
-    );
-    return res.rows;
-  }
+  // async getAllAtaStores() {
+  //   const res = await this.client.query(
+  //     `SELECT * FROM public.stores WHERE categories = $1`,
+  //     ["\u00c4ta"]
+  //   );
+  //   return res.rows;
+  // }
+
+  // async getAllUpplevStores() {
+  //   const res = await this.client.query(
+  //     `SELECT * FROM public.stores WHERE categories = $1`,
+  //     ["Upplev"]
+  //   );
+  //   return res.rows;
+  // }
+
+  // async getAllMabraStores() {
+  //   const res = await this.client.query(
+  //     `SELECT * FROM public.stores WHERE categories = $1`,
+  //     ["M\u00e5 bra"]
+  //   );
+  //   return res.rows;
+  // }
+
+  // async getAllSovaStores() {
+  //   const res = await this.client.query(
+  //     `SELECT * FROM public.stores WHERE categories = $1`,
+  //     ["Sova"]
+  //   );
+  //   return res.rows;
+  // }
 
   async filterStoresByRating(minRating) {
     try {
@@ -207,9 +219,9 @@ class Db {
     url,
     district,
     categories,
-    subCategory,
-    openingTime,
-    closingTime,
+    subcategory,
+    openingtime,
+    closingtime,
     rating,
     phone,
     email,
@@ -220,9 +232,9 @@ class Db {
      SET url = $1,
         district = $2,
         categories = $3,
-        subCategory = $4,
-        openingTime = $5,
-        closingTime = $6,
+        subcategory = $4,
+        openingtime = $5,
+        closingtime = $6,
         rating = $7,
         phone = $8,
         email = $9
@@ -233,9 +245,9 @@ class Db {
         url,
         district,
         categories,
-        subCategory,
-        openingTime,
-        closingTime,
+        subcategory,
+        openingtime,
+        closingtime,
         rating,
         phone,
         email,

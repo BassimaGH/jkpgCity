@@ -7,6 +7,12 @@ const cookieParser = require("cookie-parser");
 const app = express();
 let Db = null;
 
+let p = __dirname + "/public";
+
+console.log(p);
+
+app.use(express.static(p));
+
 app.use(cookieParser());
 app.use(express.json());
 
@@ -52,25 +58,46 @@ app.get("/allStores/:name", async (req, res) => {
     res.status(500).json({ error: "Error fetching store." });
   }
 });
+
+//Get all categories stores
+app.get("/store/:category", async (req, res) => {
+  const { category } = req.params;
+  const stores = await Db.getAllCategories(category);
+  res.json(stores);
+});
+
+// OLD CATEGORY CODE
 ///newww
 
 //Get all Shoppa
-app.get("/shoppa", async (req, res) => {
-  const stores = await Db.getAllShoppaStores();
-  res.json(stores);
-});
+// app.get("/shoppa", async (req, res) => {
+//   const stores = await Db.getAllShoppaStores();
+//   res.json(stores);
+// });
 
-//Get all Ata
-app.get("/ata", async (req, res) => {
-  const stores = await Db.getAllAtaStores();
-  res.json(stores);
-});
+// //Get all Ata
+// app.get("/ata", async (req, res) => {
+//   const stores = await Db.getAllAtaStores();
+//   res.json(stores);
+// });
 
-//Get all Upplev
-app.get("/upplev", async (req, res) => {
-  const stores = await Db.getAllUpplevStores();
-  res.json(stores);
-});
+// //Get all Upplev
+// app.get("/upplev", async (req, res) => {
+//   const stores = await Db.getAllUpplevStores();
+//   res.json(stores);
+// });
+
+// //Get all ma bra
+// app.get("/mabra", async (req, res) => {
+//   const stores = await Db.getAllMabraStores();
+//   res.json(stores);
+// });
+
+// //Get all sova
+// app.get("/sova", async (req, res) => {
+//   const stores = await Db.getAllSovaStores();
+//   res.json(stores);
+// });
 
 //Get all ma bra
 app.get("/mabra", async (req, res) => {
@@ -217,6 +244,7 @@ app.post("/store/addStore", verifyAdmin, async (req, res) => {
   const store = req.body;
   console.log(store);
   const newStore = await Db.createNewStore(store);
+  console.log(newStore);
   res.json(newStore);
 });
 
@@ -245,9 +273,9 @@ app.put("/allStores/:name", verifyAdmin, async (req, res) => {
     url,
     district,
     categories,
-    subCategory,
-    openingTime,
-    closingTime,
+    subcategory,
+    openingtime,
+    closingtime,
     rating,
     phone,
     email,
@@ -258,9 +286,9 @@ app.put("/allStores/:name", verifyAdmin, async (req, res) => {
       url,
       district,
       categories,
-      subCategory,
-      openingTime,
-      closingTime,
+      subcategory,
+      openingtime,
+      closingtime,
       rating,
       phone,
       email,
