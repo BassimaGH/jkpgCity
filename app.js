@@ -38,39 +38,44 @@ app.get("/allStores/:name", async (req, res) => {
   }
 });
 
+//Get all categories stores
+app.get("/store/:category", async (req, res) => {
+  const { category } = req.params;
+  const stores = await Db.getAllCategories(category);
+  res.json(stores);
+});
+
+// OLD CATEGORY CODE
+
 //Get all Shoppa
-app.get("/shoppa", async (req, res) => {
-  const stores = await Db.getAllShoppaStores();
-  res.json(stores);
-});
+// app.get("/shoppa", async (req, res) => {
+//   const stores = await Db.getAllShoppaStores();
+//   res.json(stores);
+// });
 
-//Get all Ata
-app.get("/ata", async (req, res) => {
-  const stores = await Db.getAllAtaStores();
-  res.json(stores);
-});
+// //Get all Ata
+// app.get("/ata", async (req, res) => {
+//   const stores = await Db.getAllAtaStores();
+//   res.json(stores);
+// });
 
-//Get all Upplev
-app.get("/upplev", async (req, res) => {
-  const stores = await Db.getAllUpplevStores();
-  res.json(stores);
-});
+// //Get all Upplev
+// app.get("/upplev", async (req, res) => {
+//   const stores = await Db.getAllUpplevStores();
+//   res.json(stores);
+// });
 
-//Get all ma bra
-app.get("/mabra", async (req, res) => {
-  const stores = await Db.getAllMabraStores();
-  res.json(stores);
-});
+// //Get all ma bra
+// app.get("/mabra", async (req, res) => {
+//   const stores = await Db.getAllMabraStores();
+//   res.json(stores);
+// });
 
-//Get all sova
-app.get("/sova", async (req, res) => {
-  const stores = await Db.getAllSovaStores();
-  res.json(stores);
-});
-//////
-//filter
-// app.get("/allStores/:district", async (req, res) => {
-//   const storDistrict = req.params.district;
+// //Get all sova
+// app.get("/sova", async (req, res) => {
+//   const stores = await Db.getAllSovaStores();
+//   res.json(stores);
+// });
 
 app.delete("/stores/:name", async (req, res) => {
   const { name } = req.params;
@@ -154,7 +159,6 @@ app.post("/store/addStore", express.json(), async (req, res) => {
   const newStore = await Db.createNewStore(store);
   console.log(newStore);
   res.json(newStore);
-  //res.redirect(301, "index.html");
 });
 
 app.get("/stores/filter", async (req, res) => {
@@ -182,9 +186,6 @@ app.put("/allStores/:name", async (req, res) => {
     url,
     district,
     categories,
-    // subCategory,
-    // openingTime,
-    // closingTime,
     subcategory,
     openingtime,
     closingtime,
@@ -198,9 +199,6 @@ app.put("/allStores/:name", async (req, res) => {
       url,
       district,
       categories,
-      // subCategory,
-      // openingTime,
-      // closingTime,
       subcategory,
       openingtime,
       closingtime,

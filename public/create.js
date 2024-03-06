@@ -29,11 +29,11 @@ document
         if (!response.ok) {
           throw new Error("Network response was not ok");
         }
+        alert("Store Created successfully!");
         return response.text();
       })
       .then((data) => {
         console.log(data); // Log server response
-        //alert(data); // Show success message
         window.location.replace("index.html");
       })
       .catch((error) => {
@@ -49,7 +49,6 @@ document
 
     const storeName = document.getElementById("storeName").value;
     const storeDetails = {
-      // Adjust the property names to match your backend expectations
       url: document.getElementById("storeURL").value,
       district: document.getElementById("storeDistrict").value,
       categories: document.getElementById("storeCategories").value,
@@ -61,7 +60,6 @@ document
       email: document.getElementById("storeEmail").value,
     };
 
-    // Adjust the URL to match your backend's update endpoint
     const updateUrl = `http://localhost:3001/allStores/${encodeURIComponent(
       storeName
     )}`;
