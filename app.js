@@ -22,6 +22,21 @@ app.get("/allStores", async (req, res) => {
   res.json(stores);
 });
 
+app.get("/allStores/:name", async (req, res) => {
+  const storeName = req.params.name;
+  try {
+    const stores = await Db.getStoreByName(storeName);
+    if (stores.length > 0) {
+      res.json(stores);
+    } else {
+      res.status(404).json({ message: "Store not found" });
+    }
+  } catch (error) {
+    console.error("Error fetching store:", error);
+    res.status(500).json({ error: "Error fetching store." });
+  }
+});
+
 //Get all Shoppa
 app.get("/shoppa", async (req, res) => {
   const stores = await Db.getAllShoppaStores();
