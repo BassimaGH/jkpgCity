@@ -152,6 +152,7 @@ app.put("/allStores/:name", async (req, res) => {
 app.get("/logout", (req, res) => {
   // Clear the authentication cookie
   res.clearCookie("token");
+  res.redirect("/index.html");
   // Optionally redirect the user to the login page or send a response
   // res.send("You have been logged out successfully");
   // For redirection to the login page, you can use res.redirect('/login');
