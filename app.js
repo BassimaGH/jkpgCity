@@ -35,11 +35,10 @@ app.get("/allStores", verifyAdmin, async (req, res) => {
 
 // Logout route
 app.get("/logout", (req, res) => {
-  // Clear the authentication cookie
-  res.clearCookie("token");
-  // Optionally redirect the user to the login page or send a response
-  res.send("You have been logged out successfully");
-  // For redirection to the login page, you can use res.redirect('/login');
+  // Clear the authentication cookie, matching the path to where the cookie was set, if applicable.
+  res.clearCookie("token", { path: "/" }); // Adjust or omit the path as necessary
+  // Redirect or respond as needed
+  // res.redirect("/login.html"); // Adjust the redirect as necessary
 });
 
 // app.get("/allStores/:name", async (req, res) => {
@@ -161,7 +160,8 @@ app.get("/login", async (req, res) => {
   const { username, password } = req.query;
   if (username === "bassima" && password === "12345") {
     res.cookie("token", "super-secret-cookie", { httpOnly: true });
-    res.send("login worked");
+    // res.send("login worked");
+    res.redirect("/");
   } else {
     res.status(401).send("unauthorized");
   }
@@ -171,8 +171,11 @@ app.get("/protected", async (req, res) => {
   const { token } = req.cookies;
 
   if (token === "super-secret-cookie") {
-    res.send("protected route!!");
+    // res.send("protected route!!");
+
+    res.json({ isLoggedIn: true });
   } else {
+    res.json({ isLoggedIn: false });
     res.status(401).send("unauthorized");
   }
 });
