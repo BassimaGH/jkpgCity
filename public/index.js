@@ -45,17 +45,12 @@ document
   .getElementById("createStoreBtn")
   .addEventListener("click", goToCreatePage);
 
-// Event listener for the Login button
-document.getElementById("loginForm").addEventListener("click", function () {
-  window.location.href = "login.html"; // This should match the path you've set up for your login page
-});
-
 // Login
 
-// function goToLoginPage() {
-//   window.location.href = "login.html";
-// }
-// document.getElementById("LogineBtn").addEventListener("click", goToLoginPage);
+function goToLoginPage() {
+  window.location.href = "login.html";
+}
+document.getElementById("LogineBtn").addEventListener("click", goToLoginPage);
 
 // // Logout
 
