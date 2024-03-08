@@ -77,6 +77,52 @@ async function checkLoginStatus() {
   }
 }
 
+async function displayLoginLogoutButton() {
+  const isLoggedIn = await checkLoginStatus();
+
+  // Create login button
+  const loginButton = document.createElement("button");
+  loginButton.innerText = "Login";
+  loginButton.id = "loginBtn"; // Optionally add an ID for styling or further reference
+  loginButton.addEventListener("click", function () {
+    window.location.href = "login.html";
+  });
+
+  // Create logout button
+  const logoutButton = document.createElement("button");
+  logoutButton.innerText = "Logout";
+  logoutButton.id = "logoutBtn"; // Optionally add an ID for styling or further reference
+  logoutButton.addEventListener("click", function () {
+    window.location.href = "/logout";
+  });
+
+  const nav = document.getElementById("nav");
+  // Check if the user is logged in
+  if (isLoggedIn) {
+    // Remove login button if it exists
+    if (document.getElementById("loginBtn")) {
+      document.getElementById("loginBtn").remove();
+    }
+    // Append the logout button if it's not already present
+    if (!document.getElementById("logoutBtn")) {
+      // document.body.appendChild(logoutButton);
+      nav.appendChild(logoutButton);
+    }
+  } else {
+    // Remove logout button if it exists
+    if (document.getElementById("logoutBtn")) {
+      document.getElementById("logoutBtn").remove();
+    }
+    // Append the login button if it's not already present
+    if (!document.getElementById("loginBtn")) {
+      nav.appendChild(loginButton);
+    }
+  }
+}
+
+// Call the function to display the appropriate button based on login status
+displayLoginLogoutButton();
+
 // Function to render stores if logged in
 async function renderStoresIfLoggedIn() {
   const isLoggedIn = await checkLoginStatus();
@@ -119,6 +165,18 @@ async function renderStoresIfLoggedIn() {
 
         storesList.appendChild(storeContainer);
       });
+      const nav = document.getElementById("nav");
+
+      if (isLoggedIn) {
+        // Only show the create button if logged in
+        const createStoreButton = document.createElement("button");
+        createStoreButton.innerText = "Create Store";
+        createStoreButton.id = "createStoreBtn"; // Optionally add an ID for styling or further reference
+        createStoreButton.addEventListener("click", function () {
+          window.location.href = "create.html";
+        });
+        nav.appendChild(createStoreButton); // Append the button to the body
+      }
     });
 }
 
@@ -126,20 +184,24 @@ async function renderStoresIfLoggedIn() {
 renderStoresIfLoggedIn();
 
 // Navigation functions remain the same
-function goToCreatePage() {
-  window.location.href = "create.html";
-}
 
-document
-  .getElementById("createStoreBtn")
-  .addEventListener("click", goToCreatePage);
+// function goToCreatePage() {
+//   window.location.href = "create.html";
+// }
 
-function goToLoginPage() {
-  window.location.href = "login.html";
-}
-document.getElementById("LogineBtn").addEventListener("click", goToLoginPage);
+// document
+//   .getElementById("createStoreBtn")
+//   .addEventListener("click", goToCreatePage);
 
-function goToLogOutPage() {
-  window.location.href = "/logout";
-}
-document.getElementById("LogOuBtn").addEventListener("click", goToLogOutPage);
+// function goToLoginPage() {
+//   window.location.href = "login.html";
+// }
+
+// document.getElementById("LogineBtn").addEventListener("click", goToLoginPage);
+
+// function goToLogOutPage() {
+//   window.location.href = "/logout";
+// }
+// document.getElementById("LogOuBtn").addEventListener("click", goToLogOutPage);
+
+// Function to dynamically display login or logout button
