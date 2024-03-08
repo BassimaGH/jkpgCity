@@ -36,7 +36,7 @@ app.get("/allStores", verifyAdmin, async (req, res) => {
 // Logout route
 app.get("/logout", (req, res) => {
   // Clear the authentication cookie, matching the path to where the cookie was set, if applicable.
-  res.clearCookie("token", { path: "/" }); // Adjust or omit the path as necessary
+  res.clearCookie("token"); // Adjust or omit the path as necessary
   // Redirect or respond as needed
   // res.redirect("/login.html"); // Adjust the redirect as necessary
 });
