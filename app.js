@@ -173,14 +173,13 @@ app.get("/protected", async (req, res) => {
   const { token } = req.cookies;
 
   if (token === "super-secret-cookie") {
-    // res.send("protected route!!");
-
     res.json({ isLoggedIn: true });
   } else {
-    res.json({ isLoggedIn: false });
-    res.status(401).send("unauthorized");
+    // Modify here: send a single response indicating failure
+    res.status(401).json({ isLoggedIn: false, message: "unauthorized" });
   }
 });
+
 
 //POST REQUESTS
 
