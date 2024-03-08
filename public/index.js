@@ -52,6 +52,28 @@ function goToLoginPage() {
 }
 document.getElementById("LogineBtn").addEventListener("click", goToLoginPage);
 
+// This should be added to your index.js or a similar frontend JS file.
+
+document.getElementById("logoutButton").addEventListener("click", function (e) {
+  e.preventDefault();
+  fetch("http://localhost:3001/logout", {
+    method: "GET", // Assuming logout is a POST request; adjust if necessary.
+  }).then((response) => {
+    if (response.ok) {
+      // Optionally clear local storage or session storage if used
+      // localStorage.clear(); // Uncomment if using local storage
+      // sessionStorage.clear(); // Uncomment if using session storage
+
+      // Redirect to login page or homepage after successful logout
+      console.log("get it");
+      window.location.href = "logout.html";
+    } else {
+      window.location.href = "create.html";
+      console.log("does not get it");
+    }
+  });
+});
+
 // // Logout
 
 // function logout() {

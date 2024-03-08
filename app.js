@@ -33,15 +33,6 @@ app.get("/allStores", verifyAdmin, async (req, res) => {
   res.json(stores);
 });
 
-// Logout route
-app.get("/logout", (req, res) => {
-  // Clear the authentication cookie
-  res.clearCookie("token");
-  // Optionally redirect the user to the login page or send a response
-  // res.send("You have been logged out successfully");
-  // For redirection to the login page, you can use res.redirect('/login');
-});
-
 // app.get("/allStores/:name", async (req, res) => {
 //   const storeName = req.params.name;
 //   const stores = await Db.getStoreByName(storeName);
@@ -155,6 +146,15 @@ app.put("/allStores/:name", async (req, res) => {
       error: "Error updating store. Please check server logs for more details.",
     });
   }
+});
+
+// Logout route
+app.get("/logout", (req, res) => {
+  // Clear the authentication cookie
+  res.clearCookie("token");
+  // Optionally redirect the user to the login page or send a response
+  // res.send("You have been logged out successfully");
+  // For redirection to the login page, you can use res.redirect('/login');
 });
 
 app.get("/login", async (req, res) => {
