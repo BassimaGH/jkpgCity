@@ -28,7 +28,7 @@ const verifyAdmin = (req, res, next) => {
 
 // GET REQUESTS
 // Get all stores
-app.get("/allStores", verifyAdmin, async (req, res) => {
+app.get("/allStores", async (req, res) => {
   const stores = await Db.getAllStores(storeJson);
   res.json(stores);
 });
@@ -179,7 +179,6 @@ app.get("/protected", async (req, res) => {
     res.status(401).json({ isLoggedIn: false, message: "unauthorized" });
   }
 });
-
 
 //POST REQUESTS
 
