@@ -28,9 +28,18 @@ const verifyAdmin = (req, res, next) => {
 
 // GET REQUESTS
 // Get all stores
-app.get("/allStores", async (req, res) => {
+app.get("/allStores", verifyAdmin, async (req, res) => {
   const stores = await Db.getAllStores(storeJson);
   res.json(stores);
+});
+
+// Logout route
+app.get("/logout", (req, res) => {
+  // Clear the authentication cookie
+  res.clearCookie("token");
+  // Optionally redirect the user to the login page or send a response
+  res.send("You have been logged out successfully");
+  // For redirection to the login page, you can use res.redirect('/login');
 });
 
 // app.get("/allStores/:name", async (req, res) => {
