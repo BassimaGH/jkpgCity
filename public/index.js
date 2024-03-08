@@ -57,6 +57,7 @@
 // }
 // document.getElementById("LogOuBtn").addEventListener("click", goToLogOutPage);
 
+///WORKINGGGGGG///////////
 // Import the deleteStore function
 import { deleteStore } from "./delete.js";
 
