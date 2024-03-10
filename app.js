@@ -28,18 +28,9 @@ const verifyAdmin = (req, res, next) => {
 
 // GET REQUESTS
 // Get all stores
-app.get("/allStores", verifyAdmin, async (req, res) => {
+app.get("/allStores", async (req, res) => {
   const stores = await Db.getAllStores(storeJson);
   res.json(stores);
-});
-
-// Logout route
-app.get("/logout", (req, res) => {
-  // Clear the authentication cookie
-  res.clearCookie("token");
-  // Optionally redirect the user to the login page or send a response
-  res.send("You have been logged out successfully");
-  // For redirection to the login page, you can use res.redirect('/login');
 });
 
 // app.get("/allStores/:name", async (req, res) => {
@@ -157,11 +148,22 @@ app.put("/allStores/:name", async (req, res) => {
   }
 });
 
+// Logout route
+app.get("/logout", (req, res) => {
+  // Clear the authentication cookie
+  res.clearCookie("token");
+  res.redirect("/index.html");
+  // Optionally redirect the user to the login page or send a response
+  // res.send("You have been logged out successfully");
+  // For redirection to the login page, you can use res.redirect('/login');
+});
+
 app.get("/login", async (req, res) => {
   const { username, password } = req.query;
   if (username === "bassima" && password === "12345") {
     res.cookie("token", "super-secret-cookie", { httpOnly: true });
-    res.send("login worked");
+    // res.send("login worked");
+    res.redirect("/");
   } else {
     res.status(401).send("unauthorized");
   }
@@ -171,9 +173,10 @@ app.get("/protected", async (req, res) => {
   const { token } = req.cookies;
 
   if (token === "super-secret-cookie") {
-    res.send("protected route!!");
+    res.json({ isLoggedIn: true });
   } else {
-    res.status(401).send("unauthorized");
+    // Modify here: send a single response indicating failure
+    res.status(401).json({ isLoggedIn: false, message: "unauthorized" });
   }
 });
 
