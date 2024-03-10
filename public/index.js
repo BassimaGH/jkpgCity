@@ -13,6 +13,52 @@ const storesList = document.getElementById("stores-list");
 const categoryDropdown = document.getElementById("category");
 const subcategoryDropdown = document.getElementById("subcategory");
 
+// Reusable function to create store elements
+function createStoreElements(store) {
+  const storeContainer = document.createElement("div");
+  storeContainer.classList.add("store-container");
+
+  const storeName = document.createElement("h3");
+  storeName.textContent = store.name;
+  const storeUrl = document.createElement("p");
+  storeUrl.innerHTML = `<strong>URL:</strong> ${store.url}`;
+
+  const deleteBtn = document.createElement("button");
+  deleteBtn.innerText = "Delete";
+  deleteBtn.addEventListener("click", function () {
+    deleteStore(store.name);
+  });
+
+  const updateButton = document.createElement("button");
+  updateButton.innerText = "Update";
+  updateButton.addEventListener("click", function () {
+    window.location.href = `update.html?storeName=${encodeURIComponent(
+      store.name
+    )}`;
+  });
+
+  storeContainer.appendChild(storeName);
+  storeContainer.appendChild(storeUrl);
+  storeContainer.appendChild(deleteBtn);
+  storeContainer.appendChild(updateButton);
+
+  return storeContainer;
+}
+
+// Function to fetch and display stores based on category
+async function getStoresByCategory(category) {
+  try {
+    const response = await fetch(`${baseUrl}/store/${category}`);
+    const stores = await response.json();
+    storesList.innerHTML = ""; // Clear previous results
+    stores.forEach((store) => {
+      storesList.appendChild(createStoreElements(store));
+    });
+  } catch (error) {
+    console.error("Error:", error);
+  }
+}
+
 // Function to fetch and display stores based on category and subcategory
 async function getStoresByCategoryAndSubcategory(category, subcategory) {
   try {
@@ -20,33 +66,7 @@ async function getStoresByCategoryAndSubcategory(category, subcategory) {
     const stores = await response.json();
     storesList.innerHTML = ""; // Clear previous results
     stores.forEach((store) => {
-      const storeContainer = document.createElement("div");
-      storeContainer.classList.add("store-container");
-
-      const storeName = document.createElement("h3");
-      storeName.textContent = store.name;
-      const storeUrl = document.createElement("p");
-      storeUrl.innerHTML = `<strong>URL:</strong> ${store.url}`;
-
-      const deleteBtn = document.createElement("button");
-      deleteBtn.innerText = "Delete";
-      deleteBtn.addEventListener("click", function () {
-        deleteStore(store.name);
-      });
-
-      const updateButton = document.createElement("button");
-      updateButton.innerText = "Update";
-      updateButton.addEventListener("click", function () {
-        window.location.href = `update.html?storeName=${encodeURIComponent(
-          store.name
-        )}`;
-      });
-
-      storeContainer.appendChild(storeName);
-      storeContainer.appendChild(storeUrl);
-      storeContainer.appendChild(deleteBtn);
-      storeContainer.appendChild(updateButton);
-      storesList.appendChild(storeContainer);
+      storesList.appendChild(createStoreElements(store));
     });
   } catch (error) {
     console.error("Error:", error);
@@ -104,6 +124,8 @@ document.getElementById("filterBtn").addEventListener("click", function () {
   const subcategory = subcategoryDropdown.value;
   if (category && subcategory) {
     getStoresByCategoryAndSubcategory(category, subcategory);
+  } else if (category) {
+    getStoresByCategory(category);
   } else {
     alert("Please select both category and subcategory.");
   }
@@ -123,33 +145,7 @@ async function fetchAllStores() {
     const stores = await response.json();
     storesList.innerHTML = ""; // Clear previous results
     stores.forEach((store) => {
-      const storeContainer = document.createElement("div");
-      storeContainer.classList.add("store-container");
-
-      const storeName = document.createElement("h3");
-      storeName.textContent = store.name;
-      const storeUrl = document.createElement("p");
-      storeUrl.innerHTML = `<strong>URL:</strong> ${store.url}`;
-
-      const deleteBtn = document.createElement("button");
-      deleteBtn.innerText = "Delete";
-      deleteBtn.addEventListener("click", function () {
-        deleteStore(store.name);
-      });
-
-      const updateButton = document.createElement("button");
-      updateButton.innerText = "Update";
-      updateButton.addEventListener("click", function () {
-        window.location.href = `update.html?storeName=${encodeURIComponent(
-          store.name
-        )}`;
-      });
-
-      storeContainer.appendChild(storeName);
-      storeContainer.appendChild(storeUrl);
-      storeContainer.appendChild(deleteBtn);
-      storeContainer.appendChild(updateButton);
-      storesList.appendChild(storeContainer);
+      storesList.appendChild(createStoreElements(store));
     });
   } catch (error) {
     console.error("Error fetching all stores:", error);
