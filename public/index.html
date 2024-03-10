@@ -7,9 +7,27 @@
   </head>
   <body>
     <h1>Welcome!!</h1>
+    <label for="category">Select Category:</label>
+    <select id="category">
+      <option value="all">All</option>
+      <option value="Shoppa">Shoppa</option>
+      <option value="Upplev">Upplev</option>
+      <option value="Må bra">Må bra</option>
+      <option value="Äta">Äta</option>
+      <option value="Sova">Sova</option>
+    </select>
+
+    <label for="subcategory">Select Subcategory:</label>
+    <select id="subcategory">
+      <option value="">Select Subcategory</option>
+    </select>
+
+    <button id="filterBtn">Filter</button>
+    <button id="resetBtn">Reset Filter</button>
+
     <button id="createStoreBtn">Go to Create Store Page</button>
     <div id="stores-list"></div>
-    
+
     <script type="module" src="index.js"></script>
   </body>
 </html>
