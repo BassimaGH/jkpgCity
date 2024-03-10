@@ -76,54 +76,26 @@ class Db {
   }
 
   async getAllStores() {
-    const res = await this.client.query("SELECT * FROM public.stores");
-    return res.rows;
-  }
-
-  async getAllShoppaStores() {
     const res = await this.client.query(
-      `SELECT * FROM public.stores WHERE categories = $1`,
-      ["Shoppa"]
+      "SELECT * FROM public.stores ORDER BY name ASC"
     );
     return res.rows;
   }
 
-  async getAllAtaStores() {
+  async getAllCategories(categories) {
     const res = await this.client.query(
       `SELECT * FROM public.stores WHERE categories = $1`,
-      ["\u00c4ta"]
+      [categories]
     );
     return res.rows;
   }
-
-  async getAllUpplevStores() {
-    const res = await this.client.query(
-      `SELECT * FROM public.stores WHERE categories = $1`,
-      ["Upplev"]
-    );
-    return res.rows;
-  }
-
-  async getAllMabraStores() {
-    const res = await this.client.query(
-      `SELECT * FROM public.stores WHERE categories = $1`,
-      ["M\u00e5 bra"]
-    );
-    return res.rows;
-  }
-
-  async getAllSovaStores() {
-    const res = await this.client.query(
-      `SELECT * FROM public.stores WHERE categories = $1`,
-      ["Sova"]
-    );
-    return res.rows;
-  }
-
 
   async filterStoresByRating(minRating) {
     try {
-      const res = await this.client.query('SELECT * FROM public.stores WHERE rating >= $1', [minRating]);
+      const res = await this.client.query(
+        "SELECT * FROM public.stores WHERE rating >= $1",
+        [minRating]
+      );
       return res.rows;
     } catch (error) {
       console.error("Error filtering stores by rating:", error);
@@ -133,7 +105,9 @@ class Db {
 
   async deleteStoreById(name) {
     try {
-      await this.client.query('DELETE FROM public.stores WHERE name = $1', [name]);
+      await this.client.query("DELETE FROM public.stores WHERE name = $1", [
+        name,
+      ]);
     } catch (error) {
       throw new Error("Error deleting store: " + error.message);
     }
@@ -191,6 +165,55 @@ class Db {
     return res.rows;
   }
 
+  async getStoreByName(storeName) {
+    const res = await this.client.query(
+      `SELECT * FROM public.stores WHERE name = $1 LIMIT 1;`,
+      [storeName]
+    );
+    return res.rows;
+  }
+
+  async updateStore(
+    url,
+    district,
+    categories,
+    subcategory,
+    openingtime,
+    closingtime,
+    rating,
+    phone,
+    email,
+    name
+  ) {
+    const res = await this.client.query(
+      `UPDATE public.stores
+     SET url = $1,
+        district = $2,
+        categories = $3,
+        subcategory = $4,
+        openingtime = $5,
+        closingtime = $6,
+        rating = $7,
+        phone = $8,
+        email = $9
+    WHERE name = $10
+    RETURNING *;
+  `,
+      [
+        url,
+        district,
+        categories,
+        subcategory,
+        openingtime,
+        closingtime,
+        rating,
+        phone,
+        email,
+        name,
+      ]
+    );
+    return res.rows;
+  }
 }
 
 module.exports = Db;
