@@ -4,7 +4,6 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "start":"snowpack dev",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
@@ -14,8 +13,5 @@
     "dotenv": "^16.4.1",
     "express": "^4.18.2",
     "pg": "^8.11.3"
-  },
-  "devDependencies": {
-    "snowpack": "^3.7.1"
   }
 }
