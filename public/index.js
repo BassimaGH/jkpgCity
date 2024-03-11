@@ -65,6 +65,20 @@ import { deleteStore } from "./delete.js";
 const source = "http://localhost:3001/allStores";
 const loginCheckUrl = "http://localhost:3001/protected"; // URL for the login check
 
+// Function to get store by district
+async function getStoresByDistrict(district) {
+  try {
+    const response = await fetch(`${baseUrl}/store/${district}`);
+    const stores = await response.json();
+    storesList.innerHTML = ""; // Clear previous results
+    stores.forEach((store) => {
+      storesList.appendChild(createStoreElements(store));
+    });
+  } catch (error) {
+    console.error("Error:", error);
+  }
+}
+
 // Function to check login status
 async function checkLoginStatus() {
   try {
