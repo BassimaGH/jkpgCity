@@ -98,10 +98,21 @@ app.get("/allStores/:district", async (req, res) => {
 });
 
 //Get all shoppa sub-categories stores
-app.get("/:category/:subCategories", async (req, res) => {
+app.get("/store/:category/:subCategories", async (req, res) => {
   const { category, subCategories } = req.params;
   const stores = await Db.getAllSubCategories(category, subCategories);
   res.json(stores);
+});
+
+// Route to fetch subcategories based on the selected category
+app.get("/subcategories/:category", async (req, res) => {
+  const { category } = req.params;
+  try {
+    const subcategories = await Db.getSubcategoriesByCategory(category);
+    res.json(subcategories);
+  } catch (error) {
+    res.status(500).json({ error: "Internal server error" });
+  }
 });
 
 // update final
