@@ -13,6 +13,7 @@ const loginCheckUrl = "http://localhost:3001/protected"; // URL for the login ch
 const storesList = document.getElementById("stores-list");
 const categoryDropdown = document.getElementById("category");
 const subcategoryDropdown = document.getElementById("subcategory");
+const nav = document.getElementById("nav");
 
 // Function to check login status
 async function checkLoginStatus() {
@@ -45,7 +46,6 @@ async function displayLoginLogoutButton() {
     window.location.href = "/logout";
   });
 
-  const nav = document.getElementById("nav");
   // Check if the user is logged in
   if (isLoggedIn) {
     // Remove login button if it exists
@@ -208,33 +208,23 @@ document.getElementById("resetBtn").addEventListener("click", function () {
   fetchAllStores(); // Call function to fetch all stores
 });
 
-// Function to fetch and display all stores
-// async function fetchAllStores() {
-//   try {
-//     const response = await fetch(`${baseUrl}/allStores`);
-//     const stores = await response.json();
-//     storesList.innerHTML = ""; // Clear previous results
-//     const isLoggedIn = await checkLoginStatus();
+// Function to create and append the 'Create Store' button
+async function createCreateStoreButton() {
+  const isLoggedIn = await checkLoginStatus();
 
-//     stores.forEach((store) => {
-//       storesList.appendChild(createStoreElements(store));
-//     });
-//     const nav = document.getElementById("nav");
+  if (isLoggedIn) {
+    // Only show the create button if logged in
+    const createStoreButton = document.createElement("button");
+    createStoreButton.innerText = "Create Store";
+    createStoreButton.id = "createStoreBtn"; // Optionally add an ID for styling or further reference
+    createStoreButton.addEventListener("click", function () {
+      window.location.href = "create.html";
+    });
+    nav.appendChild(createStoreButton); // Append the button to the body
+  }
+}
 
-//     if (isLoggedIn) {
-//       // Only show the create button if logged in
-//       const createStoreButton = document.createElement("button");
-//       createStoreButton.innerText = "Create Store";
-//       createStoreButton.id = "createStoreBtn"; // Optionally add an ID for styling or further reference
-//       createStoreButton.addEventListener("click", function () {
-//         window.location.href = "create.html";
-//       });
-//       nav.appendChild(createStoreButton); // Append the button to the body
-//     }
-//   } catch (error) {
-//     console.error("Error fetching all stores:", error);
-//   }
-// }
+createCreateStoreButton();
 
 // Function to fetch and display all stores
 async function fetchAllStores() {
@@ -251,25 +241,11 @@ async function fetchAllStores() {
         storesList.appendChild(storeElement);
       })
     );
-
-    const nav = document.getElementById("nav");
-
-    if (isLoggedIn) {
-      // Only show the create button if logged in
-      const createStoreButton = document.createElement("button");
-      createStoreButton.innerText = "Create Store";
-      createStoreButton.id = "createStoreBtn"; // Optionally add an ID for styling or further reference
-      createStoreButton.addEventListener("click", function () {
-        window.location.href = "create.html";
-      });
-      nav.appendChild(createStoreButton); // Append the button to the body
-    }
   } catch (error) {
     console.error("Error fetching all stores:", error);
   }
 }
 
-// Initial fetch to display all stores
 fetchAllStores();
 
 ///WORKINGGGGGG///////////
