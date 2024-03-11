@@ -165,6 +165,26 @@ class Db {
     return res.rows;
   }
 
+  async getDistrictFilter(district) {
+    try {
+      const res = await this.client.query(
+        `
+      SELECT DISTINCT district
+      FROM public.stores
+      WHERE district = $1;
+    `,
+        [district]
+      );
+      // Extract subcategory values from the query result
+      // const subcategories = res.map((row) => row.subCategory);
+      // return subcategories;
+      return res.rows;
+    } catch (error) {
+      console.error("Error fetching district:", error);
+      throw error;
+    }
+  }
+
   async getStoreByName(storeName) {
     const res = await this.client.query(
       `SELECT * FROM public.stores WHERE name = $1 LIMIT 1;`,
