@@ -13,7 +13,7 @@ const loginCheckUrl = "http://localhost:3001/protected"; // URL for the login ch
 const storesList = document.getElementById("stores-list");
 const categoryDropdown = document.getElementById("category");
 const subcategoryDropdown = document.getElementById("subcategory");
-const districtDropdown = document.getElementById("district");
+// const districtDropdown = document.getElementById("districtDropdown");
 const nav = document.getElementById("nav");
 
 // Function to check login status
@@ -110,25 +110,47 @@ async function createStoreElements(store) {
   storesList.appendChild(storeContainer);
 }
 
-async function getStoresByDistrict(district) {
+///////////////////////////////////////////
+async function fetchDistrictsAndPopulateDropdown() {
+  const dropdown = document.getElementById("districtDropdown");
+
   try {
-    const response = await fetch(`${baseUrl}/store/${district}`);
-    const stores = await response.json();
-    storesList.innerHTML = ""; // Clear previous results
-    await Promise.all(
-      stores.map(async (store) => {
-        const storeElement = await createStoreElements(store);
-        storesList.appendChild(storeElement);
-      })
-    );
+    const response = await fetch("/district");
+    const districts = await response.json();
+
+    districts.forEach((district) => {
+      const option = document.createElement("option");
+      option.value = district.district;
+      option.textContent = district.district;
+      dropdown.appendChild(option);
+    });
   } catch (error) {
-    console.error("Error:", error);
+    console.error("Error fetching districts:", error);
   }
 }
+// Call the function when the page loads
+fetchDistrictsAndPopulateDropdown();
+
+// async function getStoresByDistrict(selectedDistrict) {
+//   try {
+//     const response = await fetch(`/allStores/${selectedDistrict}`);
+//     const stores = await response.json();
+//     storesList.innerHTML = ""; // Clear previous results
+//     await Promise.all(
+//       stores.map(async (store) => {
+//         const storeElement = await createStoreElements(store);
+//         storesList.appendChild(storeElement);
+//       })
+//     );
+//   } catch (error) {
+//     console.error("Error:", error);
+//   }
+// }
+
 // Function to clear subcategory dropdown
-function cleardistrictDropdown() {
-  districtDropdown.innerHTML = '<option value="">Select district</option>';
-}
+// function cleardistrictDropdown() {
+//   districtDropdown.innerHTML = '<option value="">Select district</option>';
+// }
 
 ////////////////////////////////////////////
 // Function to fetch and display stores based on category
@@ -214,13 +236,13 @@ function clearSubcategoryDropdown() {
 document.getElementById("filterBtn").addEventListener("click", function () {
   const category = categoryDropdown.value;
   const subcategory = subcategoryDropdown.value;
-  const district = districtDropdown.value;
+  const selectedDistrict = districtDropdown.value;
   if (category && subcategory) {
     getStoresByCategoryAndSubcategory(category, subcategory);
   } else if (category) {
     getStoresByCategory(category);
-  } else if (district) {
-    getStoresByDistrict(district);
+    // } else if (selectedDistrict) {
+    //   getStoresByDistrict(selectedDistrict);
   } else {
     alert("Please select both category and subcategory.");
   }
@@ -230,7 +252,7 @@ document.getElementById("filterBtn").addEventListener("click", function () {
 document.getElementById("resetBtn").addEventListener("click", function () {
   categoryDropdown.selectedIndex = 0; // Reset category dropdown
   clearSubcategoryDropdown(); // Clear subcategory dropdown
-  cleardistrictDropdown();
+  // cleardistrictDropdown();
   fetchAllStores(); // Call function to fetch all stores
 });
 
