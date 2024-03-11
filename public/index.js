@@ -64,7 +64,7 @@ import { deleteStore } from "./delete.js";
 // URL of your backend endpoints
 const source = "http://localhost:3001/allStores";
 const loginCheckUrl = "http://localhost:3001/protected"; // URL for the login check
-
+const baseUrl = "http://localhost:3001";
 // Function to get store by district
 async function getStoresByDistrict(district) {
   try {
