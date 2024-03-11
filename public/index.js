@@ -11,8 +11,6 @@ import { deleteStore } from "./delete.js";
 const baseUrl = "http://localhost:3001";
 const loginCheckUrl = "http://localhost:3001/protected"; // URL for the login check
 
-const baseUrl = "http://localhost:3001";
-
 ////////////////////////////////////////////////////////////////////
 // Function to get store by district
 // async function getStoresByDistrict(district) {
@@ -79,7 +77,6 @@ const storesList = document.getElementById("stores-list");
 const categoryDropdown = document.getElementById("category");
 const subcategoryDropdown = document.getElementById("subcategory");
 const nav = document.getElementById("nav");
-
 
 // Function to check login status
 async function checkLoginStatus() {
