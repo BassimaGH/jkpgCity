@@ -90,6 +90,26 @@ class Db {
     return res.rows;
   }
 
+  async getSubcategoriesByCategory(categories) {
+    try {
+      const res = await this.client.query(
+        `
+      SELECT DISTINCT subCategory
+      FROM public.stores
+      WHERE categories = $1;
+    `,
+        [categories]
+      );
+      // Extract subcategory values from the query result
+      // const subcategories = res.map((row) => row.subCategory);
+      // return subcategories;
+      return res.rows;
+    } catch (error) {
+      console.error("Error fetching subcategories:", error);
+      throw error;
+    }
+  }
+
   async filterStoresByRating(minRating) {
     try {
       const res = await this.client.query(
