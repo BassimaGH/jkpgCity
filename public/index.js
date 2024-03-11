@@ -65,19 +65,68 @@ import { deleteStore } from "./delete.js";
 const source = "http://localhost:3001/allStores";
 const loginCheckUrl = "http://localhost:3001/protected"; // URL for the login check
 const baseUrl = "http://localhost:3001";
+
+////////////////////////////////////////////////////////////////////
 // Function to get store by district
-async function getStoresByDistrict(district) {
-  try {
-    const response = await fetch(`${baseUrl}/store/${district}`);
-    const stores = await response.json();
-    storesList.innerHTML = ""; // Clear previous results
-    stores.forEach((store) => {
-      storesList.appendChild(createStoreElements(store));
-    });
-  } catch (error) {
-    console.error("Error:", error);
-  }
-}
+// async function getStoresByDistrict(district) {
+//   try {
+//     const response = await fetch(`${baseUrl}/store/${district}`);
+//     const stores = await response.json();
+//     storesList.innerHTML = ""; // Clear previous results
+//     stores.forEach((store) => {
+//       storesList.appendChild(createStoreElements(store));
+//     });
+//   } catch (error) {
+//     console.error("Error:", error);
+//   }
+// }
+
+// // Event listener for category dropdown change
+// districtDropdown.addEventListener("change", async function () {
+//   const category = districtDropdown.value;
+//   if (district) {
+//     // Fetch subcategories based on the selected category
+//     try {
+//       const response = await fetch(`${baseUrl}/${district}`);
+//       const district = await response.json();
+//       populateSubcategoryDropdownDistrict(district);
+//     } catch (error) {
+//       console.error("Error fetching subcategories:", error);
+//     }
+//   } else {
+//     // If no category is selected, clear the subcategory dropdown
+//     populateSubcategoryDropdownDistrict();
+//   }
+// });
+
+// // Function to populate subcategory dropdown
+// function populateSubcategoryDropdownDistrict(district) {
+//   console.log("Subcategories received:", subcategories); // Log the value of subcategories
+//   subcategoryDropdown.innerHTML =
+//     '<option value="">Select Subcategory</option>';
+//   // Check if subcategories is an array before iterating over it
+//   if (Array.isArray(subcategories)) {
+//     subcategories.forEach((subcategory) => {
+//       // Access the 'name' property of each subcategory object
+//       const subcategoryName = subcategory.subcategory;
+//       const option = document.createElement("option");
+//       option.value = subcategoryName; // Assuming 'name' is the property containing the subcategory name
+//       option.textContent = subcategoryName; // Set the option text to the subcategory name
+//       subcategoryDropdown.appendChild(option);
+//     });
+//   } else {
+//     // Handle the case where subcategories is not an array (e.g., empty result set)
+//     console.error("Subcategories is not an array:", subcategories);
+//   }
+// }
+
+// // Function to clear subcategory dropdown
+// function clearSubcategoryDropdown() {
+//   subcategoryDropdown.innerHTML =
+//     '<option value="">Select Subcategory</option>';
+// }
+
+///////////////////////////////////////////////////////////////////////////
 
 // Function to check login status
 async function checkLoginStatus() {
