@@ -184,7 +184,14 @@ class Db {
     );
     return res.rows;
   }
+  ////
+  async getDistricts() {
+    const query = "SELECT DISTINCT district FROM stores ORDER BY district;";
+    const res = await this.client.query(query);
+    return res.rows; // Assuming 'district' is a column in your 'stores' table
+  }
 
+  ////
   async getStoreByName(storeName) {
     const res = await this.client.query(
       `SELECT * FROM public.stores WHERE name = $1 LIMIT 1;`,

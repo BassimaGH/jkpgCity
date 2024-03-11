@@ -10,10 +10,10 @@ import { deleteStore } from "./delete.js";
 
 const baseUrl = "http://localhost:3001";
 const loginCheckUrl = "http://localhost:3001/protected"; // URL for the login check
-
 const storesList = document.getElementById("stores-list");
 const categoryDropdown = document.getElementById("category");
 const subcategoryDropdown = document.getElementById("subcategory");
+const districtDropdown = document.getElementById("district");
 const nav = document.getElementById("nav");
 
 // Function to check login status
@@ -110,6 +110,27 @@ async function createStoreElements(store) {
   storesList.appendChild(storeContainer);
 }
 
+async function getStoresByDistrict(district) {
+  try {
+    const response = await fetch(`${baseUrl}/store/${district}`);
+    const stores = await response.json();
+    storesList.innerHTML = ""; // Clear previous results
+    await Promise.all(
+      stores.map(async (store) => {
+        const storeElement = await createStoreElements(store);
+        storesList.appendChild(storeElement);
+      })
+    );
+  } catch (error) {
+    console.error("Error:", error);
+  }
+}
+// Function to clear subcategory dropdown
+function cleardistrictDropdown() {
+  districtDropdown.innerHTML = '<option value="">Select district</option>';
+}
+
+////////////////////////////////////////////
 // Function to fetch and display stores based on category
 async function getStoresByCategory(category) {
   try {
@@ -193,10 +214,13 @@ function clearSubcategoryDropdown() {
 document.getElementById("filterBtn").addEventListener("click", function () {
   const category = categoryDropdown.value;
   const subcategory = subcategoryDropdown.value;
+  const district = districtDropdown.value;
   if (category && subcategory) {
     getStoresByCategoryAndSubcategory(category, subcategory);
   } else if (category) {
     getStoresByCategory(category);
+  } else if (district) {
+    getStoresByDistrict(district);
   } else {
     alert("Please select both category and subcategory.");
   }
@@ -206,6 +230,7 @@ document.getElementById("filterBtn").addEventListener("click", function () {
 document.getElementById("resetBtn").addEventListener("click", function () {
   categoryDropdown.selectedIndex = 0; // Reset category dropdown
   clearSubcategoryDropdown(); // Clear subcategory dropdown
+  cleardistrictDropdown();
   fetchAllStores(); // Call function to fetch all stores
 });
 
