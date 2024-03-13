@@ -109,6 +109,48 @@ async function createStoreElements(store) {
 
   storesList.appendChild(storeContainer);
 }
+///////////////////DISTRICT FILTER//////////////
+
+async function fetchAndPopulateDistricts() {
+  try {
+    const response = await fetch("/district");
+    if (!response.ok) {
+      throw new Error("Network response was not ok");
+    }
+    const districts = await response.json();
+
+    const districtDropdown = document.getElementById("districtDropdown");
+    districts.forEach((district) => {
+      const option = document.createElement("option");
+      option.value = district.district;
+      option.textContent = district.district;
+      districtDropdown.appendChild(option);
+    });
+  } catch (error) {
+    console.error("Failed to fetch districts:", error);
+  }
+}
+
+document.addEventListener("DOMContentLoaded", fetchAndPopulateDistricts);
+
+async function getStoresByDistrict(district) {
+  try {
+    // Adjust the URL path as needed to match your API endpoint for fetching stores by district
+    const response = await fetch(`${baseUrl}/allStores/${district}`);
+    const stores = await response.json();
+    storesList.innerHTML = ""; // Clear previous results
+    await Promise.all(
+      stores.map(async (store) => {
+        const storeElement = await createStoreElements(store);
+        storesList.appendChild(storeElement);
+      })
+    );
+  } catch (error) {
+    console.error("Error fetching stores by district:", error);
+  }
+}
+
+/////////////////ENDS HERE////////////////////
 
 // Function to fetch and display stores based on category
 async function getStoresByCategory(category) {
@@ -193,10 +235,13 @@ function clearSubcategoryDropdown() {
 document.getElementById("filterBtn").addEventListener("click", function () {
   const category = categoryDropdown.value;
   const subcategory = subcategoryDropdown.value;
+  const selectedDistrict = document.getElementById("districtDropdown").value;
   if (category && subcategory) {
     getStoresByCategoryAndSubcategory(category, subcategory);
   } else if (category) {
     getStoresByCategory(category);
+  } else if (selectedDistrict) {
+    getStoresByDistrict(selectedDistrict);
   } else {
     alert("Please select both category and subcategory.");
   }
