@@ -1,11 +1,3 @@
-/*
-
-
-    FILTERS CATEGORY AND SUB-CATEGORY (Worksss)
-
-
-*/
-
 import { deleteStore } from "./delete.js";
 
 const baseUrl = "http://localhost:3001";
@@ -111,6 +103,42 @@ async function createStoreElements(store) {
 }
 
 ///////////////////////////////////////////
+async function fetchDistrictsAndPopulateDropdown() {
+  const dropdown = document.getElementById("districtDropdown");
+
+  try {
+    const response = await fetch("/district");
+    const districts = await response.json();
+
+    districts.forEach((district) => {
+      const option = document.createElement("option");
+      option.value = district.district;
+      option.textContent = district.district;
+      dropdown.appendChild(option);
+    });
+  } catch (error) {
+    console.error("Error fetching districts:", error);
+  }
+}
+// Call the function when the page loads
+fetchDistrictsAndPopulateDropdown();
+////////////////////////////////////////////////
+// Function to fetch and display stores based on category
+async function getStoresByCategory(category) {
+  try {
+    const response = await fetch(`${baseUrl}/store/${category}`);
+    const stores = await response.json();
+    storesList.innerHTML = ""; // Clear previous results
+    await Promise.all(
+      stores.map(async (store) => {
+        const storeElement = await createStoreElements(store);
+        storesList.appendChild(storeElement);
+      })
+    );
+  } catch (error) {
+    console.error("Error:", error);
+  }
+}
 
 // Function to fetch and display stores based on category and subcategory
 async function getStoresByCategoryAndSubcategory(category, subcategory) {
@@ -183,10 +211,10 @@ document.getElementById("filterBtn").addEventListener("click", function () {
     getStoresByCategoryAndSubcategory(category, subcategory);
   } else if (category) {
     getStoresByCategory(category);
-    // } else if (selectedDistrict) {
-    //   getStoresByDistrict(selectedDistrict);
+  } else if (selectedDistrict) {
+    getStoresByDistrict(selectedDistrict);
   } else {
-    alert("Please select both category and subcategory.");
+    alert("Please select a category, subcategory, or district.");
   }
 });
 
@@ -237,65 +265,3 @@ async function fetchAllStores() {
 }
 
 fetchAllStores();
-
-///WORKINGGGGGG///////////
-
-// Function to render stores if logged in
-// async function renderStoresIfLoggedIn() {
-//   const isLoggedIn = await checkLoginStatus();
-
-//   fetch(source)
-//     .then((response) => response.json())
-//     .then((stores) => {
-//       console.log(stores);
-//       const storesList = document.getElementById("stores-list");
-//       stores.forEach((store) => {
-//         const storeContainer = document.createElement("div");
-//         storeContainer.classList.add("store-container");
-
-//         const storeName = document.createElement("h3");
-//         storeName.textContent = store.name;
-//         const storeUrl = document.createElement("p");
-//         storeUrl.innerHTML = `<strong>URL:</strong> ${store.url}`;
-//         if (isLoggedIn) {
-//           const deleteBtn = document.createElement("button");
-//           deleteBtn.innerText = "Delete";
-//           deleteBtn.addEventListener("click", function () {
-//             deleteStore(store.name);
-//           });
-
-//           const updateButton = document.createElement("button");
-//           updateButton.innerText = "Update";
-//           updateButton.addEventListener("click", function () {
-//             window.location.href = `update.html?storeName=${encodeURIComponent(
-//               store.name
-//             )}`;
-//           });
-
-//           storeContainer.appendChild(deleteBtn);
-//           storeContainer.appendChild(updateButton);
-//         }
-//         storeContainer.appendChild(storeName);
-//         storeContainer.appendChild(storeUrl);
-
-//         // This condition is already ensured but kept for clarity
-
-//         storesList.appendChild(storeContainer);
-//       });
-//       const nav = document.getElementById("nav");
-
-//       if (isLoggedIn) {
-//         // Only show the create button if logged in
-//         const createStoreButton = document.createElement("button");
-//         createStoreButton.innerText = "Create Store";
-//         createStoreButton.id = "createStoreBtn"; // Optionally add an ID for styling or further reference
-//         createStoreButton.addEventListener("click", function () {
-//           window.location.href = "create.html";
-//         });
-//         nav.appendChild(createStoreButton); // Append the button to the body
-//       }
-//     });
-// }
-
-// Call the function to render stores if logged in
-// renderStoresIfLoggedIn();
