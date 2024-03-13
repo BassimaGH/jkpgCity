@@ -1,11 +1,3 @@
-/*
-
-
-    FILTERS CATEGORY AND SUB-CATEGORY (Worksss)
-
-
-*/
-
 import { deleteStore } from "./delete.js";
 
 const baseUrl = "http://localhost:3001";
@@ -14,6 +6,7 @@ const loginCheckUrl = "http://localhost:3001/protected"; // URL for the login ch
 const storesList = document.getElementById("stores-list");
 const categoryDropdown = document.getElementById("category");
 const subcategoryDropdown = document.getElementById("subcategory");
+const districtDropdown = document.getElementById("district");
 const nav = document.getElementById("nav");
 
 // Function to check login status
@@ -119,7 +112,7 @@ async function fetchAndPopulateDistricts() {
     }
     const districts = await response.json();
 
-    const districtDropdown = document.getElementById("districtDropdown");
+    const districtDropdown = document.getElementById("district");
     districts.forEach((district) => {
       const option = document.createElement("option");
       option.value = district.district;
@@ -150,6 +143,9 @@ async function getStoresByDistrict(district) {
   }
 }
 
+function clearDistrictDropdown() {
+  districtDropdown.innerHTML = '<option value="">Select district</option>';
+}
 /////////////////ENDS HERE////////////////////
 
 // Function to fetch and display stores based on category
@@ -235,13 +231,13 @@ function clearSubcategoryDropdown() {
 document.getElementById("filterBtn").addEventListener("click", function () {
   const category = categoryDropdown.value;
   const subcategory = subcategoryDropdown.value;
-  const selectedDistrict = document.getElementById("districtDropdown").value;
+  const district = districtDropdown.value;
   if (category && subcategory) {
     getStoresByCategoryAndSubcategory(category, subcategory);
   } else if (category) {
     getStoresByCategory(category);
-  } else if (selectedDistrict) {
-    getStoresByDistrict(selectedDistrict);
+  } else if (district) {
+    getStoresByDistrict(district);
   } else {
     alert("Please select both category and subcategory.");
   }
