@@ -111,42 +111,6 @@ async function createStoreElements(store) {
 }
 
 ///////////////////////////////////////////
-async function fetchDistrictsAndPopulateDropdown() {
-  const dropdown = document.getElementById("districtDropdown");
-
-  try {
-    const response = await fetch("/district");
-    const districts = await response.json();
-
-    districts.forEach((district) => {
-      const option = document.createElement("option");
-      option.value = district.district;
-      option.textContent = district.district;
-      dropdown.appendChild(option);
-    });
-  } catch (error) {
-    console.error("Error fetching districts:", error);
-  }
-}
-// Call the function when the page loads
-fetchDistrictsAndPopulateDropdown();
-
-// Function to fetch and display stores based on category
-async function getStoresByCategory(category) {
-  try {
-    const response = await fetch(`${baseUrl}/store/${category}`);
-    const stores = await response.json();
-    storesList.innerHTML = ""; // Clear previous results
-    await Promise.all(
-      stores.map(async (store) => {
-        const storeElement = await createStoreElements(store);
-        storesList.appendChild(storeElement);
-      })
-    );
-  } catch (error) {
-    console.error("Error:", error);
-  }
-}
 
 // Function to fetch and display stores based on category and subcategory
 async function getStoresByCategoryAndSubcategory(category, subcategory) {
