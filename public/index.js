@@ -5,7 +5,6 @@ const loginCheckUrl = "http://localhost:3001/protected"; // URL for the login ch
 const storesList = document.getElementById("stores-list");
 const categoryDropdown = document.getElementById("category");
 const subcategoryDropdown = document.getElementById("subcategory");
-// const districtDropdown = document.getElementById("districtDropdown");
 const nav = document.getElementById("nav");
 
 // Function to check login status
@@ -103,25 +102,25 @@ async function createStoreElements(store) {
 }
 
 ///////////////////////////////////////////
-async function fetchDistrictsAndPopulateDropdown() {
-  const dropdown = document.getElementById("districtDropdown");
+// async function fetchDistrictsAndPopulateDropdown() {
+//   const dropdown = document.getElementById("districtDropdown");
 
-  try {
-    const response = await fetch("/district");
-    const districts = await response.json();
+//   try {
+//     const response = await fetch("/district");
+//     const districts = await response.json();
 
-    districts.forEach((district) => {
-      const option = document.createElement("option");
-      option.value = district.district;
-      option.textContent = district.district;
-      dropdown.appendChild(option);
-    });
-  } catch (error) {
-    console.error("Error fetching districts:", error);
-  }
-}
-// Call the function when the page loads
-fetchDistrictsAndPopulateDropdown();
+//     districts.forEach((district) => {
+//       const option = document.createElement("option");
+//       option.value = district.district;
+//       option.textContent = district.district;
+//       dropdown.appendChild(option);
+//     });
+//   } catch (error) {
+//     console.error("Error fetching districts:", error);
+//   }
+// }
+
+// fetchDistrictsAndPopulateDropdown();
 ////////////////////////////////////////////////
 // Function to fetch and display stores based on category
 async function getStoresByCategory(category) {
@@ -211,8 +210,6 @@ document.getElementById("filterBtn").addEventListener("click", function () {
     getStoresByCategoryAndSubcategory(category, subcategory);
   } else if (category) {
     getStoresByCategory(category);
-  } else if (selectedDistrict) {
-    getStoresByDistrict(selectedDistrict);
   } else {
     alert("Please select a category, subcategory, or district.");
   }
@@ -222,7 +219,6 @@ document.getElementById("filterBtn").addEventListener("click", function () {
 document.getElementById("resetBtn").addEventListener("click", function () {
   categoryDropdown.selectedIndex = 0; // Reset category dropdown
   clearSubcategoryDropdown(); // Clear subcategory dropdown
-  // cleardistrictDropdown();
   fetchAllStores(); // Call function to fetch all stores
 });
 
