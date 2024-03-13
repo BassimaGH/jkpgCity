@@ -131,28 +131,6 @@ async function fetchDistrictsAndPopulateDropdown() {
 // Call the function when the page loads
 fetchDistrictsAndPopulateDropdown();
 
-// async function getStoresByDistrict(selectedDistrict) {
-//   try {
-//     const response = await fetch(`/allStores/${selectedDistrict}`);
-//     const stores = await response.json();
-//     storesList.innerHTML = ""; // Clear previous results
-//     await Promise.all(
-//       stores.map(async (store) => {
-//         const storeElement = await createStoreElements(store);
-//         storesList.appendChild(storeElement);
-//       })
-//     );
-//   } catch (error) {
-//     console.error("Error:", error);
-//   }
-// }
-
-// Function to clear subcategory dropdown
-// function cleardistrictDropdown() {
-//   districtDropdown.innerHTML = '<option value="">Select district</option>';
-// }
-
-////////////////////////////////////////////
 // Function to fetch and display stores based on category
 async function getStoresByCategory(category) {
   try {
