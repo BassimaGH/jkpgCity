@@ -1,7 +1,16 @@
+/*
+
+
+    FILTERS CATEGORY AND SUB-CATEGORY (Worksss)
+
+
+*/
+
 import { deleteStore } from "./delete.js";
 
 const baseUrl = "http://localhost:3001";
 const loginCheckUrl = "http://localhost:3001/protected"; // URL for the login check
+
 const storesList = document.getElementById("stores-list");
 const categoryDropdown = document.getElementById("category");
 const subcategoryDropdown = document.getElementById("subcategory");
@@ -101,27 +110,6 @@ async function createStoreElements(store) {
   storesList.appendChild(storeContainer);
 }
 
-///////////////////////////////////////////
-// async function fetchDistrictsAndPopulateDropdown() {
-//   const dropdown = document.getElementById("districtDropdown");
-
-//   try {
-//     const response = await fetch("/district");
-//     const districts = await response.json();
-
-//     districts.forEach((district) => {
-//       const option = document.createElement("option");
-//       option.value = district.district;
-//       option.textContent = district.district;
-//       dropdown.appendChild(option);
-//     });
-//   } catch (error) {
-//     console.error("Error fetching districts:", error);
-//   }
-// }
-
-// fetchDistrictsAndPopulateDropdown();
-////////////////////////////////////////////////
 // Function to fetch and display stores based on category
 async function getStoresByCategory(category) {
   try {
@@ -205,13 +193,12 @@ function clearSubcategoryDropdown() {
 document.getElementById("filterBtn").addEventListener("click", function () {
   const category = categoryDropdown.value;
   const subcategory = subcategoryDropdown.value;
-  const selectedDistrict = districtDropdown.value;
   if (category && subcategory) {
     getStoresByCategoryAndSubcategory(category, subcategory);
   } else if (category) {
     getStoresByCategory(category);
   } else {
-    alert("Please select a category, subcategory, or district.");
+    alert("Please select both category and subcategory.");
   }
 });
 
