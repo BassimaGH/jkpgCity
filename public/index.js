@@ -104,44 +104,51 @@ async function createStoreElements(store) {
 }
 ///////////////////DISTRICT FILTER//////////////
 
-async function fetchAndPopulateDistricts() {
-  try {
-    const response = await fetch("/district");
-    if (!response.ok) {
-      throw new Error("Network response was not ok");
-    }
-    const districts = await response.json();
+// async function fetchAndPopulateDistricts() {
+//   try {
+//     const response = await fetch("/district");
+//     if (!response.ok) {
+//       throw new Error("Network response was not ok");
+//     }
+//     const districts = await response.json();
 
-    const districtDropdown = document.getElementById("district");
-    districts.forEach((district) => {
-      const option = document.createElement("option");
-      option.value = district.district;
-      option.textContent = district.district;
-      districtDropdown.appendChild(option);
-    });
-  } catch (error) {
-    console.error("Failed to fetch districts:", error);
-  }
-}
+//     const districtDropdown = document.getElementById("district");
+//     districts.forEach((district) => {
+//       const option = document.createElement("option");
+//       option.value = district.district;
+//       option.textContent = district.district;
+//       districtDropdown.appendChild(option);
+//     });
+//   } catch (error) {
+//     console.error("Failed to fetch districts:", error);
+//   }
+// }
 
-document.addEventListener("DOMContentLoaded", fetchAndPopulateDistricts);
+// document.addEventListener("DOMContentLoaded", fetchAndPopulateDistricts);
 
-async function getStoresByDistrict(district) {
-  try {
-    // Adjust the URL path as needed to match your API endpoint for fetching stores by district
-    const response = await fetch(`${baseUrl}/allStores/${district}`);
-    const stores = await response.json();
-    storesList.innerHTML = ""; // Clear previous results
-    await Promise.all(
-      stores.map(async (store) => {
-        const storeElement = await createStoreElements(store);
-        storesList.appendChild(storeElement);
-      })
-    );
-  } catch (error) {
-    console.error("Error fetching stores by district:", error);
-  }
-}
+// async function getStoresByDistrict(district) {
+//   try {
+//     // Ensure the URL correctly points to your backend endpoint for fetching stores by district.
+//     const response = await fetch(`${baseUrl}/allStores/${district}`);
+//     if (!response.ok) {
+//       throw new Error("Failed to fetch stores");
+//     }
+//     const stores = await response.json();
+//     storesList.innerHTML = ""; // Clear previous results
+
+//     if (stores.length === 0) {
+//       storesList.innerHTML = "<p>No stores found in this district.</p>";
+//     } else {
+//       stores.forEach((store) => {
+//         createStoreElements(store); // Assuming this function appends store elements to the DOM
+//       });
+//     }
+//   } catch (error) {
+//     console.error("Error fetching stores by district:", error);
+//     storesList.innerHTML =
+//       "<p>Error fetching stores. Please try again later.</p>";
+//   }
+// }
 
 function clearDistrictDropdown() {
   districtDropdown.innerHTML = '<option value="">Select district</option>';
@@ -238,6 +245,7 @@ document.getElementById("filterBtn").addEventListener("click", function () {
     getStoresByCategory(category);
   } else if (district) {
     getStoresByDistrict(district);
+    console.log("HII");
   } else {
     alert("Please select both category and subcategory.");
   }
@@ -247,6 +255,7 @@ document.getElementById("filterBtn").addEventListener("click", function () {
 document.getElementById("resetBtn").addEventListener("click", function () {
   categoryDropdown.selectedIndex = 0; // Reset category dropdown
   clearSubcategoryDropdown(); // Clear subcategory dropdown
+  clearDistrictDropdown();
   fetchAllStores(); // Call function to fetch all stores
 });
 
