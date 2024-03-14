@@ -116,7 +116,7 @@ async function createStoreElements(store) {
 
   storesList.appendChild(storeContainer);
 }
-
+/*
 async function fetchAndPopulateDistricts() {
   try {
     const response = await fetch("/district");
@@ -135,9 +135,11 @@ async function fetchAndPopulateDistricts() {
   } catch (error) {
     console.error("Failed to fetch districts:", error);
   }
+  
 }
 
 document.addEventListener("DOMContentLoaded", fetchAndPopulateDistricts);
+*/
 
 // async function getStoresByDistrict(district) {
 //   try {
@@ -174,10 +176,11 @@ document.addEventListener("DOMContentLoaded", fetchAndPopulateDistricts);
 //       alert("Please select district.");
 //     }
 //   });
-
+/*
 function clearDistrictDropdown() {
   districtDropdown.innerHTML = '<option value="">Select district</option>';
 }
+*/
 ///////////////////  DISTRICT FILTER//////////////
 
 // Function to fetch and display stores based on category
@@ -263,7 +266,8 @@ function clearSubcategoryDropdown() {
 document.getElementById("filterBtn").addEventListener("click", function () {
   const category = categoryDropdown.value;
   const subcategory = subcategoryDropdown.value;
-  const district = districtDropdown.value;
+  
+  //const district = districtDropdown.value;
   if (category && subcategory) {
     getStoresByCategoryAndSubcategory(category, subcategory);
   } else if (category) {
