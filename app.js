@@ -97,6 +97,21 @@ app.get("/allStores/:district", async (req, res) => {
   }
 });
 
+////
+app.get("/district", async (req, res) => {
+  try {
+    const db = new DbClass();
+    await db.init();
+    const district = await db.getDistricts();
+    res.json(district);
+  } catch (error) {
+    console.error("Failed to get district:", error);
+    res.status(500).send("Server error");
+  }
+});
+
+/////
+
 //Get all shoppa sub-categories stores
 app.get("/store/:category/:subCategories", async (req, res) => {
   const { category, subCategories } = req.params;
