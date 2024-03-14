@@ -28,7 +28,8 @@
       </div>
     </div>
     <!-- Hero -->
-
+    
+    
     <!-- filters -->
 
     <div class="filterSection">
@@ -63,8 +64,76 @@
     <div class="createButton" id="nav"></div>
 
     <div id="stores-list"></div>
-
+    <svg width="800" height="400">
+      <!-- Axes -->
+      <line x1="150" y1="350" x2="1000" y2="350" stroke="black" />
+      <line x1="150" y1="50" x2="150" y2="350" stroke="black" />
+      <!-- Labels -->
+      <text x="150" y="30" text-anchor="middle">Category Statistics</text>
+      <!-- Values on Axes -->
+      <text x="135" y="350" text-anchor="end">0</text>
+      <text x="135" y="300" text-anchor="end">50</text>
+      <text x="135" y="250" text-anchor="end">100</text>
+      <text x="135" y="200" text-anchor="end">150</text>
+      <text x="135" y="150" text-anchor="end">200</text>
+      <!-- Bar 1 -->
+      <rect
+        x="200"
+        y="250"
+        width="75"
+        height="100"
+        fill="#8155BA"
+        class="NumberOfSova"
+      />
+      <!-- Dark blue -->
+      <text x="235" y="380" text-anchor="middle">Sova</text>
+      <!-- Bar 2 -->
+      <rect
+        x="320"
+        y="250"
+        width="75"
+        height="100"
+        fill="#695E93"
+        class="NumberOfShoppa"
+      />
+      <!-- Light blue -->
+      <text x="355" y="380" text-anchor="middle">Shoppa</text>
+      <!-- Bar 3 -->
+      <rect
+        x="440"
+        y="300"
+        width="75"
+        height="50"
+        fill="#BEAFC2"
+        class="NumberOfUpplev"
+      />
+      <!-- Orange -->
+      <text x="475" y="380" text-anchor="middle">Upplev</text>
+      <!-- Bar 4 -->
+      <rect
+        x="560"
+        y="250"
+        width="75"
+        height="100"
+        fill="#D9A1A0"
+        class="NumberOfMåBra"
+      />
+      <!-- Light blue -->
+      <text x="595" y="380" text-anchor="middle">Må Bra</text>
+       <!-- Bar 5 -->
+       <rect
+       x="680"
+       y="250"
+       width="75"
+       height="100"
+       fill="#A58CB3"
+       class="NumberOfÄta"
+     />
+     <!-- Light blue -->
+     <text x="715" y="380" text-anchor="middle">Äta</text>
+    </svg>
     <script type="module" src="index.js"></script>
     <script src="index.js"></script>
+    <script src="svg.js"></script>
   </body>
 </html>
