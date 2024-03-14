@@ -68,7 +68,7 @@ app.get("/store/:category", async (req, res) => {
 
 //filter
 
-app.delete("/stores/:name", async (req, res) => {
+app.delete("/stores/:name", verifyAdmin, async (req, res) => {
   const { name } = req.params;
   try {
     await Db.deleteStoreById(name);
@@ -105,7 +105,7 @@ app.get("/:category/:subCategories", async (req, res) => {
 });
 
 // update final
-app.put("/allStores/:name", async (req, res) => {
+app.put("/allStores/:name", verifyAdmin, async (req, res) => {
   console.log("Request body:", req.body);
   const storeName = req.params.name;
   const {
@@ -171,7 +171,7 @@ app.get("/protected", async (req, res) => {
 //POST REQUESTS
 
 //post new store
-app.post("/store/addStore", async (req, res) => {
+app.post("/store/addStore", verifyAdmin, async (req, res) => {
   const store = req.body;
   console.log(store);
   const newStore = await Db.createNewStore(store);
