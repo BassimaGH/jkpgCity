@@ -4,15 +4,67 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>JKPG City</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="spectre.min.css" />
+    <link rel="stylesheet" href="spectre-exp.min.css" />
+    <link rel="stylesheet" href="spectre-icons.min.css" />
   </head>
   <body>
-    <h1>Welcome!!</h1>
-    <!-- <button id="createStoreBtn">Go to Create Store Page</button> -->
-    <!-- <button id="LogineBtn">Go to Login</button>
-    <button id="LogOuBtn">logout</button> -->
-    <div id="nav"></div>
+    <!-- NAV -->
+    <header class="navbar">
+      <section class="navbar-section">
+        <a href="/" class="btn btn-link">JKPG CITY</a>
+      </section>
+
+      <section id="navBar" class="navbar-section"></section>
+    </header>
+
+    <!-- NAV -->
+
+    <!-- Hero -->
+    <div class="hero bg-gray hero-lg">
+      <div class="hero-body">
+        <h1>Welcome to JPKG</h1>
+      </div>
+    </div>
+    <!-- Hero -->
+
+    <!-- filters -->
+
+    <div class="filterSection">
+      <div class="form-group">
+        <label for="category">Select Category:</label>
+        <select class="form-select" id="category">
+          <option value="all">All</option>
+          <option value="Shoppa">Shoppa</option>
+          <option value="Upplev">Upplev</option>
+          <option value="Må bra">Må bra</option>
+          <option value="Äta">Äta</option>
+          <option value="Sova">Sova</option>
+        </select>
+
+        <label for="subcategory">Select Subcategory:</label>
+        <select class="form-select" id="subcategory">
+          <option value="">Select Subcategory</option>
+        </select>
+
+        <button class="btn btnFilter" id="filterBtn">Filter</button>
+        <button class="btn btnFilter" id="resetBtn">Reset Filter</button>
+      </div>
+    </div>
+
+    <!-- 
+    <label for="district">Select a District:</label>
+    <select id="district">
+      <option value="">Select a District</option>
+    </select>
+    <button id="filterBtnDistrict">Filter district</button> -->
+
+    <div class="createButton" id="nav"></div>
+
     <div id="stores-list"></div>
 
     <script type="module" src="index.js"></script>
+    <script src="index.js"></script>
   </body>
 </html>

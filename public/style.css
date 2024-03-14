@@ -1,0 +1,61 @@
+.storeContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  background-color: #f1f1fc;
+  color: #4b48d6;
+  margin: 1rem;
+  padding: 1rem;
+  border-radius: 4px;
+}
+
+.storeContainer div {
+  padding: 0.5rem 0;
+}
+
+.storeContainer div:not(:last-child) {
+  border-bottom: 1px solid #721c24;
+}
+
+.storeTitle {
+  font-weight: bold; /* make the store title bold */
+}
+
+.moreInfo {
+  margin-left: auto;
+  color: #721c24; /* same dark color for the arrow/text */
+  cursor: pointer; /* to indicate it's clickable */
+}
+
+/* Arrow symbol indicating more information, similar to the one in the image */
+.moreInfo::after {
+  content: "→";
+  font-size: 1.5rem;
+  margin-left: 0.5rem;
+}
+
+.filterSection {
+  margin-top: 2%;
+  margin-left: 15%;
+  margin-right: 15%;
+}
+
+.btnFilter {
+  margin-top: 2%;
+}
+
+.createButton {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  padding-left: 15%;
+  padding-right: 15%;
+  margin-top: 2%;
+  margin-bottom: 2%;
+}
+
+#stores-list {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* Creates two columns of equal width */
+  gap: 10px; /* Optional: Adds some space between the grid items */
+}

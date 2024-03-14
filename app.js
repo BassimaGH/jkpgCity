@@ -68,7 +68,7 @@ app.get("/store/:category", async (req, res) => {
 
 //filter
 
-app.delete("/stores/:name", async (req, res) => {
+app.delete("/stores/:name", verifyAdmin, async (req, res) => {
   const { name } = req.params;
   try {
     await Db.deleteStoreById(name);
@@ -97,15 +97,41 @@ app.get("/allStores/:district", async (req, res) => {
   }
 });
 
+////
+app.get("/district", async (req, res) => {
+  try {
+    const db = new DbClass();
+    await db.init();
+    const district = await db.getDistricts();
+    res.json(district);
+  } catch (error) {
+    console.error("Failed to get district:", error);
+    res.status(500).send("Server error");
+  }
+});
+
+/////
+
 //Get all shoppa sub-categories stores
-app.get("/:category/:subCategories", async (req, res) => {
+app.get("/store/:category/:subCategories", async (req, res) => {
   const { category, subCategories } = req.params;
   const stores = await Db.getAllSubCategories(category, subCategories);
   res.json(stores);
 });
 
+// Route to fetch subcategories based on the selected category
+app.get("/subcategories/:category", async (req, res) => {
+  const { category } = req.params;
+  try {
+    const subcategories = await Db.getSubcategoriesByCategory(category);
+    res.json(subcategories);
+  } catch (error) {
+    res.status(500).json({ error: "Internal server error" });
+  }
+});
+
 // update final
-app.put("/allStores/:name", async (req, res) => {
+app.put("/allStores/:name", verifyAdmin, async (req, res) => {
   console.log("Request body:", req.body);
   const storeName = req.params.name;
   const {
@@ -183,7 +209,7 @@ app.get("/protected", async (req, res) => {
 //POST REQUESTS
 
 //post new store
-app.post("/store/addStore", async (req, res) => {
+app.post("/store/addStore", verifyAdmin, async (req, res) => {
   const store = req.body;
   console.log(store);
   const newStore = await Db.createNewStore(store);
