@@ -5,7 +5,9 @@
   "main": "app.js",
   "scripts": {
     "start":"snowpack dev",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "docker": "docker build -t jkpgcity . && docker tag jkpgcity localhost:5001/jkpgcity && docker push localhost:5001/jkpgcity",
+    "k8s-deploy": "kubectl apply -f kubernetes/namespace.yaml && kubectl apply -f kubernetes/deployment.yaml && kubectl apply -f kubernetes/service.yaml && kubectl rollout restart -n jkpgcity deployment jkpgcity-deployment",
+    "k8s-run": "kubectl port-forward svc/jkpgcity-service 3001:3001 -n jkpgcity"
   },
   "author": "",
   "license": "ISC",
