@@ -8,6 +8,7 @@ const categoryDropdown = document.getElementById("category");
 const subcategoryDropdown = document.getElementById("subcategory");
 const districtDropdown = document.getElementById("district");
 const nav = document.getElementById("nav");
+const navBar = document.getElementById("navBar");
 
 // Function to check login status
 async function checkLoginStatus() {
@@ -27,7 +28,8 @@ async function displayLoginLogoutButton() {
   // Create login button
   const loginButton = document.createElement("button");
   loginButton.innerText = "Login";
-  loginButton.id = "loginBtn"; // Optionally add an ID for styling or further reference
+  loginButton.id = "loginBtn";
+  loginButton.classList.add("btn");
   loginButton.addEventListener("click", function () {
     window.location.href = "login.html";
   });
@@ -35,7 +37,8 @@ async function displayLoginLogoutButton() {
   // Create logout button
   const logoutButton = document.createElement("button");
   logoutButton.innerText = "Logout";
-  logoutButton.id = "logoutBtn"; // Optionally add an ID for styling or further reference
+  logoutButton.id = "logoutBtn";
+  logoutButton.classList.add("btn");
   logoutButton.addEventListener("click", function () {
     window.location.href = "/logout";
   });
@@ -49,7 +52,7 @@ async function displayLoginLogoutButton() {
     // Append the logout button if it's not already present
     if (!document.getElementById("logoutBtn")) {
       // document.body.appendChild(logoutButton);
-      nav.appendChild(logoutButton);
+      navBar.appendChild(logoutButton);
     }
   } else {
     // Remove logout button if it exists
@@ -58,7 +61,7 @@ async function displayLoginLogoutButton() {
     }
     // Append the login button if it's not already present
     if (!document.getElementById("loginBtn")) {
-      nav.appendChild(loginButton);
+      navBar.appendChild(loginButton);
     }
   }
 }
@@ -71,21 +74,33 @@ async function createStoreElements(store) {
   const isLoggedIn = await checkLoginStatus();
 
   const storeContainer = document.createElement("div");
-  storeContainer.classList.add("store-container");
+  storeContainer.classList.add("storeContainer");
 
   const storeName = document.createElement("h3");
   storeName.textContent = store.name;
+
+  const visitWebsiteBtn = document.createElement("button");
+  visitWebsiteBtn.innerText = "Visit Website";
+  visitWebsiteBtn.classList.add("btn");
+  visitWebsiteBtn.addEventListener("click", function () {
+    window.location =
+      store.url.substring(0, 4) === "http" ? store.url : `//${store.url}`;
+  });
+
   const storeUrl = document.createElement("p");
-  storeUrl.innerHTML = `<strong>URL:</strong> ${store.url}`;
+  storeUrl.innerHTML = `<strong>District:</strong> ${store.district}`;
   if (isLoggedIn) {
     const deleteBtn = document.createElement("button");
     deleteBtn.innerText = "Delete";
+    deleteBtn.classList.add("btn");
+
     deleteBtn.addEventListener("click", function () {
       deleteStore(store.name);
     });
 
     const updateButton = document.createElement("button");
     updateButton.innerText = "Update";
+    updateButton.classList.add("btn");
     updateButton.addEventListener("click", function () {
       window.location.href = `update.html?storeName=${encodeURIComponent(
         store.name
@@ -97,29 +112,10 @@ async function createStoreElements(store) {
   }
   storeContainer.appendChild(storeName);
   storeContainer.appendChild(storeUrl);
-
-  // This condition is already ensured but kept for clarity
+  storeContainer.appendChild(visitWebsiteBtn);
 
   storesList.appendChild(storeContainer);
 }
-
-///////////////////  DISTRICT FILTER//////////////
-// async function getStoresByDistrict(district) {
-//   try {
-//     const response = await fetch(`${baseUrl}/store/${district}`);
-//     const stores = await response.json();
-//     storesList.innerHTML = ""; // Clear previous results
-//     await Promise.all(
-//       stores.map(async (store) => {
-//         const storeElement = await createStoreElements(store);
-//         storesList.appendChild(storeElement);
-//       })
-//     );
-//   } catch (error) {
-//     console.error("Error:", error);
-//   }
-// }
-/////////////////// dynamic DISTRICT FILTER//////////////
 
 async function fetchAndPopulateDistricts() {
   try {
@@ -143,41 +139,41 @@ async function fetchAndPopulateDistricts() {
 
 document.addEventListener("DOMContentLoaded", fetchAndPopulateDistricts);
 
-async function getStoresByDistrict(district) {
-  try {
-    // Ensure the URL correctly points to your backend endpoint for fetching stores by district.
-    const response = await fetch(`${baseUrl}/allStores/${district}`);
-    if (!response.ok) {
-      throw new Error("Failed to fetch stores");
-    }
-    const stores = await response.json();
-    storesList.innerHTML = ""; // Clear previous results
+// async function getStoresByDistrict(district) {
+//   try {
+//     // Ensure the URL correctly points to your backend endpoint for fetching stores by district.
+//     const response = await fetch(`${baseUrl}/allStores/${district}`);
+//     if (!response.ok) {
+//       throw new Error("Failed to fetch stores");
+//     }
+//     const stores = await response.json();
+//     storesList.innerHTML = ""; // Clear previous results
 
-    if (stores.length === 0) {
-      storesList.innerHTML = "<p>No stores found in this district.</p>";
-    } else {
-      stores.forEach((store) => {
-        createStoreElements(store); // Assuming this function appends store elements to the DOM
-      });
-    }
-  } catch (error) {
-    console.error("Error fetching stores by district:", error);
-    storesList.innerHTML =
-      "<p>Error fetching stores. Please try again later.</p>";
-  }
-}
+//     if (stores.length === 0) {
+//       storesList.innerHTML = "<p>No stores found in this district.</p>";
+//     } else {
+//       stores.forEach((store) => {
+//         createStoreElements(store); // Assuming this function appends store elements to the DOM
+//       });
+//     }
+//   } catch (error) {
+//     console.error("Error fetching stores by district:", error);
+//     storesList.innerHTML =
+//       "<p>Error fetching stores. Please try again later.</p>";
+//   }
+// }
 
-document
-  .getElementById("filterBtnDistrict")
-  .addEventListener("click", function () {
-    const district = districtDropdown.value;
-    if (district) {
-      getStoresByDistrict(district);
-      console.log("HII");
-    } else {
-      alert("Please select district.");
-    }
-  });
+// document
+//   .getElementById("filterBtnDistrict")
+//   .addEventListener("click", function () {
+//     const district = districtDropdown.value;
+//     if (district) {
+//       getStoresByDistrict(district);
+//       console.log("HII");
+//     } else {
+//       alert("Please select district.");
+//     }
+//   });
 
 function clearDistrictDropdown() {
   districtDropdown.innerHTML = '<option value="">Select district</option>';
@@ -284,7 +280,7 @@ document.getElementById("filterBtn").addEventListener("click", function () {
 document.getElementById("resetBtn").addEventListener("click", function () {
   categoryDropdown.selectedIndex = 0; // Reset category dropdown
   clearSubcategoryDropdown(); // Clear subcategory dropdown
-  clearDistrictDropdown();
+  // clearDistrictDropdown();
   fetchAllStores(); // Call function to fetch all stores
 });
 
@@ -296,7 +292,8 @@ async function createCreateStoreButton() {
     // Only show the create button if logged in
     const createStoreButton = document.createElement("button");
     createStoreButton.innerText = "Create Store";
-    createStoreButton.id = "createStoreBtn"; // Optionally add an ID for styling or further reference
+    createStoreButton.id = "createStoreBtn";
+    createStoreButton.classList.add("btn");
     createStoreButton.addEventListener("click", function () {
       window.location.href = "create.html";
     });

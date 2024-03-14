@@ -4,7 +4,7 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "start":"snowpack dev",
+    "start": "snowpack dev",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
@@ -13,7 +13,8 @@
     "cookie-parser": "^1.4.6",
     "dotenv": "^16.4.1",
     "express": "^4.18.2",
-    "pg": "^8.11.3"
+    "pg": "^8.11.3",
+    "spectre.css": "^0.5.9"
   },
   "devDependencies": {
     "snowpack": "^3.7.1"
